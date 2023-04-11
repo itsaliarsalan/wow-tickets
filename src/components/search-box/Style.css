@@ -1,0 +1,17 @@
+.search-form {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.search-form__input {
+  min-width: 500px;
+  padding: 1rem;
+  border: none;
+  border-radius: 3px;
+}
+.search-form__submit {
+  position: absolute;
+  right: 0;
+  padding: 0.8rem;
+}
