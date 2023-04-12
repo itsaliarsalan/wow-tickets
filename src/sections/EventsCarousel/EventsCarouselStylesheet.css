@@ -1,0 +1,11 @@
+.event-carousel {
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.event-carousel-section {
+  display: flex;
+  flex-direction: column;
+  padding: 7rem 0;
+}
