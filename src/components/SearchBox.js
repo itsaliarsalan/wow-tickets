@@ -1,5 +1,5 @@
 import React from "react";
-import "./Style.css";
+import "./SearchBox.css";
 import { FiSearch } from "react-icons/fi";
 
 function SearchBox() {

@@ -1,6 +1,6 @@
 import React from "react";
-import "./Style.css";
-import SearchBox from "../../components/search-box/SearchBox";
+import "./Hero.css";
+import SearchBox from "../components/SearchBox";
 
 export default function Hero() {
   return (

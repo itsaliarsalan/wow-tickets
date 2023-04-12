@@ -12,6 +12,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-h1 {
-  margin: 0 0 30px 0;
+
+.section-boxed {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3em 0;
+}
+.mt-3 {
+  margin-top: 3em;
+}
+.row {
+  display: flex;
 }

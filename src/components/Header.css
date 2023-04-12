@@ -6,30 +6,30 @@
   max-width: 1280px;
   margin: 0 auto;
 }
-.site__logo {
+.logo {
   float: left;
 }
-.site__logo > a > img {
+.logo > a > img {
   min-width: 275px;
 }
-.site__nav {
+.nav {
   float: right;
 }
-.site__nav__list {
+.nav__list {
   list-style-type: none;
 }
-.site__nav__listItem {
+.nav__listItem {
   display: inline;
   margin-left: 2rem;
 }
-.site__nav__listItem a {
+.nav__listItem a {
   text-decoration: none;
   font-family: "Inter";
   font-size: 16px;
   font-weight: 500;
   color: #414042;
 }
-.site__nav__listItem--btn {
+.nav__listItem--btn {
   text-decoration: none;
   font-family: "Inter";
   font-size: 16px;
