@@ -13,7 +13,6 @@
   text-align: center;
 }
 .hero-section__title {
-  font-family: "Inter";
   font-weight: 700;
   font-size: 64px;
   margin: 0;
@@ -22,7 +21,6 @@
 }
 
 .hero-section__desc {
-  font-family: "Inter";
   font-weight: 500;
   font-size: 24px;
   margin-top: 24px;
