@@ -1,17 +1,26 @@
 import React from "react";
 import "./EventCard.css";
-import thumbnail from "../assets/card-image.jpg";
+import { motion } from "framer-motion";
+import thumbnail from "../assets/event-thumbnail-01.jpg";
 
-function EventCard() {
+function EventCard({ events }) {
   return (
-    <div className="card">
-      <img src={thumbnail} alt="" />
-      <p>April 2023 - London</p>
-      <h3>Fifa World Cup 2023</h3>
-      <a href="#" className="book-btn">
-        Book Now
-      </a>
-    </div>
+    <>
+      {events.map((event) => {
+        return (
+          <motion.div className="card" key={event.id}>
+            <img src={event.image} alt="" />
+            <p>
+              {event.date} - {event.venue}
+            </p>
+            <h3>{event.title}</h3>
+            <a href={event.url} className="book-btn">
+              Book Now
+            </a>
+          </motion.div>
+        );
+      })}
+    </>
   );
 }
 
