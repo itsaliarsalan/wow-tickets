@@ -1,17 +1,23 @@
-.search-form {
-  position: relative;
-  max-width: 500px;
-  margin: 0 auto;
-  justify-content: center;
+.search-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  margin: 0.5rem 0;
 }
-.search-form__input {
-  min-width: 500px;
-  padding: 1rem;
-  border: none;
-  border-radius: 3px;
+.search-box input {
+  width: 100%;
+  padding: 0.5rem;
+  outline: none;
 }
-.search-form__submit {
-  position: absolute;
-  right: 0;
-  padding: 0.8rem;
+.search-box .search-icon {
+  display: none;
+  width: 20px;
+  height: 20px;
+}
+@media (min-width: 768px) {
+  .search-box .search-icon {
+    display: block;
+  }
 }

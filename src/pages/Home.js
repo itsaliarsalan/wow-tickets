@@ -1,12 +1,13 @@
 import React from "react";
 import Hero from "../sections/Hero";
-import EventsSlider from "../sections/EventsSlider";
-
+import Features from "../sections/Features";
+import Events from "../sections/Events";
 function Home() {
   return (
     <>
       <Hero />
-      <EventsSlider />
+      <Events />
+      <Features />
     </>
   );
 }

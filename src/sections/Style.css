@@ -1,0 +1,149 @@
+/* Hero section */
+h1 {
+  color: #fff;
+  padding: 1rem 0;
+  font-weight: 400;
+}
+.hero {
+  background-image: url("../assets/cover.jpg");
+  padding: 50px 0;
+  background-size: cover;
+  background-position: center;
+}
+.search-button {
+  background-color: var(--primary-color);
+  width: 100%;
+  padding: 1rem;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 34px;
+  }
+  .hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    padding-bottom: 4rem;
+  }
+  .hero .content {
+    max-width: 30rem;
+  }
+  .hero .container {
+    padding-bottom: 4rem;
+  }
+  .search-button {
+    display: none;
+  }
+}
+
+/* events section */
+.events .container h2 {
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.events-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.events .links {
+  text-align: center;
+}
+.events .links .btn {
+  margin-top: 2rem;
+}
+
+/* features section */
+.features {
+  padding: 6rem 0;
+}
+.features h2 {
+  text-align: center;
+}
+.features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.feature-item {
+  display: flex;
+  gap: 20px;
+}
+.feature-item .feature-body h4 {
+  margin-bottom: 10px;
+}
+.feature-item .feature-body p {
+  max-width: 90%;
+}
+.feature-item .feature-body {
+  color: #212121;
+}
+/* .feature-item:nth-child(even) {
+      flex-direction: row-reverse;
+  } */
+@media screen and (min-width: 768px) {
+  .features-list {
+    gap: 0;
+    justify-content: space-between;
+  }
+  .feature-item {
+    flex-basis: 50%;
+    padding: 1rem;
+  }
+  .feature-item:nth-child(even) {
+    flex-direction: inherit;
+  }
+}
+.feature-icon img {
+  filter: invert(72%) sepia(10%) saturate(3188%) hue-rotate(67deg)
+    brightness(84%) contrast(79%);
+}
+
+/* footer section */
+footer {
+  background-color: #ffffff;
+  padding-top: 2rem;
+}
+.footer-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+footer .logo img {
+  width: 8rem;
+}
+footer .sub-menu {
+  margin: 12px 0;
+}
+footer .sub-menu ul {
+  line-height: 25px;
+  list-style: none;
+}
+footer .sub-menu h4 {
+  margin-bottom: 0.5rem;
+}
+footer .copyright {
+  text-align: center;
+  padding-bottom: 2rem;
+  font-size: 14px;
+}
+footer .nav-item {
+  text-decoration: none;
+}
+@media screen and (min-width: 768px) {
+  .footer-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    text-align: start;
+    gap: 2rem;
+  }
+  footer .logo {
+    max-width: 25rem;
+  }
+}

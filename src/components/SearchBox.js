@@ -4,17 +4,12 @@ import { FiSearch } from "react-icons/fi";
 
 function SearchBox() {
   return (
-    <form className="search-form">
-      <input
-        className="search-form__input"
-        type="text"
-        name="event"
-        placeholder="Search by event, artist or venue"
-      />
-      <button className="search-form__submit" type="submit">
+    <div className="search-box">
+      <input placeholder='Try "Music Events"' type="text" autoComplete="off" />
+      <span className="search-icon">
         <FiSearch />
-      </button>
-    </form>
+      </span>
+    </div>
   );
 }
 

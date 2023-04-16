@@ -11,6 +11,7 @@ function EventsSlider() {
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
   }, []);
+
   return (
     <div className="section-boxed">
       <div className="section-info">
@@ -29,6 +30,11 @@ function EventsSlider() {
           <EventCard events={events} />
         </motion.div>
       </motion.div>
+      <div className="section-footer">
+        <a className="btn" href="#">
+          Explore All Events
+        </a>
+      </div>
     </div>
   );
 }
