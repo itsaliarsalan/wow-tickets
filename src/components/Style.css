@@ -150,3 +150,89 @@
     z-index: 1;
   }
 }
+
+/* SearchBox CSS */
+.search-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.search-box input {
+  width: 100%;
+  padding: 0.5rem;
+  outline: none;
+}
+.search-box .search-icon {
+  display: none;
+  width: 20px;
+  height: 20px;
+}
+@media (min-width: 768px) {
+  .search-box .search-icon {
+    display: block;
+  }
+}
+
+/* Event Card CSS */
+.event-link {
+  text-decoration: none;
+  pointer-events: none;
+}
+.inner-carousel__item {
+  margin: 0 20px;
+}
+.event-card {
+  height: 340px;
+  width: 280px;
+  position: relative;
+  display: flex;
+  align-items: end;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .event-card.active {
+    height: 360px;
+    width: 270px;
+  }
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.event-card .thumbnail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.event-card:hover .thumbnail {
+  transform: scale(1.1);
+}
+
+.event-card .card-body {
+  color: #fff;
+  padding: 20px;
+  z-index: 2;
+}
+
+.event-card .card-body .event-name {
+  font-weight: 500;
+  color: #fff;
+}
