@@ -9,7 +9,7 @@ function Hero() {
         <div className="content">
           <h1>Book Your Tickets For Upcoming Events</h1>
           <SearchBox />
-          <button class="search-button">Search</button>
+          <button className="search-button">Search</button>
         </div>
       </div>
     </section>

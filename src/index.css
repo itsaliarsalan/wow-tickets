@@ -3,11 +3,8 @@
   margin: 0;
   padding: 0;
   border: 0;
-  /* font-size: 100%;
-	font: inherit;
-	vertical-align: baseline; */
 }
-/* Global box-sizing */
+
 html {
   box-sizing: border-box;
   overflow-x: hidden;
@@ -67,6 +64,7 @@ h5,
 h6 {
   color: #333;
 }
+
 hr {
   border: none;
   height: 1px;
@@ -78,6 +76,7 @@ hr {
   border-radius: 4px;
   font-size: 14px;
 }
+
 .btn-main {
   background-color: var(--primary-color);
   color: #fff;

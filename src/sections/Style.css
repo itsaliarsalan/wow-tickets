@@ -110,6 +110,28 @@ h1 {
     brightness(84%) contrast(79%);
 }
 
+/* cta */
+.cta .content {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-image: url("../assets/cover.jpg");
+  background-size: cover;
+  position: relative;
+  border-radius: 10px;
+}
+.cta .content h2 {
+  margin: auto;
+  margin-bottom: 1rem;
+  color: #fff;
+  z-index: 10;
+}
+@media screen and (min-width: 768px) {
+  .cta .content h2 {
+    font-size: 32px;
+    width: 70%;
+  }
+}
+
 /* footer section */
 footer {
   background-color: #ffffff;

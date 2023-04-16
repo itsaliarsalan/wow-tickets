@@ -1,8 +1,15 @@
-import React from "react";
+import { useRef, useEffect, useState } from "react";
 import "./Style.css";
 import logo from "../assets/300x75.svg";
 
 function Navbar() {
+  const [isOpen, setOpen] = useState(false);
+
+  function handleClick() {
+    if (!isOpen) setOpen(true);
+    else setOpen(false);
+  }
+
   return (
     <>
       {" "}
@@ -14,10 +21,15 @@ function Navbar() {
           <div className="logo">
             <img src={logo} alt="main logo" />
           </div>
-          <button className="menu-toggle" aria-label="Open Navigation Menu">
+
+          <button
+            className="menu-toggle"
+            aria-label="Open Navigation Menu"
+            onClick={handleClick}
+          >
             <span className="menu-icon" />
           </button>
-          <ul className="menu">
+          <ul className={isOpen ? "menu open" : "menu"}>
             <li>
               <a href="#" className="nav-link">
                 Explore Events
@@ -37,7 +49,10 @@ function Navbar() {
         </div>
       </nav>
       {/* Darken background when menu opens */}
-      <div className="overlay" />
+      <div
+        className={isOpen ? "overlay visible" : "overlay"}
+        onClick={handleClick}
+      />
     </>
   );
 }
