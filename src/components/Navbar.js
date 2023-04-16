@@ -20,12 +20,12 @@ function Navbar() {
           <ul className="menu">
             <li>
               <a href="#" className="nav-link">
-                Sign In
+                Explore Events
               </a>
             </li>
             <li>
               <a href="#" className="nav-link">
-                Explore Events
+                Sign In
               </a>
             </li>
             <li>
