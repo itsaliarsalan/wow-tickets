@@ -1,5 +1,6 @@
 import React from "react";
 import "./Style.css";
+
 function Cta() {
   return (
     <section className="cta">

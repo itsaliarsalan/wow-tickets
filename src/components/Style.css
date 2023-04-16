@@ -179,12 +179,13 @@
 /* Event Card CSS */
 .event-link {
   text-decoration: none;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 .inner-carousel__item {
   margin: 0 20px;
 }
 .event-card {
+  border-radius: 10px;
   height: 340px;
   width: 280px;
   position: relative;
@@ -212,6 +213,7 @@
 }
 
 .event-card .thumbnail {
+  object-fit: cover;
   position: absolute;
   top: 0;
   bottom: 0;
