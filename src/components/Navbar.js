@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Style.css";
 import logo from "../assets/300x75.svg";
 
@@ -31,9 +32,9 @@ function Navbar() {
           </button>
           <ul className={isOpen ? "menu open" : "menu"}>
             <li>
-              <a href="#" className="nav-link">
+              <Link className="nav-link" to="/events">
                 Explore Events
-              </a>
+              </Link>
             </li>
             <li>
               <a href="#" className="nav-link">

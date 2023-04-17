@@ -179,7 +179,7 @@
 /* Event Card CSS */
 .event-link {
   text-decoration: none;
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 .inner-carousel__item {
   margin: 0 20px;
