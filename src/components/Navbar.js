@@ -20,7 +20,9 @@ function Navbar() {
             Join
           </Link>
           <div className="logo">
-            <img src={logo} alt="main logo" />
+            <Link to="/">
+              <img src={logo} alt="main logo" />
+            </Link>
           </div>
 
           <button
