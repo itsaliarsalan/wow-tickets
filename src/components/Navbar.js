@@ -16,9 +16,9 @@ function Navbar() {
       {" "}
       <nav className="top-nav">
         <div className="container">
-          <a href="#" className="mobile-cta">
+          <Link to="/signup" className="mobile-cta">
             Join
-          </a>
+          </Link>
           <div className="logo">
             <img src={logo} alt="main logo" />
           </div>
@@ -37,14 +37,14 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <a href="#" className="nav-link">
+              <Link to="/signin" className="nav-link">
                 Sign In
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="nav-cta">
+              <Link to="/signup" className="nav-cta">
                 Join
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

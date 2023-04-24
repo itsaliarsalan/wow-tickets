@@ -238,3 +238,81 @@
   font-weight: 500;
   color: #fff;
 }
+
+/* Page banner component */
+.page-banner {
+  min-height: 18rem;
+  background-image: url("../assets/cover.jpg");
+  background-size: cover;
+  background-position: 50% 60%;
+}
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  gap: 5px;
+}
+.breadcrumb .divider {
+  color: #fff;
+}
+.breadcrumb .breadcrumb-link {
+  text-decoration: none;
+  color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .page-banner {
+    min-height: 20rem;
+  }
+}
+
+/* Sign In */
+.sign-in {
+  text-align: center;
+}
+.sign-in h1 {
+  color: var(--primary-typo-color);
+  font-weight: 500;
+}
+.sign-in h4 {
+  font-weight: 400;
+}
+form.login {
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  justify-content: center;
+  margin: 20px auto;
+  gap: 3px;
+}
+form.login input {
+  padding: 10px 20px;
+  border-radius: var(--button-border-radius);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+form.login input:focus {
+  outline: none;
+}
+form.login button[type="submit"] {
+  margin-top: 5px;
+}
+form.login a {
+  text-align: start;
+  margin-top: 5px;
+  text-decoration: none;
+  color: var(--primary-typo-color);
+  transition: color 100ms ease-in-out;
+}
+form.login a:hover {
+  color: var(--primary-typo-color-hover);
+}
+
+/* Sign up */
+.sign-up {
+  text-align: center;
+}
+.sign-up h1 {
+  color: var(--primary-typo-color);
+  font-weight: 500;
+}
+.sign-up h4 {
+  font-weight: 400;
+}
