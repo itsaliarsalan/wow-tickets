@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "If-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
+    "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
     "server": "node ./server/server.js",
     "client": "cd client && npm start"
   },
@@ -12,8 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/aliarsalandev/woo-tickets.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/aliarsalandev/woo-tickets/issues"
   },
