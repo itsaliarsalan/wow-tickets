@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
+    "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install && react-scripts build)",
     "server": "node ./server/server.js",
     "client": "cd client && npm start"
   },
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/aliarsalandev/woo-tickets#readme",
   "dependencies": {
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "react-scripts": "^5.0.1"
   }
 }
