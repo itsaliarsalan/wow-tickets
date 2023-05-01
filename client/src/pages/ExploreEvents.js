@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Banner from '../components/Banner'
 import Event from '../components/Event'
 
@@ -175,7 +175,7 @@ function ExploreEvents() {
 							</section>
 						</div>
 						<div className='modal-footer'>
-							<a href='#'>Clear All</a>
+							<a href='/'>Clear All</a>
 							<button className='btn btn-main'>Show 21 Events</button>
 						</div>
 					</div>
