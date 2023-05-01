@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/aliarsalandev/woo-tickets#readme",
   "dependencies": {
-    "if-env": "^1.0.4"
+    "dompurify": "^3.0.2",
+    "if-env": "^1.0.4",
+    "swiper": "^9.2.4"
   }
 }
