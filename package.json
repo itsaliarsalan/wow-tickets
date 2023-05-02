@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install && npm build)",
+    "build": "If-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
     "server": "node ./server/server.js",
     "client": "cd client && npm start"
   },
@@ -12,12 +12,15 @@
     "type": "git",
     "url": "git+https://github.com/aliarsalandev/woo-tickets.git"
   },
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/aliarsalandev/woo-tickets/issues"
   },
   "homepage": "https://github.com/aliarsalandev/woo-tickets#readme",
   "dependencies": {
+    "dompurify": "^3.0.2",
     "if-env": "^1.0.4",
-    "react-scripts": "^5.0.1"
+    "swiper": "^9.2.4"
   }
 }

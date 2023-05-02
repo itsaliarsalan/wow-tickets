@@ -1,22 +1,26 @@
-import { Link } from "react-router-dom";
-import "./Style.css";
-import { motion } from "framer-motion";
-import thumbnail from "../assets/event-thumbnail-01.jpg";
+import { Link } from 'react-router-dom'
+import './Style.css'
+import thumbnail from '../assets/event-thumbnail-01.jpg'
 
-function Event({ id }) {
-  return (
-    <motion.div className="inner-carousel__item" key={id}>
-      <Link to="/event" className="event-link">
-        <div className="event-card">
-          <img className="thumbnail" src={thumbnail} alt="" />
-          <div className="card-body">
-            <small className="event-info">22 Mar - London</small>
-            <h3 className="event-name">Event Name</h3>
-          </div>
-        </div>
-      </Link>
-    </motion.div>
-  );
+function Event({ id, eventName, date, location, thumbnail }) {
+	return (
+		<Link className='event-link' to='/event' key={id}>
+			<div className='event-card'>
+				<img className='thumbnail' src={thumbnail} alt='' />
+				<div className='card-body'>
+					<small className='event-info'>
+						{date} - {location}
+					</small>
+					<h3 className='event-name'>{eventName}</h3>
+				</div>
+			</div>
+		</Link>
+	)
 }
-
-export default Event;
+Event.defaultProps = {
+	eventName: 'Event name',
+	date: '23 Mar',
+	location: 'London',
+	thumbnail: thumbnail,
+}
+export default Event
