@@ -17,17 +17,17 @@ function Footer() {
 						<h4>Customer</h4>
 						<ul>
 							<li>
-								<a href='#' className='nav-item'>
+								<a href='/' className='nav-item'>
 									My Tickets
 								</a>
 							</li>
 							<li>
-								<a href='#' className='nav-item'>
+								<a href='/' className='nav-item'>
 									Explore Events
 								</a>
 							</li>
 							<li>
-								<a href='#' className='nav-item'>
+								<a href='/' className='nav-item'>
 									Contact Us
 								</a>
 							</li>
@@ -37,17 +37,17 @@ function Footer() {
 						<h4>Seller</h4>
 						<ul>
 							<li>
-								<a href='#' className='nav-item'>
+								<a href='/' className='nav-item'>
 									Dashboard
 								</a>
 							</li>
 							<li>
-								<a href='#' className='nav-item'>
+								<a href='/' className='nav-item'>
 									Add Ticket
 								</a>
 							</li>
 							<li>
-								<a href='#' className='nav-item'>
+								<a href='/' className='nav-item'>
 									Orders
 								</a>
 							</li>
@@ -57,12 +57,12 @@ function Footer() {
 						<h4>Join Us</h4>
 						<ul>
 							<li>
-								<a href='#' className='nav-item'>
+								<a href='/' className='nav-item'>
 									Customer Account
 								</a>
 							</li>
 							<li>
-								<a href='#' className='nav-item'>
+								<a href='/' className='nav-item'>
 									Seller Account
 								</a>
 							</li>

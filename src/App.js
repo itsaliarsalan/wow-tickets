@@ -7,7 +7,7 @@ import ExploreEvents from './pages/ExploreEvents'
 import SingleEvent from './pages/SingleEvent'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/dashboard/Dashboard'
 
 function App() {
 	return (
