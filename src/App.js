@@ -8,6 +8,8 @@ import SingleEvent from './pages/SingleEvent'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import Dashboard from './pages/dashboard/Dashboard'
+import Overview from './sections/dashboard/Overview'
+import NewEvent from './sections/dashboard/NewEvent'
 
 function App() {
 	return (
@@ -16,7 +18,10 @@ function App() {
 				<Header />
 				<Routes>
 					<Route index element={<Home />} />
-					<Route path='/dashboard' element={<Dashboard />} />
+					<Route path='/dashboard' element={<Dashboard />}>
+						<Route index element={<Overview />} />
+						<Route path='new-event' element={<NewEvent />} />
+					</Route>
 					<Route path='/events' element={<ExploreEvents />} />
 					<Route path='/event' element={<SingleEvent />} />
 					<Route path='/signin' element={<Signin />} />

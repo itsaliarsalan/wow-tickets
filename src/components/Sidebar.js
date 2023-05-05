@@ -12,7 +12,6 @@ function Sidebar() {
 	function handleSidebarClass() {
 		if (!isOpen) {
 			document.documentElement.style.overflow = 'hidden'
-
 			setOpen(true)
 		} else {
 			document.documentElement.style.overflow = 'auto'
@@ -103,6 +102,7 @@ function Sidebar() {
 				className={
 					isOpen ? 'dashboard-menu-overlay visible' : 'dashboard-menu-overlay'
 				}
+				onClick={handleSidebarClass}
 			></div>
 
 			{/* Button */}

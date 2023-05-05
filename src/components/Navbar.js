@@ -7,13 +7,17 @@ function Navbar() {
 	const [isOpen, setOpen] = useState(false)
 
 	function handleClick() {
-		if (!isOpen) setOpen(true)
-		else setOpen(false)
+		if (!isOpen) {
+			document.documentElement.style.overflow = 'hidden'
+			setOpen(true)
+		} else {
+			document.documentElement.style.overflow = 'auto'
+			setOpen(false)
+		}
 	}
 
 	return (
 		<>
-			{' '}
 			<nav className='top-nav'>
 				<div className='container'>
 					<div className='logo'>

@@ -286,11 +286,14 @@ footer .nav-item {
 		flex-basis: 24%;
 	}
 }
-.overview .side-content {
+.side-content {
 	margin-top: 20px;
 }
-.overview .side-content .card-primary {
+.side-content .card-primary {
 	margin-bottom: 10px;
+}
+.overview .recent-sales {
+	margin-top: 20px;
 }
 @media screen and (min-width: 992px) {
 	.overview {
@@ -307,4 +310,42 @@ footer .nav-item {
 	.overview .side-content .card-primary {
 		margin-bottom: 20px;
 	}
+}
+.overview .recent-sales .table-wrapper {
+	overflow-x: auto;
+}
+table {
+	width: 100%;
+	border-spacing: 0;
+}
+table .profile-picture {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: grid;
+	place-content: center;
+}
+table.primary {
+	padding-right: 20px;
+}
+.recent-sales table.primary tr {
+	transition: 300ms;
+}
+.recent-sales table.primary tr:hover {
+	background-color: rgba(170, 24, 148, 0.1);
+	cursor: pointer;
+}
+.recent-sales table.primary td {
+	padding: 5px 10px;
+	white-space: nowrap;
+}
+.card-primary h4 {
+	margin-bottom: 10px;
+}
+.new-event .breadcrumb li,
+.new-event .breadcrumb a {
+	color: #000;
+}
+.new-event .card-primary {
+	margin: 20px 0;
 }

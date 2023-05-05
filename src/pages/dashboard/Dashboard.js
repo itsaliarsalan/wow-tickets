@@ -1,11 +1,14 @@
+import { Outlet } from 'react-router-dom'
 import Sidebar from '../../components/Sidebar'
-import Overview from '../../sections/dashboard/Overview'
+import DashboardContent from '../../components/DashboardContent'
 
 function Dashboard() {
 	return (
 		<div className='d-flex'>
 			<Sidebar />
-			<Overview />
+			<DashboardContent>
+				<Outlet />
+			</DashboardContent>
 		</div>
 	)
 }
