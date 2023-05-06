@@ -305,3 +305,9 @@ input[type='checkbox']:checked {
 	border-radius: var(--cards-border-radius);
 	box-shadow: var(--cards-box-shadow);
 }
+.mb-2 {
+	margin-bottom: 20px;
+}
+.modal {
+	z-index: 100;
+}

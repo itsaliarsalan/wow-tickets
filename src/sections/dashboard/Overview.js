@@ -4,8 +4,8 @@ import BtnDropdown from '../../components/BtnDropdown'
 
 const Overview = () => {
 	return (
-		<>
-			<h2>Welcome back, James!</h2>
+		<div>
+			<h2 className='mb-2'>Welcome back, James!</h2>
 			<div className='overview'>
 				<div className='main'>
 					<div className='first-row'>
@@ -243,7 +243,7 @@ const Overview = () => {
 					</div>
 				</aside>
 			</div>
-		</>
+		</div>
 	)
 }
 
