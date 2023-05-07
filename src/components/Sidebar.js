@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Style.css'
 
 function Sidebar() {
@@ -24,7 +25,7 @@ function Sidebar() {
 				<div className='container'>
 					<ul className='menu'>
 						<li className='nav-item'>
-							<a href='/' className='nav-link'>
+							<a href='/dashboard' className='nav-link'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									width='20'
@@ -78,6 +79,11 @@ function Sidebar() {
 							</label>
 							<ul className={isDrop ? 'dropdown-menu open' : 'dropdown-menu'}>
 								<li className='dropdown-item'>
+									<Link to='new-event' className='dropdown-link'>
+										Add Event
+									</Link>
+								</li>
+								<li className='dropdown-item'>
 									<a href='/' className='dropdown-link'>
 										Manage Events
 									</a>
@@ -89,11 +95,73 @@ function Sidebar() {
 								</li>
 								<li className='dropdown-item'>
 									<a href='/' className='dropdown-link'>
+										Audience
+									</a>
+								</li>
+								<li className='dropdown-item'>
+									<a href='/' className='dropdown-link'>
 										Venues
 									</a>
 								</li>
 								<div className='vertical-line'></div>
 							</ul>
+						</li>
+						<li className='nav-item'>
+							<a href='/' className='nav-link'>
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									width='20'
+									height='20'
+									viewBox='0 0 24 24'
+									fill='none'
+									stroke='currentColor'
+									stroke-width='2'
+									stroke-linecap='round'
+									stroke-linejoin='round'
+									class='feather feather-users'
+								>
+									<path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+									<circle cx='9' cy='7' r='4'></circle>
+									<path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+									<path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+								</svg>
+								Organizers
+							</a>
+						</li>
+						<li className='nav-item'>
+							<a href='/' className='nav-link'>
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									width='20'
+									height='20'
+									fill='currentColor'
+									class='bi bi-receipt'
+									viewBox='0 0 16 16'
+								>
+									<path d='M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z' />
+									<path d='M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z' />
+								</svg>
+								Orders
+							</a>
+						</li>
+						<li className='nav-item'>
+							<a href='/' className='nav-link'>
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									width='20'
+									height='20'
+									fill='currentColor'
+									class='bi bi-qr-code-scan'
+									viewBox='0 0 16 16'
+								>
+									<path d='M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0v-3Zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5ZM.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5Zm15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5ZM4 4h1v1H4V4Z' />
+									<path d='M7 2H2v5h5V2ZM3 3h3v3H3V3Zm2 8H4v1h1v-1Z' />
+									<path d='M7 9H2v5h5V9Zm-4 1h3v3H3v-3Zm8-6h1v1h-1V4Z' />
+									<path d='M9 2h5v5H9V2Zm1 1v3h3V3h-3ZM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8H8Zm2 2H9V9h1v1Zm4 2h-1v1h-2v1h3v-2Zm-4 2v-1H8v1h2Z' />
+									<path d='M12 9h2V8h-2v1Z' />
+								</svg>
+								Scanner App
+							</a>
 						</li>
 					</ul>
 				</div>

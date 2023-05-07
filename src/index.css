@@ -36,7 +36,7 @@ a {
 }
 
 body {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif !important;
 	margin: 0;
 	padding: 0;
 	background-color: #f5f5f5;
@@ -45,7 +45,7 @@ body {
 input,
 a,
 button {
-	font-family: 'Montserrat';
+	font-family: 'Montserrat' !important;
 }
 input,
 button {
@@ -54,17 +54,27 @@ button {
 section.component {
 	padding: 50px 0;
 }
+h1 {
+	font-weight: 600 !important;
+}
 h2 {
 	font-weight: 400;
 	margin-bottom: 10px;
+}
+h3,
+h4 {
+	font-weight: 500;
 }
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-	color: #333;
+h6,
+select,
+textarea {
+	font-family: 'Montserrat' !important;
+	margin: 0;
 }
 hr {
 	border: none;
@@ -251,7 +261,7 @@ input[type='checkbox']:checked {
 /* Buttons */
 .btn {
 	border-radius: var(--button-border-radius);
-	font-size: 14px;
+	font-size: 14px !important;
 	padding: 0.8rem 2rem;
 	text-decoration: none;
 	cursor: pointer;
@@ -277,6 +287,7 @@ input[type='checkbox']:checked {
 }
 .btn-main:hover {
 	background-color: var(--primary-color-hover);
+	color: #fff !important;
 }
 .btn-outline {
 	border: 1px solid rgba(0, 0, 0, 0.1);

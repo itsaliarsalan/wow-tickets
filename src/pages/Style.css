@@ -262,6 +262,11 @@ footer .nav-item {
 	background-size: cover;
 	background-position: 50% 60%;
 }
+.page-banner .page-title {
+	color: #fff;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
 .breadcrumb {
 	list-style: none;
 	display: flex;
@@ -367,6 +372,7 @@ section.explore-events {
 	padding-bottom: 60px !important;
 	position: relative;
 	z-index: 1;
+	color: #fff;
 }
 .event-banner::before {
 	content: '';

@@ -1,4 +1,8 @@
 const DashboardContent = props => {
-	return <div className='dashboard-content container'>{props.children}</div>
+	return (
+		<div className='container'>
+			<div className='dashboard-content'>{props.children}</div>
+		</div>
+	)
 }
 export default DashboardContent
