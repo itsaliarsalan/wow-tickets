@@ -402,8 +402,7 @@ table.primary {
 	object-fit: cover;
 	position: relative;
 }
-
-.new-event .category-card.selected .thumbnail::after {
+.new-event .category-card .thumbnail::after {
 	content: '\2713';
 	color: #fff;
 	font-size: 40px;
@@ -415,6 +414,13 @@ table.primary {
 	bottom: 0;
 	left: 0;
 	right: 0;
+	opacity: 0;
+	transition: 300ms;
+	cursor: pointer;
+}
+.new-event .category-card:hover .thumbnail::after,
+.new-event .category-card.selected .thumbnail::after {
+	opacity: 1;
 }
 .new-event .sub-heading {
 	margin-top: 20px;
@@ -454,4 +460,29 @@ table.primary {
 }
 .new-event .field label {
 	font-weight: 500 !important;
+}
+
+/* drop file */
+.drop-files {
+	background-color: #dfdfdf;
+	padding: 20px;
+	border-radius: var(--cards-border-radius);
+	display: flex;
+}
+.drop-files .drop-wrapper {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+}
+.drop-files .drop-wrapper h5 {
+	margin-bottom: 2px;
+}
+.drop-files svg {
+	width: 50px;
+	fill: #333;
+}
+.card-outline .row .col p {
+	max-width: 50%;
+	text-align: right;
+	margin-bottom: 5px;
 }

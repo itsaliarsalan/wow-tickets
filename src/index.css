@@ -47,7 +47,6 @@ a,
 button {
 	font-family: 'Montserrat' !important;
 }
-input,
 button {
 	font-size: 16px;
 }
@@ -316,9 +315,47 @@ input[type='checkbox']:checked {
 	border-radius: var(--cards-border-radius);
 	box-shadow: var(--cards-box-shadow);
 }
+.card-secondary {
+	background-color: #dfdfdf;
+	padding: 20px;
+	border-radius: var(--cards-border-radius);
+	box-shadow: var(--cards-box-shadow);
+}
+.card-secondary.img-preview img {
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+	overflow: hidden;
+	max-height: 14rem;
+	border-radius: var(--cards-border-radius);
+}
+.card-outline {
+	padding: 30px;
+	border-radius: var(--cards-border-radius);
+	border: 1px solid #dededf;
+}
+.card-outline .head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.card-outline .head .icon {
+	width: 20px;
+	cursor: pointer;
+}
+.card-outline .head svg path {
+	fill: #f6565e;
+}
 .mb-2 {
 	margin-bottom: 20px;
 }
 .modal {
 	z-index: 100;
+}
+.fw-normal {
+	font-weight: 500 !important;
+}
+.row .col {
+	display: flex;
+	justify-content: space-between;
 }
