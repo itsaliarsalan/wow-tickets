@@ -104,6 +104,46 @@ function ConfirmEvent() {
 						</div>
 					</div>
 				</section>
+				<hr />
+				<section>
+					<div className='card-outline'>
+						<div className='head'>
+							<h3>Tickets</h3>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								viewBox='0 0 24 24'
+								fill='none'
+								className='icon'
+							>
+								<path
+									fill='currentColor'
+									fill-rule='evenodd'
+									d='M15.586 3a2 2 0 0 1 2.828 0L21 5.586a2 2 0 0 1 0 2.828L19.414 10 14 4.586 15.586 3zm-3 3-9 9A2 2 0 0 0 3 16.414V19a2 2 0 0 0 2 2h2.586A2 2 0 0 0 9 20.414l9-9L12.586 6z'
+									clip-rule='evenodd'
+								/>
+							</svg>
+						</div>
+						<hr style={{ marginTop: '1rem' }} />
+						<div className='row'>
+							<div className='col'>
+								<p>Entry Price</p>
+								<p>30$</p>
+							</div>
+							<div className='col'>
+								<p>Customers Fee</p>
+								<p>2$</p>
+							</div>
+							<div className='col'>
+								<p>You will receive</p>
+								<p>29$</p>
+							</div>
+							<div className='col'>
+								<p>Allocations</p>
+								<p>300</p>
+							</div>
+						</div>
+					</div>
+				</section>
 			</div>
 		</>
 	)

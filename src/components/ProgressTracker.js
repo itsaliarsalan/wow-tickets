@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import React from 'react'
 
 function TickCircleIcon() {
 	return (
@@ -19,42 +19,44 @@ function ProgressTracker(props) {
 	const steps = [
 		{
 			label: 'Basic Info',
-			complete: ['1', '2', '3', '4'].includes(props.step),
-			link: './',
+			complete: [1, 2, 3, 4],
+			step: 1,
 		},
 		{
 			label: 'Images',
-			complete: ['2', '3', '4'].includes(props.step),
-			link: 'step-2',
+			complete: [2, 3, 4],
+			step: 2,
 		},
 		{
 			label: 'Tickets',
-			complete: ['3', '4'].includes(props.step),
-			link: 'step-3',
+			complete: [3, 4],
+			step: 3,
 		},
 		{
 			label: 'Confirmation',
-			complete: ['4'].includes(props.step),
-			link: 'step-4',
+			complete: [4],
+			step: 4,
 		},
 	]
 	return (
 		<div className='progress-tracker'>
 			{steps.map((step, index) => (
 				<>
-					<Link
-						className={`circle ${step.complete ? 'check' : 'number'}`}
+					<div
+						className={`circle ${props.step - 1 >= index ? 'check' : 'number'}`}
 						key={index}
-						to={step.link}
+						onClick={() => props.navigate(step.step)}
 					>
 						<div className='tooltip'>{step.label}</div>
-						{step.complete ? <TickCircleIcon /> : index + 1}
-					</Link>
+						{step.complete.includes(props.step) ? (
+							<TickCircleIcon />
+						) : (
+							index + 1
+						)}
+					</div>
 					{steps.length - 1 !== index ? (
 						<div
-							className={
-								['2', '3', '4'].includes(props.step) ? 'line success' : 'line'
-							}
+							className={props.step - 2 >= index ? 'line success' : 'line'}
 						></div>
 					) : null}
 				</>

@@ -11,7 +11,7 @@ import Signup from './pages/Signup'
 // Dashboard
 import Dashboard from './pages/dashboard/Dashboard'
 import Overview from './sections/dashboard/Overview'
-import NewEvent from './sections/dashboard/NewEvent'
+import NewEvent from './sections/dashboard/add_event/NewEvent'
 import BasicInfo from './sections/dashboard/add_event/BasicInfo'
 import EventImages from './sections/dashboard/add_event/EventImages'
 import AddTicket from './sections/dashboard/add_event/AddTicket'
