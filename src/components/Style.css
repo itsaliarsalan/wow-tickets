@@ -275,12 +275,14 @@ body {
 	display: flex;
 	gap: 5px;
 }
-.breadcrumb .divider {
+.page-banner .breadcrumb .divider {
 	color: #fff;
 }
-.breadcrumb .breadcrumb-link {
-	text-decoration: none;
+.page-banner .breadcrumb .breadcrumb-link {
 	color: #fff;
+}
+.page-banner .breadcrumb-link {
+	text-decoration: none;
 }
 @media screen and (min-width: 768px) {
 	.page-banner {

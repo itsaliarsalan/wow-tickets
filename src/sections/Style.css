@@ -486,3 +486,38 @@ table.primary {
 	text-align: right;
 	margin-bottom: 5px;
 }
+
+/* manage events */
+.manage-events {
+	flex-basis: 100%;
+}
+tfoot .d-flex {
+	padding-top: 10px;
+	justify-content: space-between;
+	align-items: center;
+}
+tfoot h5 {
+	font-weight: 600;
+}
+.dropdown select {
+	padding: 5px;
+	border-radius: var(--button-border-radius);
+	border: 1px solid #9e9e9e;
+	margin-right: 5px;
+}
+table {
+	white-space: nowrap;
+}
+table .icon {
+	cursor: pointer;
+}
+tfoot .icon {
+	font-size: 18px;
+	margin-left: 10px;
+}
+.manage-events table tbody tr {
+	transition: 300ms;
+}
+.manage-events table tbody tr:hover {
+	background-color: #f6e7f4;
+}

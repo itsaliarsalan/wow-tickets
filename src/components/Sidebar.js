@@ -84,7 +84,7 @@ function Sidebar() {
 									</Link>
 								</li>
 								<li className='dropdown-item'>
-									<a href='/' className='dropdown-link'>
+									<a href='/dashboard/manage-events' className='dropdown-link'>
 										Manage Events
 									</a>
 								</li>
