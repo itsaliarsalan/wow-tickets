@@ -45,7 +45,7 @@ const Overview = () => {
 									width='30'
 									height='30'
 									fill='currentColor'
-									class='bi bi-calendar-event'
+									className='bi bi-calendar-event'
 									viewBox='0 0 16 16'
 								>
 									<path d='M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z' />
@@ -80,22 +80,22 @@ const Overview = () => {
 									<path
 										d='M34 30V28.989C34 27.3382 35.3382 26 36.989 26V26C38.6381 26 39.9756 27.3356 39.978 28.9847L39.99 37.1853C39.9955 40.9473 36.9473 44 33.1853 44H25.6472C21.2342 44 17.0822 41.9088 14.4552 38.363L10.19 32.6062C9.46968 31.6339 9.40592 30.3235 10.0285 29.2858V29.2858C11.0299 27.6168 13.3332 27.3332 14.7096 28.7096L16 30V16C16 14.3431 17.3431 13 19 13V13C20.6569 13 22 14.3431 22 16V27.875V21.0263C22 19.3549 23.3549 18 25.0263 18V18C26.6977 18 28.0526 19.3549 28.0526 21.0263V29V27.8987C28.0526 26.2564 29.384 24.925 31.0263 24.925V24.925C32.6686 24.925 34 26.2564 34 27.8987V30Z'
 										stroke='#333'
-										stroke-width='2'
-										stroke-linecap='round'
-										stroke-linejoin='round'
+										strokeWidth='2'
+										strokeLinecap='round'
+										strokeLinejoin='round'
 									/>
 									<path
 										d='M32 4V12'
 										stroke='#333'
-										stroke-width='2'
-										stroke-linecap='round'
+										strokeWidth='2'
+										strokeLinecap='round'
 									/>
 									<path
 										d='M16 20H6V16C8 16 10 14.5 9.97403 12C9.94805 9.5 8 8 6 8V4H42V8C40 8 38.0519 9.5 38.026 12C38 14.5 40 16 42 16V20H28'
 										stroke='#333'
-										stroke-width='2'
-										stroke-linecap='round'
-										stroke-linejoin='round'
+										strokeWidth='2'
+										strokeLinecap='round'
+										strokeLinejoin='round'
 									/>
 								</svg>
 								<BtnDropdown>
@@ -169,14 +169,14 @@ const Overview = () => {
 						/>
 					</div>
 					<div className='card-primary recent-sales'>
-						<h4>Recent Sales</h4>
+						<h4 className='mb-1'>Recent Sales</h4>
 						<div className='table-wrapper'>
 							<table className='primary'>
 								<colgroup>
 									<col style={{ width: '10%' }} />
 									<col style={{ width: '40%' }} />
-									<col style={{ width: '30%' }} />
-									<col style={{ width: '20%' }} />
+									<col style={{ width: '40%' }} />
+									<col style={{ width: '10%' }} />
 								</colgroup>
 								<tbody>
 									<tr>
@@ -203,7 +203,7 @@ const Overview = () => {
 										<td>bennieakemon@gmail.com</td>
 										<td>Nightmare Fantasy</td>
 										<td>25$</td>
-										<td>3:48 PM</td>
+										<td className='text-nowrap-lg'>3:48 PM</td>
 									</tr>
 								</tbody>
 							</table>
@@ -232,14 +232,6 @@ const Overview = () => {
 							}}
 							options={{ responsive: true, maintainAspectRatio: true }}
 						/>
-					</div>
-					<div className='card-primary'>
-						<h4>Card Placeholders</h4>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui
-							fugit corporis ea incidunt, officiis odit recusandae repellendus
-							tempore! A, ad!
-						</p>
 					</div>
 				</aside>
 			</div>

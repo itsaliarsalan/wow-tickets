@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Banner from '../components/Banner'
 import Event from '../components/Event'
+import Modal from '../components/Modal'
 
 function ExploreEvents() {
 	const [cardsData, setCardsData] = useState([])
@@ -85,101 +86,94 @@ function ExploreEvents() {
 			<div>
 				{/* Filter Modal */}
 				<input className='modal-state' id='modal-1' type='checkbox' />
-				<div className='modal'>
-					<label className='modal-bg' htmlFor='modal-1' />
-					<div className='modal-container'>
-						<div className='modal-header'>
-							<h4>Filters</h4>
-							<label className='modal-close' htmlFor='modal-1' />
-						</div>
-						<div className='modal-inner'>
-							<section>
-								<h3>Sort by</h3>
-								<div className='tags'>
-									<div className='tag'>
-										<input
-											type='radio'
-											name='sort'
-											id='sortPopularity'
-											defaultChecked
-										/>
-										<label htmlFor='popularity'>Popularity</label>
-									</div>
-									<div className='tag'>
-										<input type='radio' name='sort' id='sortMostRecent' />
-										<label htmlFor='sortMostRecent'>Most Recent</label>
-									</div>
-									<div className='tag'>
-										<input type='radio' name='sort' id='sortLowToHigh' />
-										<label htmlFor='sortLowToHigh'>Low to High</label>
-									</div>
-									<div className='tag'>
-										<input type='radio' name='sort' id='sortHighToLow' />
-										<label htmlFor='sortHighToLow'>High to Low</label>
-									</div>
+				<Modal id='modal-1' title='Filter'>
+					<div className='modal-inner'>
+						<section>
+							<h3>Sort by</h3>
+							<div className='tags'>
+								<div className='tag'>
+									<input
+										type='radio'
+										name='sort'
+										id='sortPopularity'
+										defaultChecked
+									/>
+									<label htmlFor='popularity'>Popularity</label>
 								</div>
-							</section>
-							<hr />
-							<section>
-								<h3>More Filters</h3>
-								<div className='tags'>
-									<div className='tag'>
-										<input
-											type='checkbox'
-											name='filter'
-											id='filterCancelledEvents'
-										/>
-										<label htmlFor='filterCancelledEvents'>
-											Hide Cancelled Events
-										</label>
-									</div>
-									<div className='tag'>
-										<input
-											type='checkbox'
-											name='filter'
-											id='filterAvailableEvents'
-										/>
-										<label htmlFor='filterAvailableEvents'>
-											Show Only Available Events
-										</label>
-									</div>
-									<div className='tag'>
-										<input
-											type='checkbox'
-											name='filter'
-											id='filterAvailableEvents'
-										/>
-										<label htmlFor='filterAvailableEvents'>
-											Under 18's Allowed
-										</label>
-									</div>
+								<div className='tag'>
+									<input type='radio' name='sort' id='sortMostRecent' />
+									<label htmlFor='sortMostRecent'>Most Recent</label>
 								</div>
-							</section>
-							<hr />
-							<section>
-								<h3>Date</h3>
-								<div className='tags'>
-									<div className='tag'>
-										<input type='checkbox' name='date' id='filterToday' />
-										<label htmlFor='filterToday'>Today</label>
-									</div>
-									<div className='tag'>
-										<input type='checkbox' name='date' id='filterTomorrow' />
-										<label htmlFor='filterTomorrow'>Tomorrow</label>
-									</div>
-									<div className='tag'>
-										<input type='checkbox' name='date' id='filterWeek' />
-										<label htmlFor='filterWeek'>Week</label>
-									</div>
+								<div className='tag'>
+									<input type='radio' name='sort' id='sortLowToHigh' />
+									<label htmlFor='sortLowToHigh'>Low to High</label>
 								</div>
-							</section>
-						</div>
-						<div className='modal-footer'>
-							<a href='/'>Clear All</a>
-							<button className='btn btn-main'>Show 21 Events</button>
-						</div>
+								<div className='tag'>
+									<input type='radio' name='sort' id='sortHighToLow' />
+									<label htmlFor='sortHighToLow'>High to Low</label>
+								</div>
+							</div>
+						</section>
+						<hr />
+						<section>
+							<h3>More Filters</h3>
+							<div className='tags'>
+								<div className='tag'>
+									<input
+										type='checkbox'
+										name='filter'
+										id='filterCancelledEvents'
+									/>
+									<label htmlFor='filterCancelledEvents'>
+										Hide Cancelled Events
+									</label>
+								</div>
+								<div className='tag'>
+									<input
+										type='checkbox'
+										name='filter'
+										id='filterAvailableEvents'
+									/>
+									<label htmlFor='filterAvailableEvents'>
+										Show Only Available Events
+									</label>
+								</div>
+								<div className='tag'>
+									<input
+										type='checkbox'
+										name='filter'
+										id='filterAvailableEvents'
+									/>
+									<label htmlFor='filterAvailableEvents'>
+										Under 18's Allowed
+									</label>
+								</div>
+							</div>
+						</section>
+						<hr />
+						<section>
+							<h3>Date</h3>
+							<div className='tags'>
+								<div className='tag'>
+									<input type='checkbox' name='date' id='filterToday' />
+									<label htmlFor='filterToday'>Today</label>
+								</div>
+								<div className='tag'>
+									<input type='checkbox' name='date' id='filterTomorrow' />
+									<label htmlFor='filterTomorrow'>Tomorrow</label>
+								</div>
+								<div className='tag'>
+									<input type='checkbox' name='date' id='filterWeek' />
+									<label htmlFor='filterWeek'>Week</label>
+								</div>
+							</div>
+						</section>
 					</div>
-				</div>
+					<div className='modal-footer'>
+						<a href='/'>Clear All</a>
+						<button className='btn btn-main'>Show 21 Events</button>
+					</div>
+				</Modal>
 			</div>
 		</>
 	)

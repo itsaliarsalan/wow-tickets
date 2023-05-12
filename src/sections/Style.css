@@ -281,6 +281,9 @@ footer .nav-item {
 .dashboard-card-secondary .icons .vertical-menu {
 	cursor: pointer;
 }
+.side-content {
+	margin-top: 20px;
+}
 @media screen and (min-width: 768px) {
 	.first-row .dashboard-card-secondary {
 		flex-basis: 24%;
@@ -289,13 +292,18 @@ footer .nav-item {
 .side-content {
 	margin-top: 20px;
 }
+.side-content canvas {
+	margin: 0 auto;
+}
 .side-content .card-primary {
 	margin-bottom: 10px;
+	max-height: 30rem;
 }
 .overview .recent-sales {
 	margin-top: 20px;
 }
-@media screen and (min-width: 992px) {
+
+@media screen and (min-width: 1200px) {
 	.overview {
 		display: flex;
 		gap: 20px;
@@ -337,7 +345,7 @@ table.primary {
 }
 .recent-sales table.primary td {
 	padding: 5px 10px;
-	white-space: nowrap;
+	/* white-space: nowrap; */
 }
 
 .new-event .breadcrumb li,
@@ -488,8 +496,8 @@ table.primary {
 }
 
 /* manage events */
-.manage-events {
-	flex-basis: 100%;
+.manage-events .main {
+	flex-basis: 100% !important;
 }
 tfoot .d-flex {
 	padding-top: 10px;
@@ -505,19 +513,10 @@ tfoot h5 {
 	border: 1px solid #9e9e9e;
 	margin-right: 5px;
 }
-table {
-	white-space: nowrap;
-}
 table .icon {
 	cursor: pointer;
 }
-tfoot .icon {
-	font-size: 18px;
-	margin-left: 10px;
-}
-.manage-events table tbody tr {
-	transition: 300ms;
-}
-.manage-events table tbody tr:hover {
-	background-color: #f6e7f4;
+
+.manage-categories .d-flex {
+	justify-content: flex-end;
 }

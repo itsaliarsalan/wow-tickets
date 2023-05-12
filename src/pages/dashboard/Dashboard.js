@@ -4,7 +4,7 @@ import DashboardContent from '../../components/DashboardContent'
 
 function Dashboard() {
 	return (
-		<div className='d-flex'>
+		<div className='dashboard'>
 			<Sidebar />
 			<DashboardContent>
 				<Outlet />

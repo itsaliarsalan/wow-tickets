@@ -12,8 +12,8 @@ function BasicInfo() {
 					</div>
 					<section>
 						<h4 className='sub-heading'>Event Details</h4>
-						<div class='ui form'>
-							<div class='field'>
+						<div className='ui form'>
+							<div className='field'>
 								<input
 									type='text'
 									placeholder='Event name'
@@ -93,22 +93,22 @@ function BasicInfo() {
 					</section>
 					<section>
 						<h4 className='sub-heading'>Event Shedule</h4>
-						<div class='ui form'>
-							<div class='two fields'>
-								<div class='field'>
+						<div className='ui form'>
+							<div className='two fields'>
+								<div className='field'>
 									<label>Start date</label>
-									<div class='ui calendar' id='rangestart'>
-										<div class='ui input left icon'>
-											<i class='calendar icon'></i>
+									<div className='ui calendar' id='rangestart'>
+										<div className='ui input left icon'>
+											<i className='calendar icon'></i>
 											<input type='text' placeholder='Start' />
 										</div>
 									</div>
 								</div>
-								<div class='field'>
+								<div className='field'>
 									<label>End date</label>
-									<div class='ui calendar' id='rangeend'>
-										<div class='ui input left icon'>
-											<i class='calendar icon'></i>
+									<div className='ui calendar' id='rangeend'>
+										<div className='ui input left icon'>
+											<i className='calendar icon'></i>
 											<input type='text' placeholder='End' />
 										</div>
 									</div>

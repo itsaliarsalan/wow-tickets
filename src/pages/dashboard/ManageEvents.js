@@ -1,28 +1,19 @@
 import { Link } from 'react-router-dom'
+import DashboardHeader from '../../components/DashboardHeader'
 
 function ManageEvents() {
 	return (
-		<section className='manage-events'>
-			<div className='main'>
-				<div className='head'>
-					<h2>Manage All Events</h2>
-					<ul className='breadcrumb'>
-						<li>
-							<a href='/' className='breadcrumb-link'>
-								Home
-							</a>
-						</li>
-						<li className='divider'>&gt;</li>
-						<li>
-							<a href='/' className='breadcrumb-link'>
-								Events
-							</a>
-						</li>
-					</ul>
-					<hr />
-				</div>
-				<div className='card-primary'>
-					<div className='scroll-x'>
+		<>
+			<DashboardHeader
+				title='Manage All Events'
+				links={[
+					{ name: 'Home', route: '/' },
+					{ name: 'Events', route: '/' },
+				]}
+			/>
+			<section className='manage-events content'>
+				<div className='main'>
+					<div className='card-primary table'>
 						<table className='ui very basic table unstackable'>
 							<thead>
 								<tr>
@@ -48,6 +39,7 @@ function ManageEvents() {
 									<th>
 										Manage <i className='arrow down icon small'></i>
 									</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -64,8 +56,9 @@ function ManageEvents() {
 									<td>14 August</td>
 									<td>20</td>
 									<td className='center aligned'>
-										<i class='ellipsis vertical icon'></i>
+										<i className='ellipsis vertical icon'></i>
 									</td>
+									<td></td>
 								</tr>
 								<tr>
 									<td></td>
@@ -80,8 +73,9 @@ function ManageEvents() {
 									<td>28 June</td>
 									<td>18</td>
 									<td className='center aligned'>
-										<i class='ellipsis vertical icon'></i>
+										<i className='ellipsis vertical icon'></i>
 									</td>
+									<td></td>
 								</tr>
 								<tr>
 									<td></td>
@@ -96,8 +90,9 @@ function ManageEvents() {
 									<td>28 June</td>
 									<td>18</td>
 									<td className='center aligned'>
-										<i class='ellipsis vertical icon'></i>
+										<i className='ellipsis vertical icon'></i>
 									</td>
+									<td></td>
 								</tr>
 							</tbody>
 							<tfoot className='full-width text-center'>
@@ -107,7 +102,7 @@ function ManageEvents() {
 										<div className='d-flex'>
 											<h5>Showing Results 1 to 10 out of 200</h5>
 											<div className='dropdown'>
-												<select multiple='' class='form results-dropdown'>
+												<select multiple='' className='form results-dropdown'>
 													<option value='AF'>10</option>
 													<option value='AX'>20</option>
 													<option value='AL'>30</option>
@@ -115,8 +110,8 @@ function ManageEvents() {
 												Per Page
 											</div>
 											<div className='pagination'>
-												<i class='angle left icon'></i>
-												<i class='angle right icon'></i>
+												<i className='angle left icon'></i>
+												<i className='angle right icon'></i>
 											</div>
 										</div>
 									</td>
@@ -125,14 +120,14 @@ function ManageEvents() {
 							</tfoot>
 						</table>
 					</div>
+					<div className='mt-2 text-end'>
+						<Link to='/dashboard/new-event' className='btn btn-main'>
+							Create New Event
+						</Link>
+					</div>
 				</div>
-				<div className='mt-2 text-end'>
-					<Link to='/dashboard/new-event' className='btn btn-main'>
-						Create New Event
-					</Link>
-				</div>
-			</div>
-		</section>
+			</section>
+		</>
 	)
 }
 export default ManageEvents

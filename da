@@ -1,0 +1,247 @@
+[33mcommit 208303a0b02b42be28f62d8c43245ca654361714[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Edoitachime <96532589+edoitachi@users.noreply.github.com>
+Date:   Wed May 10 22:36:48 2023 +0500
+
+    Added ManageEvents route and file. Added ScrollToTop.js but it only
+    scrolls direct routes to top, it does not support child routes like
+    "dashboard/new-event/step-2" etc.
+
+[33mcommit 5794e658e48cd6a8a94973c4cf727705b3eaaf18[m
+Author: Edoitachime <96532589+edoitachi@users.noreply.github.com>
+Date:   Wed May 10 09:32:24 2023 +0500
+
+    Integrated ProgressTracker.js with NewEvent.js.
+    NewEvent.js's Frontend is completed.
+    Will start working on next pages today.
+
+[33mcommit 085dca581d7eb4b6bd668d5db65a9da119e23854[m
+Author: Edoitachime <96532589+edoitachi@users.noreply.github.com>
+Date:   Wed May 10 00:08:33 2023 +0500
+
+    Completed "Add New Event" page. Fixed some old bugs.
+    Use ProgressTracker's navigation while navigating in Add Event page.
+
+[33mcommit 886f52110c51742ce3568d6fa097a85f0d3a275f[m
+Author: Edoitachime <96532589+edoitachi@users.noreply.github.com>
+Date:   Mon May 8 00:45:49 2023 +0500
+
+    Added symantic ui css library. Right now I am not using react version,
+    will migrate later.
+    Might get some minor design bugs due to using library.
+    Add event basic information page done.
+
+[33mcommit 4dba1d716d005d351212a79940db658369b27e3c[m
+Author: Edoitachime <96532589+edoitachi@users.noreply.github.com>
+Date:   Sat May 6 23:25:49 2023 +0500
+
+    Added NewEvent.js Page, created a new ProgressTracker component  and started working on NewEvent.js. Fixed some minor bugs
+    in dashboard layout.
+
+[33mcommit a2c7854b7ad70ff50d56b27e709831f94b79ce55[m
+Author: Edoitachime <96532589+edoitachi@users.noreply.github.com>
+Date:   Sat May 6 00:06:23 2023 +0500
+
+    Updated Dashbord components and fixed Navbar and Sidebar bugs in mobile
+    display. Added always on top to navbar. Added New Event Page(not
+    completed). Created sub routes using React Router DOM Outlets for
+    Dashboard.
+
+[33mcommit 24487cc23961465ac43fb1b570fba78ccd607e49[m[33m ([m[1;32mdev[m[33m)[m
+Author: Edoitachime <96532589+edoitachi@users.noreply.github.com>
+Date:   Fri May 5 00:32:13 2023 +0500
+
+    Updated Dashboard
+
+[33mcommit 4814439a9250d1e7bc0774e0a2e2c75b761de4fa[m
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 19:28:27 2023 +0500
+
+    updated gitignore
+
+[33mcommit 205ead928747055cee6b2df58fdf65f361b2744e[m
+Merge: b5798850 b530eb4b
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 19:21:14 2023 +0500
+
+    Merge branch 'dev'
+
+[33mcommit b530eb4b6905d4aaf2e4871be6b55cca528b3786[m
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 19:19:55 2023 +0500
+
+    ignored node_modules
+
+[33mcommit b57988508bd2c97e8102b2c5c3e9b40404ccf5db[m
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 19:06:10 2023 +0500
+
+    .gitignore should now work 3
+
+[33mcommit d5aaeb784af1b15ce258971e74b45a373bdb591c[m
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 19:05:50 2023 +0500
+
+    .gitignore should now work 2
+
+[33mcommit cff52339d607fbbb1a659a5c99de163213baaeef[m
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 19:04:27 2023 +0500
+
+    .gitignore should now work
+
+[33mcommit fa22ac685aa9f9d852d9e86d74a2396a99273a97[m
+Merge: 51a03bad 3cb2a130
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 18:52:16 2023 +0500
+
+    Merge branch 'dev'
+
+[33mcommit 3cb2a13054a18b668e6df01f37b2b671f52b5dba[m
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 18:06:48 2023 +0500
+
+    restructured project directories
+
+[33mcommit a42ecb6dacc21df07f863e1c3b0daade918e51f0[m
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 17:57:12 2023 +0500
+
+    restructured project directories
+
+[33mcommit fd6c898b0e95f2855b8adf4019ede04793260a36[m
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 17:50:25 2023 +0500
+
+    restructured project directories
+
+[33mcommit 51a03bad644d58069217bd30dba23dde1aac6871[m
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 17:49:11 2023 +0500
+
+    restructured project directories
+
+[33mcommit e588d243baa68641c0e9af92bcc482203615fe90[m
+Merge: 003a4a59 88a3ce15
+Author: Arsalan Ali <aliarsalan.dev@gmail.com>
+Date:   Tue May 2 17:33:50 2023 +0500
+
+    Merge branch 'dev'
+
+[33mcommit 88a3ce15a46f160b8faa15b1f98c762930e624b3[m
+Author: Edoitachime <96532589+edoitachi@users.noreply.github.com>
+Date:   Mon May 1 18:19:25 2023 +0500
+
+    changed a link address
+
+[33mcommit 27e14e0f229bbbab43ae94b54f8a4a9e91d036a0[m
+Author: Edoitachime <96532589+edoitachi@users.noreply.github.com>
+Date:   Mon May 1 11:41:35 2023 +0500
+
+    Major Update
+    
+    Fixed frontend bugs and added new features.
+
+[33mcommit 003a4a590c81163399c448ddbc2f3481bbd5d0b7[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Sun Apr 30 15:18:57 2023 +0500
+
+    updated package.json file
+
+[33mcommit 4aa4288b195985bb9bdb0c2a786e2c3e105e662f[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Sun Apr 30 14:05:36 2023 +0500
+
+    some fixed
+
+[33mcommit b67a6ece2fcfff0e44b84dfc7fd6989c90fa611e[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Sat Apr 29 21:26:20 2023 +0500
+
+    fixed error.
+
+[33mcommit eb5f2f3900e5480bea3ef628e68c1f710daa4544[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Sat Apr 29 20:59:25 2023 +0500
+
+    created server dir and made some configs
+
+[33mcommit a27bd10c2842c36b84f1a9ab0db0933c73d21fa2[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Mon Apr 24 14:32:03 2023 +0500
+
+    added single event page
+
+[33mcommit 3aedffa3942a4c6866c97ac41f6c12a0acc3044d[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Mon Apr 24 14:19:03 2023 +0500
+
+    created banner, loginform, registerform componenets and added few pages
+
+[33mcommit 88b6b6a7d53e075342cdff91c15647d9bf7ff3b0[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Tue Apr 18 00:53:23 2023 +0500
+
+    defined routers
+
+[33mcommit 38fb000573e5d9ee46418b0235b563f7064964e0[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Mon Apr 17 04:08:27 2023 +0500
+
+    some css improvements
+
+[33mcommit d49ccd9803b31dcc1fd1b6cf25181f89518c5e11[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Mon Apr 17 03:47:26 2023 +0500
+
+    added CTA section on home page
+
+[33mcommit 15804f7523bc5dadef9ce6f265a7b8deaf7a86b6[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Mon Apr 17 02:03:58 2023 +0500
+
+    rearranged menu items in top nav bar
+
+[33mcommit 7f2975da50f6e61e0b1cd8937c2b2f1a677c1f7a[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Mon Apr 17 02:01:59 2023 +0500
+
+    added framer motion slider
+
+[33mcommit 30d1efcde73d5f0f150f7f5dbfe46ed4ca60d012[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Mon Apr 17 01:42:01 2023 +0500
+
+    updated files structure and improved css.
+
+[33mcommit 6a61913a8821966190c6b746d539eaa3300f0d39[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Sat Apr 15 03:21:58 2023 +0500
+
+    created events slider using framer motion library
+
+[33mcommit a97ce3ad76f808c204bd44bb88ee2c1af3139c1c[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Thu Apr 13 02:39:56 2023 +0500
+
+    updated some css
+
+[33mcommit 3b745690ce8d2ebda7b14bd372c691c2304301da[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Thu Apr 13 02:35:41 2023 +0500
+
+    updated EventCard layout
+
+[33mcommit d73773c841d4224a1078b85606ee738f04c4341a[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Thu Apr 13 00:52:43 2023 +0500
+
+    created EventCard component
+
+[33mcommit 16ca51a0bcf3383385d116ffe69db51b9fa95445[m
+Author: Ali Arsalan <itsaliarsalan@APPLEs-MacBook.local>
+Date:   Wed Apr 12 00:36:48 2023 +0500
+
+    created hero section
+
+[33mcommit 40aa0608759ecf456618dae020af2e67fc9bd5a9[m
+Author: Ali Arsalan <itsaliarsalan@APP

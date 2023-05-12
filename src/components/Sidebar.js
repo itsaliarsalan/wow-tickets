@@ -21,11 +21,11 @@ function Sidebar() {
 	}
 	return (
 		<>
-			<div className={isOpen ? 'dashboard-menu open' : 'dashboard-menu'}>
+			<aside className={isOpen ? 'dashboard-menu open' : 'dashboard-menu'}>
 				<div className='container'>
 					<ul className='menu'>
 						<li className='nav-item'>
-							<a href='/dashboard' className='nav-link'>
+							<Link to='/dashboard' className='nav-link'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									width='20'
@@ -37,7 +37,7 @@ function Sidebar() {
 									<path d='M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z' />
 								</svg>
 								Dashboard
-							</a>
+							</Link>
 						</li>
 						<li className='nav-item dropdown' onClick={handleDropdownClass}>
 							<label className='nav-link'>
@@ -70,7 +70,7 @@ function Sidebar() {
 										width='12'
 										height='12'
 										fill='currentColor'
-										class='bi bi-caret-up-fill'
+										className='bi bi-caret-up-fill'
 										viewBox='0 0 16 16'
 									>
 										<path d='m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z' />
@@ -84,30 +84,33 @@ function Sidebar() {
 									</Link>
 								</li>
 								<li className='dropdown-item'>
-									<a href='/dashboard/manage-events' className='dropdown-link'>
+									<Link to='/dashboard/manage-events' className='dropdown-link'>
 										Manage Events
-									</a>
+									</Link>
 								</li>
 								<li className='dropdown-item'>
-									<a href='/' className='dropdown-link'>
+									<Link
+										to='/dashboard/manage-categories'
+										className='dropdown-link'
+									>
 										Categories
-									</a>
+									</Link>
 								</li>
 								<li className='dropdown-item'>
-									<a href='/' className='dropdown-link'>
+									<Link to='/' className='dropdown-link'>
 										Audience
-									</a>
+									</Link>
 								</li>
 								<li className='dropdown-item'>
-									<a href='/' className='dropdown-link'>
+									<Link to='/' className='dropdown-link'>
 										Venues
-									</a>
+									</Link>
 								</li>
 								<div className='vertical-line'></div>
 							</ul>
 						</li>
 						<li className='nav-item'>
-							<a href='/' className='nav-link'>
+							<Link to='/' className='nav-link'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									width='20'
@@ -115,10 +118,10 @@ function Sidebar() {
 									viewBox='0 0 24 24'
 									fill='none'
 									stroke='currentColor'
-									stroke-width='2'
-									stroke-linecap='round'
-									stroke-linejoin='round'
-									class='feather feather-users'
+									strokeWidth='2'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+									className='feather feather-users'
 								>
 									<path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
 									<circle cx='9' cy='7' r='4'></circle>
@@ -126,32 +129,32 @@ function Sidebar() {
 									<path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
 								</svg>
 								Organizers
-							</a>
+							</Link>
 						</li>
 						<li className='nav-item'>
-							<a href='/' className='nav-link'>
+							<Link to='/' className='nav-link'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									width='20'
 									height='20'
 									fill='currentColor'
-									class='bi bi-receipt'
+									className='bi bi-receipt'
 									viewBox='0 0 16 16'
 								>
 									<path d='M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z' />
 									<path d='M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z' />
 								</svg>
 								Orders
-							</a>
+							</Link>
 						</li>
 						<li className='nav-item'>
-							<a href='/' className='nav-link'>
+							<Link to='/' className='nav-link'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									width='20'
 									height='20'
 									fill='currentColor'
-									class='bi bi-qr-code-scan'
+									className='bi bi-qr-code-scan'
 									viewBox='0 0 16 16'
 								>
 									<path d='M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0v-3Zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5ZM.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5Zm15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5ZM4 4h1v1H4V4Z' />
@@ -161,11 +164,11 @@ function Sidebar() {
 									<path d='M12 9h2V8h-2v1Z' />
 								</svg>
 								Scanner App
-							</a>
+							</Link>
 						</li>
 					</ul>
 				</div>
-			</div>
+			</aside>
 			<div
 				className={
 					isOpen ? 'dashboard-menu-overlay visible' : 'dashboard-menu-overlay'
