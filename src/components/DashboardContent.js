@@ -1,7 +1,7 @@
 const DashboardContent = props => {
 	return (
-		<div className='container'>
-			<div className='dashboard-content'>{props.children}</div>
+		<div className='dashboard-ntent'>
+			<div className='continer'>{props.children}</div>
 		</div>
 	)
 }

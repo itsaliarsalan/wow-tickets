@@ -281,16 +281,10 @@ footer .nav-item {
 .dashboard-card-secondary .icons .vertical-menu {
 	cursor: pointer;
 }
-.side-content {
-	margin-top: 20px;
-}
 @media screen and (min-width: 768px) {
 	.first-row .dashboard-card-secondary {
 		flex-basis: 24%;
 	}
-}
-.side-content {
-	margin-top: 20px;
 }
 .side-content canvas {
 	margin: 0 auto;
@@ -299,11 +293,8 @@ footer .nav-item {
 	margin-bottom: 10px;
 	max-height: 30rem;
 }
-.overview .recent-sales {
-	margin-top: 20px;
-}
 
-@media screen and (min-width: 1200px) {
+/* @media screen and (min-width: 1200px) {
 	.overview {
 		display: flex;
 		gap: 20px;
@@ -318,7 +309,7 @@ footer .nav-item {
 	.overview .side-content .card-primary {
 		margin-bottom: 20px;
 	}
-}
+} */
 .overview .recent-sales .table-wrapper {
 	overflow-x: auto;
 }
@@ -326,12 +317,8 @@ table {
 	width: 100%;
 	border-spacing: 0;
 }
-table .profile-picture {
+.profile-picture {
 	border-radius: 50%;
-	width: 50px;
-	height: 50px;
-	display: grid;
-	place-content: center;
 }
 table.primary {
 	padding-right: 20px;

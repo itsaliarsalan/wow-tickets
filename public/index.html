@@ -4,7 +4,8 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Web site created using create-react-app" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -46,22 +47,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js"></script>
-    <script> $(document).ready(function () {
-        $('.ui.dropdown').dropdown()
-        $('#rangestart').calendar({
-          type: 'datetime',
-          endCalendar: $('#rangeend')
-        })
-        $('#rangeend').calendar({
-          type: 'datetime',
-          startCalendar: $('#rangestart')
-        })
-        $('.selection.dropdown')
-          .dropdown()
-
-      });</script>
   </body>
 
 </html>

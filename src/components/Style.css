@@ -351,23 +351,19 @@ form.login a:hover {
 	position: fixed;
 	left: -100%;
 	transition: all 0.2s ease-in-out;
-	min-width: 15rem;
+	width: 100%;
 	z-index: 8;
 	box-shadow: var(--primary-border-shadow);
 	display: inline-block;
 	height: 100%;
 	top: 60px;
 }
-.dashboard-menu .menu {
-	position: sticky;
-	top: 10px;
-}
 .dashboard-menu a {
 	text-decoration: none;
 }
-.dashboard-menu .container {
-	position: relative;
-	height: 100%;
+.dashboard-menu .menu-container {
+	position: sticky;
+	top: 10px;
 }
 .dashboard-menu.open {
 	left: 0;
@@ -456,7 +452,7 @@ form.login a:hover {
 @media screen and (min-width: 768px) {
 	.dashboard-menu {
 		position: static;
-		max-width: 16rem;
+		/* max-width: 16rem; */
 		padding: 20px;
 		height: auto;
 	}
@@ -530,25 +526,26 @@ form.login a:hover {
 	}
 }
 
-/* .dashboard-content {
+.dashboard {
+	display: flex;
+}
+.dashboard-content {
 	padding: 2.5rem 0;
 	width: 100%;
 }
 @media screen and (min-width: 768px) {
-	.dashboard-content {
-		padding: 2.5rem 1rem;
-	}
-	.dashboard-content .content {
-		display: flex;
-		gap: 20px;
-	}
 	.dashboard-content .content .main {
 		flex-basis: 70%;
 	}
 	.dashboard-content .content .side-content {
 		flex-basis: 30%;
 	}
-} */
+}
+@media screen and (min-width: 992px) {
+	.dashboard-content {
+		padding: 2.5rem 1rem;
+	}
+}
 
 /* progress tracker */
 .progress-tracker {
@@ -614,4 +611,7 @@ form.login a:hover {
 	background-color: #dfdfdf;
 	color: #333;
 	font-weight: 500;
+}
+.dropdown-link {
+	white-space: nowrap;
 }

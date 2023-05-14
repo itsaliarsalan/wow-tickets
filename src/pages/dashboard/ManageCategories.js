@@ -2,10 +2,13 @@ import 'chart.js/auto'
 import DashboardHeader from '../../components/DashboardHeader'
 import Modal from '../../components/Modal'
 import DropFiles from '../../components/DropFiles'
+import { Box } from '@mui/material'
+import { eventCategories } from '../../data'
+import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 
 function ManageCategories() {
 	return (
-		<>
+		<Box sx={{ margin: '30px 0' }}>
 			<DashboardHeader
 				title='Event Categories'
 				links={[
@@ -16,73 +19,16 @@ function ManageCategories() {
 			<section className='manage-categories'>
 				<div className='content'>
 					<div className='main'>
-						<div className='card-primary table'>
-							<div className='scroll-x'>
-								<table className='ui very basic table unstackable'>
-									<thead>
-										<tr>
-											<th></th>
-											<th className=''>
-												<input type='checkbox' id='' />
-											</th>
-											<th>
-												Event name <i className='arrow down icon small'></i>
-											</th>
-											<th>
-												Status <i className='arrow down icon small'></i>
-											</th>
-											<th>
-												Manage <i className='arrow down icon small'></i>
-											</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td></td>
-											<td>
-												<input type='checkbox' id='' />
-											</td>
-											<td>Music</td>
-											<td>
-												<i className='icon check circle clr-success'></i>Active
-											</td>
-											<td className='center aligned'>
-												<i className='ellipsis vertical icon'></i>
-											</td>
-											<td></td>
-										</tr>
-										<tr>
-											<td></td>
-											<td>
-												<input type='checkbox' id='' />
-											</td>
-											<td>Birthday</td>
-											<td>
-												<i className='icon check circle clr-success'></i>Active
-											</td>
-											<td className='center aligned'>
-												<i className='ellipsis vertical icon'></i>
-											</td>
-											<td></td>
-										</tr>
-										<tr>
-											<td></td>
-											<td>
-												<input type='checkbox' id='' />
-											</td>
-											<td>Food</td>
-											<td>
-												<i className='icon times circle clr-danger'></i>Closed
-											</td>
-											<td className='center aligned'>
-												<i className='ellipsis vertical icon'></i>
-											</td>
-											<td></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+						<div className='card-primary'>
+							<DataGrid
+								rows={eventCategories.rows}
+								columns={eventCategories.columns}
+								sx={{ border: '0' }}
+								slots={{
+									toolbar: GridToolbar,
+								}}
+								checkboxSelection={true}
+							/>
 						</div>
 
 						<div className='text-end mt-1'>
@@ -126,7 +72,7 @@ function ManageCategories() {
 					</div>
 				</div>
 			</section>
-		</>
+		</Box>
 	)
 }
 export default ManageCategories

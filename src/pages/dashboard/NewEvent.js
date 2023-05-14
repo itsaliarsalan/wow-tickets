@@ -2,6 +2,7 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import ProgressTracker from '../../components/ProgressTracker'
 import { useState } from 'react'
 import DashboardHeader from '../../components/DashboardHeader'
+import { Box, Container } from '@mui/material'
 
 const NewEvent = () => {
 	const navigate = useNavigate()
@@ -16,7 +17,7 @@ const NewEvent = () => {
 	}
 
 	return (
-		<>
+		<Box sx={{ marginTop: '30px', marginBottom: '10px' }}>
 			<DashboardHeader
 				title='Create a new Event'
 				links={[
@@ -24,23 +25,23 @@ const NewEvent = () => {
 					{ name: 'New Events', route: '/' },
 				]}
 			/>
-			<div className='content new-event'>
-				<div className='main'>
-					<div className='progress'>
-						<div className='card-primary'>
+			<Box className='content new-event' sx={{ display: 'flex' }}>
+				<Box sx={{ flexBasis: { md: '70%' } }}>
+					<Box className='progress'>
+						<Box className='card-primary'>
 							<ProgressTracker step={currentStep} navigate={handleNavigate} />
-						</div>
-					</div>
+						</Box>
+					</Box>
 					<Outlet context={[currentStep, setCurrentStep]} />
-					<div className='footer'>
+					<Box className='footer'>
 						<button className='btn btn-main' onClick={handleNextStep}>
 							{currentStep === 4 ? 'Make Event Live' : 'Next'}
 						</button>
-					</div>
-				</div>
+					</Box>
+				</Box>
 				<aside className='side-content'></aside>
-			</div>
-		</>
+			</Box>
+		</Box>
 	)
 }
 

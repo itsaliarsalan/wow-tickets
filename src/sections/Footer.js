@@ -1,10 +1,11 @@
 import React from 'react'
 import './Style.css'
 import logo from '../assets/250x150.svg'
+import { Container } from '@mui/material'
 function Footer() {
 	return (
 		<footer>
-			<div className='container'>
+			<Container>
 				<div className='footer-menu'>
 					<div className='logo'>
 						<img src={logo} alt='website logo' />
@@ -73,7 +74,7 @@ function Footer() {
 				<p className='copyright'>
 					©2023 Furiosa Ltd t/a Wow Tickets | All Rights Reserved
 				</p>
-			</div>
+			</Container>
 		</footer>
 	)
 }

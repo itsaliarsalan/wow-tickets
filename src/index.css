@@ -35,20 +35,13 @@ a {
 	text-decoration: none;
 }
 
-.dashboard {
-	display: flex;
-}
-.dashboard-menu {
-}
-.dashboard-content {
-}
-
 body {
 	font-family: 'Montserrat', sans-serif !important;
 	margin: 0;
 	padding: 0;
 	background-color: #f5f5f5;
 	overflow-x: hidden;
+	overflow-y: scroll !important;
 	position: relative;
 }
 input,
@@ -104,19 +97,28 @@ input[type='checkbox']:checked {
 }
 @media (min-width: 768px) {
 	.container {
-		width: 750px;
+		max-width: 720px;
 	}
 }
 @media (min-width: 992px) {
 	.container {
-		width: 970px;
+		max-width: 970px;
 	}
 }
 @media (min-width: 1200px) {
 	.container {
-		width: 1170px;
+		max-width: 1170px;
 	}
 }
+@media screen and (min-width: 768px) and (max-width: 992px) {
+	.container {
+		width: 100%;
+		max-width: calc(100% - 150px) !important;
+		box-sizing: border-box;
+		margin-left: 0;
+	}
+}
+
 /* Modal */
 .modal {
 	opacity: 0;
@@ -342,20 +344,24 @@ input[type='checkbox']:checked {
 .card-outline .head svg path {
 	fill: #f6565e;
 }
+.my-2 {
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
+}
 .mt-1 {
-	margin-top: 10px;
+	margin-top: 10px !important;
 }
 .mb-1 {
-	margin-bottom: 10px;
+	margin-bottom: 10px !important;
 }
 .mb-2 {
-	margin-bottom: 20px;
+	margin-bottom: 20px !important;
 }
 .mt-2 {
-	margin-top: 20px;
+	margin-top: 20px !important;
 }
 .mt-3 {
-	margin-top: 30px;
+	margin-top: 30px !important;
 }
 .text-end {
 	text-align: end;
@@ -387,4 +393,10 @@ input[type='checkbox']:checked {
 }
 .clr-danger {
 	color: #c01f26;
+}
+
+/* Minor bugs due to conflicting styles force fix */
+.MuiTablePagination-selectLabel,
+.MuiTablePagination-displayedRows {
+	margin: 0 !important;
 }

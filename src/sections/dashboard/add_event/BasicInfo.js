@@ -1,4 +1,37 @@
+import {
+	Box,
+	FormControl,
+	InputLabel,
+	MenuItem,
+	OutlinedInput,
+	Select,
+	Stack,
+	TextField,
+} from '@mui/material'
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
+import dayjs from 'dayjs'
+import { useState } from 'react'
+
 function BasicInfo() {
+	const [venues, setVenues] = useState([
+		'Select Venue',
+		'Oliver Hansen',
+		'Van Henry',
+		'April Tucker',
+		'Ralph Hubbard',
+		'Omar Alexander',
+		'Carlos Abbott',
+		'Miriam Wagner',
+		'Bradley Wilkerson',
+		'Virginia Andrews',
+		'Kelly Snyder',
+	])
+	const [venue, setVenue] = useState('')
+
+	const handleChange = event => {
+		setVenue(event.target.value)
+	}
+
 	return (
 		<>
 			<div className='categories'>
@@ -12,20 +45,22 @@ function BasicInfo() {
 					</div>
 					<section>
 						<h4 className='sub-heading'>Event Details</h4>
-						<div className='ui form'>
-							<div className='field'>
-								<input
-									type='text'
-									placeholder='Event name'
-									style={{ marginBottom: '10px' }}
-								/>
-								<textarea
-									rows='2'
-									placeholder='Short event description'
-									style={{ resize: 'none' }}
-								></textarea>
-							</div>
-						</div>
+						<Box>
+							<TextField
+								id='outlined-basic'
+								label='Event name'
+								variant='outlined'
+								fullWidth
+							/>
+							<TextField
+								id='outlined-multiline-flexible'
+								label='Short event description'
+								multiline
+								rows={4}
+								fullWidth
+								sx={{ marginTop: 1 }}
+							/>
+						</Box>
 					</section>
 					<section>
 						<h4 className='sub-heading'>Event Category</h4>
@@ -82,39 +117,37 @@ function BasicInfo() {
 								<div className='name'>Online</div>
 							</div>
 						</div>
-						<div className='ui form' style={{ marginTop: '10px' }}>
-							<div className='field'>
-								<select className='ui search fluid dropdown'>
-									<option value=''>Select Venue</option>
-									<option value='1'>Random 1</option>
-								</select>
-							</div>
-						</div>
+						<Box style={{ marginTop: '10px' }}>
+							<FormControl fullWidth>
+								<InputLabel id='demo-simple-select-label'>
+									Select Venue
+								</InputLabel>
+								<Select
+									labelId='demo-simple-select-label'
+									id='demo-simple-select'
+									value={venue}
+									label='Select Venue'
+									onChange={handleChange}
+								>
+									{venues.map(name => (
+										<MenuItem key={name} value={name}>
+											{name}
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+						</Box>
 					</section>
 					<section>
 						<h4 className='sub-heading'>Event Shedule</h4>
-						<div className='ui form'>
-							<div className='two fields'>
-								<div className='field'>
-									<label>Start date</label>
-									<div className='ui calendar' id='rangestart'>
-										<div className='ui input left icon'>
-											<i className='calendar icon'></i>
-											<input type='text' placeholder='Start' />
-										</div>
-									</div>
-								</div>
-								<div className='field'>
-									<label>End date</label>
-									<div className='ui calendar' id='rangeend'>
-										<div className='ui input left icon'>
-											<i className='calendar icon'></i>
-											<input type='text' placeholder='End' />
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						<Stack spacing={2} direction={{ xs: 'column', md: 'row' }}>
+							<DateTimePicker
+								label='Start Date'
+								defaultValue={dayjs()}
+								sx={{ width: '100%' }}
+							/>
+							<DateTimePicker label='End Date' sx={{ width: '100%' }} />
+						</Stack>
 					</section>
 				</div>
 			</div>

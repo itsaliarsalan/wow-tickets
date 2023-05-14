@@ -1,7 +1,12 @@
 import React from 'react'
 import './App.css'
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+// Localization for datepickers
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+
+// Pages
 import Header from './sections/Header'
 import Footer from './sections/Footer'
 import Home from './pages/Home'
@@ -24,7 +29,7 @@ import EventCategories from './pages/dashboard/ManageCategories'
 
 function App() {
 	return (
-		<>
+		<LocalizationProvider dateAdapter={AdapterDayjs}>
 			<React.StrictMode>
 				<BrowserRouter>
 					<ScrollToTop />
@@ -52,7 +57,7 @@ function App() {
 					<Footer />
 				</BrowserRouter>
 			</React.StrictMode>
-		</>
+		</LocalizationProvider>
 	)
 }
 
