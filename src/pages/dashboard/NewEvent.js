@@ -2,7 +2,7 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import ProgressTracker from '../../components/ProgressTracker'
 import { useState } from 'react'
 import DashboardHeader from '../../components/DashboardHeader'
-import { Box, Container } from '@mui/material'
+import { Box } from '@mui/material'
 
 const NewEvent = () => {
 	const navigate = useNavigate()

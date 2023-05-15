@@ -24,8 +24,18 @@ import EventImages from './sections/dashboard/add_event/EventImages'
 import AddTicket from './sections/dashboard/add_event/AddTicket'
 import ConfirmEvent from './sections/dashboard/add_event/ConfirmEvent'
 import ManageEvents from './pages/dashboard/ManageEvents'
-import ScrollToTop from './hooks/ScrollToTop'
+import ScrollToTop from './utilities/ScrollToTop'
 import EventCategories from './pages/dashboard/ManageCategories'
+import Audience from './pages/dashboard/Audience'
+import Venues from './pages/dashboard/Venues'
+
+// Fonts
+import '@fontsource/roboto/300.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
+import Organizers from './pages/dashboard/Organizers'
+import Orders from './pages/dashboard/Orders'
 
 function App() {
 	return (
@@ -52,6 +62,10 @@ function App() {
 							</Route>
 							<Route path='manage-events' element={<ManageEvents />} />
 							<Route path='manage-categories' element={<EventCategories />} />
+							<Route path='audience' element={<Audience />} />
+							<Route path='venues' element={<Venues />} />
+							<Route path='organizers' element={<Organizers />} />
+							<Route path='orders' element={<Orders />} />
 						</Route>
 					</Routes>
 					<Footer />

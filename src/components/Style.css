@@ -276,14 +276,19 @@ body {
 	display: flex;
 	gap: 5px;
 }
+
+.breadcrumb-link {
+	color: var(--primary-typo-color);
+	text-decoration: none;
+}
+.breadcrumb-link:hover {
+	color: var(--primary-typo-color-hover);
+}
 .page-banner .breadcrumb .divider {
 	color: #fff;
 }
-.page-banner .breadcrumb .breadcrumb-link {
-	color: #fff;
-}
 .page-banner .breadcrumb-link {
-	text-decoration: none;
+	color: #fff;
 }
 @media screen and (min-width: 768px) {
 	.page-banner {
@@ -411,6 +416,9 @@ form.login a:hover {
 .dashboard-menu .menu > .nav-item a {
 	font-weight: 500;
 }
+.dashboard-menu svg {
+	fill: var(--primary-typo-color);
+}
 .dashboard-menu .nav-link {
 	display: flex;
 	align-items: center;
@@ -420,7 +428,9 @@ form.login a:hover {
 	margin: 0;
 	cursor: pointer;
 	font-weight: 500;
+	font-size: 15px;
 }
+
 .dashboard-menu .nav-link:hover {
 	color: var(--primary-typo-color-hover);
 }
@@ -433,6 +443,7 @@ form.login a:hover {
 	margin-top: 5px;
 }
 .dashboard-menu .dropdown-link {
+	white-space: nowrap;
 	font-size: 14px;
 	color: var(--primary-typo-color);
 	transition: color 200ms ease-in-out;
@@ -474,7 +485,7 @@ form.login a:hover {
 .dropdown-menu .vertical-line {
 	position: absolute;
 	width: 3px;
-	height: 100px; /* adjust as needed */
+	height: 200px; /* adjust as needed */
 	background-color: #dfdfdf;
 	top: 0;
 	left: 8px;
@@ -611,7 +622,4 @@ form.login a:hover {
 	background-color: #dfdfdf;
 	color: #333;
 	font-weight: 500;
-}
-.dropdown-link {
-	white-space: nowrap;
 }

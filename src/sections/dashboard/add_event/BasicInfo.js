@@ -3,7 +3,6 @@ import {
 	FormControl,
 	InputLabel,
 	MenuItem,
-	OutlinedInput,
 	Select,
 	Stack,
 	TextField,
@@ -13,6 +12,7 @@ import dayjs from 'dayjs'
 import { useState } from 'react'
 
 function BasicInfo() {
+	// eslint-disable-next-line
 	const [venues, setVenues] = useState([
 		'Select Venue',
 		'Oliver Hansen',

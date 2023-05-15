@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Style.css'
-import { Box, Container } from '@mui/material'
+import { Box } from '@mui/material'
 
 // Icons
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined'
@@ -9,6 +9,8 @@ import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined'
 import QrCodeScannerOutlinedIcon from '@mui/icons-material/QrCodeScannerOutlined'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 
 function Sidebar() {
 	const [isOpen, setOpen] = useState(false)
@@ -36,7 +38,7 @@ function Sidebar() {
 					maxWidth: { xs: '16rem', md: '100%' },
 				}}
 			>
-				<Container fixed className='menu-container mui-fixed'>
+				<Box sx={{ paddingX: 2, height: '100%', position: 'fixed', top: 95 }}>
 					<ul className='menu'>
 						<li className='nav-item'>
 							<Link to='/dashboard' className='nav-link'>
@@ -48,29 +50,7 @@ function Sidebar() {
 							<label className='nav-link'>
 								<CalendarTodayOutlinedIcon />
 								Events
-								{!isDrop ? (
-									<svg
-										xmlns='http://www.w3.org/2000/svg'
-										width='12'
-										height='12'
-										fill='currentColor'
-										className='bi bi-caret-down-fill'
-										viewBox='0 0 16 16'
-									>
-										<path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z' />
-									</svg>
-								) : (
-									<svg
-										xmlns='http://www.w3.org/2000/svg'
-										width='12'
-										height='12'
-										fill='currentColor'
-										className='bi bi-caret-up-fill'
-										viewBox='0 0 16 16'
-									>
-										<path d='m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z' />
-									</svg>
-								)}
+								{!isDrop ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
 							</label>
 							<ul className={isDrop ? 'dropdown-menu open' : 'dropdown-menu'}>
 								<li className='dropdown-item'>
@@ -92,12 +72,12 @@ function Sidebar() {
 									</Link>
 								</li>
 								<li className='dropdown-item'>
-									<Link to='/' className='dropdown-link'>
+									<Link to='/dashboard/audience' className='dropdown-link'>
 										Audience
 									</Link>
 								</li>
 								<li className='dropdown-item'>
-									<Link to='/' className='dropdown-link'>
+									<Link to='/dashboard/venues' className='dropdown-link'>
 										Venues
 									</Link>
 								</li>
@@ -105,13 +85,13 @@ function Sidebar() {
 							</ul>
 						</li>
 						<li className='nav-item'>
-							<Link to='/' className='nav-link'>
+							<Link to='/dashboard/organizers' className='nav-link'>
 								<GroupOutlinedIcon />
 								Organizers
 							</Link>
 						</li>
 						<li className='nav-item'>
-							<Link to='/' className='nav-link'>
+							<Link to='/dashboard/orders' className='nav-link'>
 								<ReceiptOutlinedIcon />
 								Orders
 							</Link>
@@ -123,7 +103,7 @@ function Sidebar() {
 							</Link>
 						</li>
 					</ul>
-				</Container>
+				</Box>
 			</Box>
 			<div
 				className={

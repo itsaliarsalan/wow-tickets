@@ -1,3 +1,19 @@
+import {
+	Box,
+	FormControl,
+	InputAdornment,
+	InputLabel,
+	OutlinedInput,
+	TextField,
+	Radio,
+	FormControlLabel,
+	RadioGroup,
+	FormLabel,
+	Stack,
+} from '@mui/material'
+import { DateTimePicker } from '@mui/x-date-pickers'
+import dayjs from 'dayjs'
+
 function AddTicket() {
 	return (
 		<>
@@ -11,83 +27,89 @@ function AddTicket() {
 				</div>
 				<section>
 					<h4 className='sub-heading'>Ticket Details</h4>
-					<div className='ui form'>
-						<div className='field'>
-							<input
-								type='text'
-								placeholder='Ticket name'
-								style={{ marginBottom: '10px' }}
-							/>
-							<textarea
-								rows='2'
-								placeholder='Short description about ticket'
-								style={{ resize: 'none' }}
-							></textarea>
-						</div>
-					</div>
+					<Box>
+						<TextField
+							id='outlined-basic'
+							label='Title'
+							variant='outlined'
+							fullWidth
+						/>
+						<TextField
+							id='outlined-multiline-flexible'
+							label='Short description'
+							multiline
+							rows={4}
+							fullWidth
+							sx={{ marginTop: 1 }}
+						/>
+					</Box>
 				</section>
 				<hr />
 				<section>
 					<h4 className='sub-heading'>Entry Cost</h4>
-					<div className='ui form'>
-						<div className='inline fields'>
-							<label className='fw-normal'>
+					<div className='urm'>
+						<FormControl fullWidth>
+							<FormLabel id='demo-row-radio-buttons-group-label'>
 								Will your event have an entry fee?
-							</label>
-							<div className='field'>
-								<div className='ui radio checkbox'>
-									<input type='radio' name='frequency' checked='checked' />
-									<label>Yes</label>
-								</div>
-							</div>
-							<div className='field'>
-								<div className='ui radio checkbox'>
-									<input type='radio' name='frequency' />
-									<label>No</label>
-								</div>
-							</div>
-						</div>
-						<div className='field'>
-							<div className='two fields'>
-								<div className='ui right labeled input amount field'>
-									<label for='amount' className='ui label'>
-										$
-									</label>
-									<input type='text' placeholder='Ticket Price' id='amount' />
-									<div className='ui basic label'>.00</div>
-								</div>
-								<div className='ui input allocations field'>
-									<input type='number' placeholder='Allocations' />
-								</div>
-							</div>
-						</div>
+							</FormLabel>
+							<RadioGroup
+								row
+								aria-labelledby='demo-row-radio-buttons-group-label'
+								name='row-radio-buttons-group'
+							>
+								<FormControlLabel
+									value='paidEvent'
+									control={<Radio />}
+									label='Yes'
+								/>
+								<FormControlLabel
+									value='freeEvent'
+									control={<Radio />}
+									label='No'
+								/>
+							</RadioGroup>
+						</FormControl>
+						<Box sx={{ display: { md: 'flex' }, gap: 1, marginTop: 1 }}>
+							<FormControl fullWidth>
+								<InputLabel htmlFor='outlined-adornment-amount'>
+									Amount
+								</InputLabel>
+								<OutlinedInput
+									id='outlined-adornment-amount'
+									startAdornment={
+										<InputAdornment position='start'>$</InputAdornment>
+									}
+									label='Amount'
+								/>
+							</FormControl>
+							<FormControl fullWidth sx={{ marginTop: { xs: 2, md: 0 } }}>
+								<InputLabel htmlFor='outlined-adornment-amount'>
+									Tickets
+								</InputLabel>
+								<OutlinedInput
+									id='outlined-adornment-amount'
+									startAdornment={
+										<InputAdornment position='start'>
+											Allocations
+										</InputAdornment>
+									}
+									label='Amount'
+								/>
+							</FormControl>
+						</Box>
 					</div>
 				</section>
 				<hr />
 				<section>
 					<h4 className='sub-heading'>Tickets Availability Duration</h4>
-					<div className='ui form'>
-						<div className='two fields'>
-							<div className='field'>
-								<label>Start date</label>
-								<div className='ui calendar' id='rangestart'>
-									<div className='ui input left icon'>
-										<i className='calendar icon'></i>
-										<input type='text' placeholder='Start' />
-									</div>
-								</div>
-							</div>
-							<div className='field'>
-								<label>End date</label>
-								<div className='ui calendar' id='rangeend'>
-									<div className='ui input left icon'>
-										<i className='calendar icon'></i>
-										<input type='text' placeholder='End' />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<Stack spacing={2} direction={{ xs: 'column', md: 'row' }}>
+						<DateTimePicker
+							label='Start Date'
+							defaultValue={dayjs()}
+							sx={{ width: '100%' }}
+						/>
+						<DateTimePicker label='End Date' sx={{ width: '100%' }} />
+					</Stack>
 				</section>
 				<hr />
 				<div className='card-outline'>

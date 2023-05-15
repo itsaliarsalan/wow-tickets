@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Style.css'
 import logo from '../assets/250x150.svg'
+import { Container } from '@mui/material'
 
 function Navbar() {
 	const [isOpen, setOpen] = useState(false)
@@ -19,13 +20,15 @@ function Navbar() {
 	return (
 		<>
 			<nav className='top-nav'>
-				<div className='container'>
+				<Container
+					maxWidth='md'
+					sx={{ display: 'flex', justifyContent: 'space-between' }}
+				>
 					<div className='logo'>
 						<Link to='/'>
 							<img src={logo} alt='main logo' />
 						</Link>
 					</div>
-
 					<button
 						className='menu-toggle'
 						aria-label='Open Navigation Menu'
@@ -45,7 +48,7 @@ function Navbar() {
 							</Link>
 						</li>
 					</ul>
-				</div>
+				</Container>
 			</nav>
 			{/* Darken background when menu opens */}
 			<div

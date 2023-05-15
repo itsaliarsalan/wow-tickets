@@ -1,3 +1,9 @@
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
+
 function ConfirmEvent() {
 	return (
 		<>
@@ -10,23 +16,27 @@ function ConfirmEvent() {
 					</p>
 				</div>
 				<section>
-					<h4 className='sub-heading'>Event Visibility</h4>
-					<div className='ui form'>
-						<div className='inline fields'>
-							<div className='field'>
-								<div className='ui radio checkbox'>
-									<input type='radio' name='frequency' checked='checked' />
-									<label>Public</label>
-								</div>
-							</div>
-							<div className='field'>
-								<div className='ui radio checkbox'>
-									<input type='radio' name='frequency' />
-									<label>Private</label>
-								</div>
-							</div>
-						</div>
-					</div>
+					<FormControl sx={{ marginTop: 5 }}>
+						<FormLabel id='demo-row-radio-buttons-group-label'>
+							Event Visiblity
+						</FormLabel>
+						<RadioGroup
+							row
+							aria-labelledby='demo-row-radio-buttons-group-label'
+							name='row-radio-buttons-group'
+						>
+							<FormControlLabel
+								value='public'
+								control={<Radio />}
+								label='Public'
+							/>
+							<FormControlLabel
+								value='private'
+								control={<Radio />}
+								label='Private'
+							/>
+						</RadioGroup>
+					</FormControl>
 				</section>
 				<hr />
 				<section>

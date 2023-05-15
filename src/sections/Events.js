@@ -7,6 +7,7 @@ import './Style.css'
 import thumbnail05 from '../assets/event-thumbnail-05.jpg'
 import thumbnail02 from '../assets/event-thumbnail-02.jpg'
 import { Link } from 'react-router-dom'
+import { Container } from '@mui/material'
 
 function Events() {
 	// Create instance of slider to further use methods
@@ -30,8 +31,8 @@ function Events() {
 	return (
 		<>
 			<section className='events'>
-				<div className='container'>
-					<h2>Explore Events</h2>
+				<Container>
+					<h2 className='text-center mb-3'>Explore Events</h2>
 					<div className='events-container'>
 						<Swiper
 							// ref={sliderRef}
@@ -145,7 +146,7 @@ function Events() {
 							View More
 						</Link>
 					</div>
-				</div>
+				</Container>
 			</section>
 		</>
 	)

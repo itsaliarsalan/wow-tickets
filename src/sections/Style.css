@@ -102,7 +102,6 @@
 }
 .events .links {
 	text-align: center;
-	margin-top: 3rem;
 }
 
 /* features section */
@@ -419,7 +418,7 @@ table.primary {
 }
 .new-event .sub-heading {
 	margin-top: 20px;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 .new-event .footer {
 	text-align: end;

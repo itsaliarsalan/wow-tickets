@@ -1,25 +1,20 @@
 import React from 'react'
 import './Style.css'
+import Breadcrumb from './Breadcrumb'
+import { Container } from '@mui/material'
 
-function Banner({ title, url }) {
+function Banner({ title }) {
 	return (
 		<section className='component page-banner'>
-			<div className='container'>
+			<Container sx={{ marginTop: { md: 3 } }}>
 				<h1 className='page-title'>Explore Events</h1>
-				<ul className='breadcrumb'>
-					<li>
-						<a href='/' className='breadcrumb-link'>
-							Home
-						</a>
-					</li>
-					<li className='divider'>|</li>
-					<li>
-						<a href='/' className='breadcrumb-link'>
-							Events
-						</a>
-					</li>
-				</ul>
-			</div>
+				<Breadcrumb
+					links={[
+						{ name: 'Home', route: '/' },
+						{ name: 'Events', route: './' },
+					]}
+				/>
+			</Container>
 		</section>
 	)
 }
