@@ -6,10 +6,10 @@ import { Container } from '@mui/material'
 function Dashboard() {
 	return (
 		<Grid container>
-			<Grid container xs={0} sm={0} md={3} lg={2}>
+			<Grid item container xs={0} sm={0} md={3} lg={2}>
 				<Sidebar />
 			</Grid>
-			<Grid container xs sx={{ marginBottom: { md: 5 } }}>
+			<Grid item container xs sx={{ marginBottom: { md: 5 } }}>
 				<Container>
 					<Outlet />
 				</Container>

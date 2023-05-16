@@ -3,8 +3,22 @@ import { Link } from 'react-router-dom'
 import './Style.css'
 import logo from '../assets/250x150.svg'
 import { Container } from '@mui/material'
+import {
+	Avatar,
+	Divider,
+	IconButton,
+	Menu,
+	MenuItem,
+	Tooltip,
+	ListItemIcon,
+} from '@mui/material'
+// Icons
+import PersonAdd from '@mui/icons-material/PersonAdd'
+import Settings from '@mui/icons-material/Settings'
+import Logout from '@mui/icons-material/Logout'
 
 function Navbar() {
+	const loggedIn = true
 	const [isOpen, setOpen] = useState(false)
 
 	function handleClick() {
@@ -15,6 +29,15 @@ function Navbar() {
 			document.documentElement.style.overflow = 'auto'
 			setOpen(false)
 		}
+	}
+
+	const [anchorEl, setAnchorEl] = useState(null)
+	const open = Boolean(anchorEl)
+	const handleAvatarClick = event => {
+		setAnchorEl(event.currentTarget)
+	}
+	const handleAvatarClose = () => {
+		setAnchorEl(null)
 	}
 
 	return (
@@ -47,10 +70,86 @@ function Navbar() {
 							</Link>
 						</li>
 						<li>
-							<Link to='/signin' className='nav-cta'>
+							<Link to='/signin' className={loggedIn ? 'nav-link' : 'nav-cta'}>
 								Your Tickets
 							</Link>
 						</li>
+						{loggedIn ? (
+							<>
+								<Tooltip title='Account settings'>
+									<IconButton
+										onClick={handleAvatarClick}
+										size='small'
+										aria-controls={open ? 'account-menu' : undefined}
+										aria-haspopup='true'
+										aria-expanded={open ? 'true' : undefined}
+									>
+										<Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+									</IconButton>
+								</Tooltip>
+								<Menu
+									anchorEl={anchorEl}
+									id='account-menu'
+									open={open}
+									onClose={handleAvatarClose}
+									onClick={handleAvatarClose}
+									PaperProps={{
+										elevation: 0,
+										sx: {
+											overflow: 'visible',
+											filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+											mt: 1.5,
+											'& .MuiAvatar-root': {
+												width: 32,
+												height: 32,
+												ml: -0.5,
+												mr: 1,
+											},
+											'&:before': {
+												content: '""',
+												display: 'block',
+												position: 'absolute',
+												top: 0,
+												right: 14,
+												width: 10,
+												height: 10,
+												bgcolor: 'background.paper',
+												transform: 'translateY(-50%) rotate(45deg)',
+												zIndex: 0,
+											},
+										},
+									}}
+									transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+									anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+								>
+									<MenuItem onClick={handleAvatarClose}>
+										<Avatar /> Profile
+									</MenuItem>
+									<MenuItem onClick={handleAvatarClose}>
+										<Avatar /> My account
+									</MenuItem>
+									<Divider />
+									<MenuItem onClick={handleAvatarClose}>
+										<ListItemIcon>
+											<PersonAdd fontSize='small' />
+										</ListItemIcon>
+										Add another account
+									</MenuItem>
+									<MenuItem onClick={handleAvatarClose}>
+										<ListItemIcon>
+											<Settings fontSize='small' />
+										</ListItemIcon>
+										Settings
+									</MenuItem>
+									<MenuItem onClick={handleAvatarClose}>
+										<ListItemIcon>
+											<Logout fontSize='small' />
+										</ListItemIcon>
+										Logout
+									</MenuItem>
+								</Menu>
+							</>
+						) : null}
 					</ul>
 				</Container>
 			</nav>
