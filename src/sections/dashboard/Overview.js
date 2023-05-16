@@ -9,7 +9,7 @@ import { recentSales } from '../../data'
 
 const Overview = () => {
 	return (
-		<>
+		<Box sx={{ paddingY: 2 }}>
 			<h2 className='mb-2 mt-3'>Welcome back, James!</h2>
 			<Stack direction={{ sm: 'column', lg: 'row' }} spacing={2}>
 				<Box
@@ -212,7 +212,7 @@ const Overview = () => {
 					</div>
 				</Box>
 			</Stack>
-		</>
+		</Box>
 	)
 }
 

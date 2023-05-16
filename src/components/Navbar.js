@@ -21,8 +21,12 @@ function Navbar() {
 		<>
 			<nav className='top-nav'>
 				<Container
-					maxWidth='md'
-					sx={{ display: 'flex', justifyContent: 'space-between' }}
+					maxWidth='lg'
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						alignItems: 'center',
+					}}
 				>
 					<div className='logo'>
 						<Link to='/'>

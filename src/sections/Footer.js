@@ -5,7 +5,7 @@ import { Container } from '@mui/material'
 function Footer() {
 	return (
 		<footer>
-			<Container maxWidth='md'>
+			<Container maxWidth='lg'>
 				<div className='footer-menu'>
 					<div className='logo'>
 						<img src={logo} alt='website logo' />

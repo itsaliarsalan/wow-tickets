@@ -3,6 +3,7 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
+import { Box, Stack } from '@mui/material'
 
 function ConfirmEvent() {
 	return (
@@ -58,27 +59,29 @@ function ConfirmEvent() {
 							</svg>
 						</div>
 						<hr style={{ marginTop: '1rem' }} />
-						<div className='row'>
-							<div className='col'>
-								<p>Event Name</p>
+						<Stack spacing={2}>
+							<Stack direction={{ md: 'row' }} justifyContent='space-between'>
+								<h4>Event Name</h4>
 								<p>Highlanders Flyers</p>
-							</div>
-							<div className='col'>
-								<p>Event Short Description</p>
-								<p>
-									Could be anything here but it may be restrited to some
-									words...
-								</p>
-							</div>
-							<div className='col'>
-								<p>Event Category</p>
+							</Stack>
+							<Stack direction={{ md: 'row' }} justifyContent='space-between'>
+								<h4>Event Short Description</h4>
+								<Box sx={{ maxWidth: 300, textAlign: { md: 'right' } }}>
+									<p>
+										Could be anything here but it may be restrited to some
+										words...
+									</p>
+								</Box>
+							</Stack>
+							<Stack direction={{ md: 'row' }} justifyContent='space-between'>
+								<h4>Event Category</h4>
 								<p>Music</p>
-							</div>
-							<div className='col'>
-								<p>Venue</p>
+							</Stack>
+							<Stack direction={{ md: 'row' }} justifyContent='space-between'>
+								<h4>Venue</h4>
 								<p>Online</p>
-							</div>
-						</div>
+							</Stack>
+						</Stack>
 					</div>
 				</section>
 				<hr />

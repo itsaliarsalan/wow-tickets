@@ -2,9 +2,21 @@ import { useState, useEffect } from 'react'
 import Banner from '../components/Banner'
 import Event from '../components/Event'
 import Modal from '../components/Modal'
+import { Box, Container, Pagination } from '@mui/material'
 
 function ExploreEvents() {
 	const [cardsData, setCardsData] = useState([])
+	const [page, setPage] = useState(1)
+	const cardsPerPage = 10
+	const totalPages = Math.ceil(cardsData.length / cardsPerPage)
+	const startIndex = (page - 1) * cardsPerPage
+	const endIndex = page * cardsPerPage
+	const cardsToShow = cardsData.slice(startIndex, endIndex)
+
+	const handlePageChange = (event, value) => {
+		setPage(value)
+	}
+
 	useEffect(() => {
 		async function fetchData() {
 			const response = await fetch(
@@ -68,9 +80,9 @@ function ExploreEvents() {
 				</aside>
 			</div>
 			<section className='component explore-events'>
-				<div className='container'>
+				<Container>
 					<div className='events-container'>
-						{cardsData.map(card => (
+						{cardsToShow.map(card => (
 							<Event
 								key={card.id}
 								eventName={card.eventName}
@@ -80,7 +92,16 @@ function ExploreEvents() {
 							/>
 						))}
 					</div>
-				</div>
+					<Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 5 }}>
+						<Pagination
+							count={totalPages}
+							page={page}
+							onChange={handlePageChange}
+							color='secondary'
+							size='large'
+						/>
+					</Box>
+				</Container>
 			</section>
 
 			<div>

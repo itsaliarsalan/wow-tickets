@@ -28,49 +28,43 @@ import ScrollToTop from './utilities/ScrollToTop'
 import EventCategories from './pages/dashboard/ManageCategories'
 import Audience from './pages/dashboard/Audience'
 import Venues from './pages/dashboard/Venues'
-
-// Fonts
-import '@fontsource/roboto/300.css'
-import '@fontsource/roboto/400.css'
-import '@fontsource/roboto/500.css'
-import '@fontsource/roboto/700.css'
 import Organizers from './pages/dashboard/Organizers'
 import Orders from './pages/dashboard/Orders'
+import Payments from './pages/dashboard/Payments'
 
 function App() {
 	return (
 		<LocalizationProvider dateAdapter={AdapterDayjs}>
-			<React.StrictMode>
-				<BrowserRouter>
-					<ScrollToTop />
-					<Header />
-					<Routes>
-						<Route index element={<Home />} />
-						<Route path='/events' element={<ExploreEvents />} />
-						<Route path='/event' element={<SingleEvent />} />
-						<Route path='/signin' element={<Signin />} />
-						<Route path='/signup' element={<Signup />} />
+			<BrowserRouter>
+				<ScrollToTop />
+				<Header />
+				<Routes>
+					<Route index element={<Home />} />
+					<Route path='/events' element={<ExploreEvents />} />
+					<Route path='/event' element={<SingleEvent />} />
+					<Route path='/signin' element={<Signin />} />
+					<Route path='/signup' element={<Signup />} />
 
-						{/* Dashboard */}
-						<Route path='/dashboard' element={<Dashboard />}>
-							<Route index element={<Overview />} />
-							<Route path='new-event' element={<NewEvent />}>
-								<Route index element={<BasicInfo />} />
-								<Route path='step-2' element={<EventImages />} />
-								<Route path='step-3' element={<AddTicket />} />
-								<Route path='step-4' element={<ConfirmEvent />} />
-							</Route>
-							<Route path='manage-events' element={<ManageEvents />} />
-							<Route path='manage-categories' element={<EventCategories />} />
-							<Route path='audience' element={<Audience />} />
-							<Route path='venues' element={<Venues />} />
-							<Route path='organizers' element={<Organizers />} />
-							<Route path='orders' element={<Orders />} />
+					{/* Dashboard */}
+					<Route path='/dashboard' element={<Dashboard />}>
+						<Route index element={<Overview />} />
+						<Route path='new-event' element={<NewEvent />}>
+							<Route index element={<BasicInfo />} />
+							<Route path='step-2' element={<EventImages />} />
+							<Route path='step-3' element={<AddTicket />} />
+							<Route path='step-4' element={<ConfirmEvent />} />
 						</Route>
-					</Routes>
-					<Footer />
-				</BrowserRouter>
-			</React.StrictMode>
+						<Route path='manage-events' element={<ManageEvents />} />
+						<Route path='manage-categories' element={<EventCategories />} />
+						<Route path='audience' element={<Audience />} />
+						<Route path='venues' element={<Venues />} />
+						<Route path='organizers' element={<Organizers />} />
+						<Route path='orders' element={<Orders />} />
+						<Route path='payments' element={<Payments />} />
+					</Route>
+				</Routes>
+				<Footer />
+			</BrowserRouter>
 		</LocalizationProvider>
 	)
 }

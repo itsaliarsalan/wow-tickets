@@ -11,6 +11,7 @@ import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined'
 import QrCodeScannerOutlinedIcon from '@mui/icons-material/QrCodeScannerOutlined'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
+import PaymentIcon from '@mui/icons-material/Payment'
 
 function Sidebar() {
 	const [isOpen, setOpen] = useState(false)
@@ -97,9 +98,15 @@ function Sidebar() {
 							</Link>
 						</li>
 						<li className='nav-item'>
+							<Link to='/dashboard/payments' className='nav-link'>
+								<PaymentIcon />
+								Payments
+							</Link>
+						</li>
+						<li className='nav-item'>
 							<Link to='/' className='nav-link'>
 								<QrCodeScannerOutlinedIcon />
-								Scanner App
+								QR Data Sync
 							</Link>
 						</li>
 					</ul>
