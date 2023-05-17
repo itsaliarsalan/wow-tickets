@@ -1,27 +1,37 @@
 import express from "express"
-import data from "./data.js"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
+import eventRouter from "./routers/eventRouter.js"
+import userRouter from "./routers/userRouter.js"
 
 dotenv.config()
+
+const app = express()
+// Below two lines converts form post data to json format in req body
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    console.log("Connected to DB.")
+    console.log("connected to DB")
   })
   .catch((err) => {
     console.log(err.message)
   })
 
-const app = express()
+app.use("/api/users", userRouter)
+app.use("/api/events", eventRouter)
 
-app.get("/api/events", (req, res) => {
-  res.send(data.events)
+app.get("/", (req, res) => {
+  res.send("Server is ready")
+})
+
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message })
 })
 
 const port = process.env.PORT || 8000
-
 app.listen(port, () => {
-  console.log(`server is running at http://localhost:${port}`)
+  console.log(`Serve at http://localhost:${port}`)
 })

@@ -1,4 +1,20 @@
+import bcrypt from "bcrypt"
+
 const data = {
+  users: [
+    {
+      name: "Arsalan Ali",
+      email: "admin@wow-tickets.com",
+      password: bcrypt.hashSync("1234", 8),
+      isAdmin: true,
+    },
+    {
+      name: "Adam",
+      email: "user@wow-tickets.com",
+      password: bcrypt.hashSync("1234", 8),
+      isAdmin: false,
+    },
+  ],
   events: [
     {
       name: "Worried About Henry Ibiza 2023",
@@ -13,7 +29,7 @@ const data = {
       endDate: "23 May, 2023",
       website: "www.example.com",
       socialLinks: [],
-      price: "$35",
+      price: "35",
       status: 1,
     },
     {
@@ -29,7 +45,7 @@ const data = {
       endDate: "23 May, 2023",
       website: "www.example.com",
       socialLinks: [],
-      price: "$35",
+      price: "35",
       status: 1,
     },
     {
@@ -45,7 +61,7 @@ const data = {
       endDate: "23 May, 2023",
       website: "www.example.com",
       socialLinks: [],
-      price: "$35",
+      price: "35",
       status: 1,
     },
     {
@@ -61,7 +77,7 @@ const data = {
       endDate: "23 May, 2023",
       website: "www.example.com",
       socialLinks: [],
-      price: "$35",
+      price: "35",
       status: 1,
     },
     {
@@ -77,7 +93,7 @@ const data = {
       endDate: "23 May, 2023",
       website: "www.example.com",
       socialLinks: [],
-      price: "$35",
+      price: "35",
       status: 1,
     },
   ],
