@@ -3,7 +3,7 @@ import "./Style.css"
 
 function Event({ slug, eventName, date, location, thumbnail }) {
   return (
-    <Link className='event-link' to='/event' key={slug}>
+    <Link className='event-link' to={`/event/${slug}`}>
       <div className='event-card'>
         <img className='thumbnail' src={thumbnail} alt='' />
         <div className='card-body'>

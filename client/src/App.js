@@ -40,9 +40,8 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route index element={<Home />} />
+            <Route path='/event/:slug' element={<SingleEvent />} />
             <Route path='/events' element={<ExploreEvents />} />
-            <Route path='/event' element={<SingleEvent />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
 
@@ -63,6 +62,11 @@ function App() {
               <Route path='orders' element={<Orders />} />
               <Route path='payments' element={<Payments />} />
             </Route>
+            {/* End */}
+
+            {/* Home Page Route */}
+            <Route index element={<Home />} />
+            {/* End */}
           </Routes>
         </main>
         <Footer />

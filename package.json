@@ -6,7 +6,7 @@
     "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
     "server": "node ./server/server.js",
     "client": "cd client && npm start"
-    },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aliarsalandev/woo-tickets.git"
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/aliarsalandev/woo-tickets#readme",
   "dependencies": {
+    "axios": "^1.4.0",
     "if-env": "^1.0.4"
   }
 }
