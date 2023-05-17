@@ -1,26 +1,25 @@
 import { Link } from 'react-router-dom'
-import './Style.css'
-import thumbnail from '../assets/event-thumbnail-01.jpg'
+import "./Style.css"
 
-function Event({ id, eventName, date, location, thumbnail }) {
-	return (
-		<Link className='event-link' to='/event' key={id}>
-			<div className='event-card'>
-				<img className='thumbnail' src={thumbnail} alt='' />
-				<div className='card-body'>
-					<small className='event-info'>
-						{date} - {location}
-					</small>
-					<h3 className='event-name'>{eventName}</h3>
-				</div>
-			</div>
-		</Link>
-	)
+function Event({ slug, eventName, date, location, thumbnail }) {
+  return (
+    <Link className='event-link' to='/event' key={slug}>
+      <div className='event-card'>
+        <img className='thumbnail' src={thumbnail} alt='' />
+        <div className='card-body'>
+          <small className='event-info'>
+            {date} - {location}
+          </small>
+          <h3 className='event-name'>{eventName}</h3>
+        </div>
+      </div>
+    </Link>
+  )
 }
 Event.defaultProps = {
-	eventName: 'Event name',
-	date: '23 Mar',
-	location: 'London',
-	thumbnail: thumbnail,
+  eventName: "Event name",
+  date: "23 Mar",
+  location: "London",
+  thumbnail: "/images/event-thumbnail-dummy.jpg",
 }
 export default Event
