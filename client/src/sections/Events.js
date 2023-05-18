@@ -22,9 +22,9 @@ const reducer = (state, action) => {
 }
 
 function Events() {
-  const myArray = []
+  const arr = []
   const [{ loading, error, events }, dispatch] = useReducer(reducer, {
-    events: myArray,
+    events: arr,
     loading: true,
     error: "",
   })
@@ -96,7 +96,7 @@ function Events() {
                 }}
                 className='mySwiper'
               >
-                {events.map((event) => (
+                {events?.map((event) => (
                   <SwiperSlide key={event.slug}>
                     <Event
                       slug={event.slug}
