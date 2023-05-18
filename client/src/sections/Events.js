@@ -22,8 +22,9 @@ const reducer = (state, action) => {
 }
 
 function Events() {
+  const myArray = []
   const [{ loading, error, events }, dispatch] = useReducer(reducer, {
-    events: [null],
+    events: myArray,
     loading: true,
     error: "",
   })
