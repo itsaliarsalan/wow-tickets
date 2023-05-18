@@ -23,7 +23,7 @@ const reducer = (state, action) => {
 
 function Events() {
   const [{ loading, error, events }, dispatch] = useReducer(reducer, {
-    events: [],
+    events: [null],
     loading: true,
     error: "",
   })
