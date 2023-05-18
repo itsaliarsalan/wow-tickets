@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "./Style.css"
 import axios from "axios"
-import logger from "use-reducer-logger"
+// import logger from "use-reducer-logger"
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -22,7 +22,7 @@ const reducer = (state, action) => {
 }
 
 function Events() {
-  const [{ loading, error, events }, dispatch] = useReducer(logger(reducer), {
+  const [{ loading, error, events }, dispatch] = useReducer(reducer, {
     events: [],
     loading: true,
     error: "",
