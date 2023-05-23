@@ -1,45 +1,21 @@
-import React, { useEffect, useReducer, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { Container } from "@mui/material"
 import Event from "../components/Event"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "./Style.css"
-import axios from "axios"
-// import logger from "use-reducer-logger"
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "FETCH_REQUEST":
-      return { ...state, loading: true }
-    case "FETCH_SUCCESS":
-      return { ...state, events: action.payload, loading: false }
-    case "FETCH_FAIL":
-      return { ...state, loading: false, error: action.payload }
-    default:
-      return state
-  }
-}
+import { useDispatch, useSelector } from "react-redux"
+import { listEvents } from "../actions/eventActions"
 
 function Events() {
-  const arr = []
-  const [{ loading, error, events }, dispatch] = useReducer(reducer, {
-    events: arr,
-    loading: true,
-    error: "",
-  })
+  const dispatch = useDispatch()
+  const eventList = useSelector((state) => state.eventList)
+  const { loading, error, events } = eventList
 
   useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: "FETCH_REQUEST" })
-      try {
-        const result = await axios.get("/api/events")
-        dispatch({ type: "FETCH_SUCCESS", payload: result.data })
-      } catch (err) {
-        dispatch({ type: "FETCH_FAIL", payload: err.message })
-      }
-    }
-    fetchData()
+    dispatch(listEvents())
   }, [])
 
   // Create instance of slider to further use methods
@@ -96,8 +72,8 @@ function Events() {
                 }}
                 className='mySwiper'
               >
-                {events?.map((event) => (
-                  <SwiperSlide key={event.slug}>
+                {events.map((event) => (
+                  <SwiperSlide key={event._id}>
                     <Event
                       slug={event.slug}
                       eventName={event.name}
