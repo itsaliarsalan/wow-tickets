@@ -72,7 +72,7 @@ function Events() {
                 }}
                 className='mySwiper'
               >
-                {events.map((event) => (
+                {events?.map((event) => (
                   <SwiperSlide key={event._id}>
                     <Event event={event} />
                   </SwiperSlide>
