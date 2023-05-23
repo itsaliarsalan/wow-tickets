@@ -16,7 +16,7 @@ function Events() {
 
   useEffect(() => {
     dispatch(listEvents())
-  }, [])
+  }, [dispatch])
 
   // Create instance of slider to further use methods
   const sliderRef = useRef(null)
@@ -74,13 +74,7 @@ function Events() {
               >
                 {events.map((event) => (
                   <SwiperSlide key={event._id}>
-                    <Event
-                      slug={event.slug}
-                      eventName={event.name}
-                      date={event.startDate}
-                      location={event.location}
-                      thumbnail={event.thumbnail}
-                    />
+                    <Event event={event} />
                   </SwiperSlide>
                 ))}
               </Swiper>

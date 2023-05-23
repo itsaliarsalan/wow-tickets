@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom'
 import "./Style.css"
 
-function Event({ slug, eventName, date, location, thumbnail }) {
+function Event(props) {
+  const { event } = props
   return (
-    <Link className='event-link' to={`/event/${slug}`}>
+    <Link className='event-link' to={`/event/${event._id}`}>
       <div className='event-card'>
-        <img className='thumbnail' src={thumbnail} alt='' />
+        <img className='thumbnail' src={event.thumbnail} alt='' />
         <div className='card-body'>
           <small className='event-info'>
-            {date} - {location}
+            {event.date} - {event.location}
           </small>
-          <h3 className='event-name'>{eventName}</h3>
+          <h3 className='event-name'>{event.name}</h3>
         </div>
       </div>
     </Link>

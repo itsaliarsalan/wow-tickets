@@ -5,11 +5,12 @@ import {
   legacy_createStore as createStore,
 } from "redux"
 import thunk from "redux-thunk"
-import { eventListReducer } from "./reducers/eventReducers"
+import { eventDetailsReducer, eventListReducer } from "./reducers/eventReducers"
 
 const initialState = {}
 const reducer = combineReducers({
   eventList: eventListReducer,
+  eventDetails: eventDetailsReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

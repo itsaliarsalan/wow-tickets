@@ -39,7 +39,6 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path='/event/:slug' element={<SingleEvent />} />
             <Route path='/events' element={<ExploreEvents />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
@@ -64,6 +63,7 @@ function App() {
             {/* End */}
 
             {/* Home Page Route */}
+            <Route path='/event/:id' element={<SingleEvent />}></Route>
             <Route index element={<Home />} />
             {/* End */}
           </Routes>
