@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Marketplace to buy and sell event tickets.",
   "scripts": {
-    "build": "cd client && npm install && npm run build",
+    "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install && npm run build)",
     "start": "nodemon --watch server --exec node --experimental-modules server/server.js",
     "server": "node ./server/server.js",
     "client": "cd client && npm start"
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/aliarsalandev/woo-tickets#readme",
   "dependencies": {
+    "if-env": "^1.0.4",
     "nodemon": "^2.0.4"
   }
 }
