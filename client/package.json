@@ -1,7 +1,6 @@
 {
   "name": "woo-tickets",
-  "version": "1.0",
-  "proxy": "http://localhost:8000",
+  "version": "1.0.0",
   "private": true,
   "main": "index.js",
   "dependencies": {

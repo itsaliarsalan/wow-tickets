@@ -1,7 +1,7 @@
 {
   "name": "wow-tickets",
   "version": "1.0.0",
-  "description": "",
+  "description": "Marketplace to buy and sell event tickets.",
   "scripts": {
     "build": "cd client && npm install && npm run build",
     "start": "nodemon --watch server --exec node --experimental-modules server/server.js",
