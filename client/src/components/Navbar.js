@@ -1,28 +1,36 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import './Style.css'
-import logo from '../assets/250x150.svg'
-import { Container } from '@mui/material'
+import { Link, useNavigate } from "react-router-dom"
+import "./Style.css"
+import logo from "../assets/250x150.svg"
+import { Container } from "@mui/material"
 import {
-	Avatar,
-	Divider,
-	IconButton,
-	Menu,
-	MenuItem,
-	Tooltip,
-	ListItemIcon,
-} from '@mui/material'
+  Avatar,
+  Divider,
+  IconButton,
+  Menu,
+  MenuItem,
+  Tooltip,
+  ListItemIcon,
+} from "@mui/material"
 // Icons
-import PersonAdd from '@mui/icons-material/PersonAdd'
-import Settings from '@mui/icons-material/Settings'
-import Logout from '@mui/icons-material/Logout'
-import { useSelector } from "react-redux"
+import PersonAdd from "@mui/icons-material/PersonAdd"
+import Settings from "@mui/icons-material/Settings"
+import Logout from "@mui/icons-material/Logout"
+import { useSelector, useDispatch } from "react-redux"
+import { signout } from "../actions/userActions"
 
 function Navbar() {
   const userSignin = useSelector((state) => state.userSignin)
   const { userInfo } = userSignin
-  const loggedIn = true
   const [isOpen, setOpen] = useState(false)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const signoutHandler = () => {
+    dispatch(signout())
+    navigate("/")
+  }
 
   function handleClick() {
     if (!isOpen) {
@@ -148,7 +156,7 @@ function Navbar() {
                     </ListItemIcon>
                     Settings
                   </MenuItem>
-                  <MenuItem onClick={handleAvatarClose}>
+                  <MenuItem onClick={signoutHandler}>
                     <ListItemIcon>
                       <Logout fontSize='small' />
                     </ListItemIcon>
