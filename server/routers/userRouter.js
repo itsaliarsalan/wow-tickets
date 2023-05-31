@@ -26,6 +26,7 @@ userRouter.post(
           _id: user._id,
           name: user.name,
           email: user.email,
+          image: user.image,
           isAdmin: user.isAdmin,
           token: generateToken(user),
         })
@@ -82,6 +83,7 @@ userRouter.put(
         _id: updatedUser._id,
         name: updatedUser.name,
         email: updatedUser.email,
+        image: updatedUser.image,
         isAdmin: updatedUser.isAdmin,
         token: generateToken(updatedUser),
       })
