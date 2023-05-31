@@ -32,39 +32,38 @@ function LoginForm(props) {
 
   return (
     <section className='component sign-in'>
+      {loading && <LoadingBox></LoadingBox>}
+      {error && <MessageBox variant='danger'>{error}</MessageBox>}
+
       <div className='container'>
         <h1>Hey, Welcome Back!</h1>
-        {loading && <LoadingBox></LoadingBox>}
-        {error && <MessageBox variant='danger'>{error}</MessageBox>}
-        <>
-          <h4>Provide required info to login.</h4>
-          <form className='login' onSubmit={submitHandler}>
-            <input
-              type='email'
-              placeholder='Email'
-              required=''
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-            />
-            <input
-              type='password'
-              placeholder='Password'
-              required=''
-              onChange={(e) => {
-                setPassword(e.target.value)
-              }}
-            />
-            <button type='submit' className='btn btn-main'>
-              Login
-            </button>
-            <Link to='/'>Forgot Password?</Link>
-            <hr />
-            <Link to={`/signup?redirect=${redirect}`} className='text-center'>
-              Don't have an account? Create here
-            </Link>
-          </form>
-        </>
+        <h4>Provide required info to login.</h4>
+        <form className='login' onSubmit={submitHandler}>
+          <input
+            type='email'
+            placeholder='Email'
+            required=''
+            onChange={(e) => {
+              setEmail(e.target.value)
+            }}
+          />
+          <input
+            type='password'
+            placeholder='Password'
+            required=''
+            onChange={(e) => {
+              setPassword(e.target.value)
+            }}
+          />
+          <button type='submit' className='btn btn-main'>
+            Login
+          </button>
+          <Link to='/'>Forgot Password?</Link>
+          <hr />
+          <Link to={`/signup?redirect=${redirect}`} className='text-center'>
+            Don't have an account? Create here
+          </Link>
+        </form>
       </div>
     </section>
   )

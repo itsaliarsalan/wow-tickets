@@ -6,12 +6,11 @@ import {
 } from "redux"
 import thunk from "redux-thunk"
 import { eventDetailsReducer, eventListReducer } from "./reducers/eventReducers"
+import { userSigninReducer } from "./reducers/userReducers"
 import {
-  userDetailsReducer,
-  userRegisterReducer,
-  userSigninReducer,
-  userUpdateProfileReducer,
-} from "./reducers/userReducers"
+  categoryDetailsReducer,
+  categoryListReducer,
+} from "./reducers/categoryReducers"
 
 const initialState = {
   userSignin: {
@@ -25,6 +24,8 @@ const reducer = combineReducers({
   userSignin: userSigninReducer,
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
+  categoryList: categoryListReducer,
+  categoryDetails: categoryDetailsReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

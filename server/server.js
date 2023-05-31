@@ -3,7 +3,9 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 
 import path from "path"
+import uploadRouter from "./routers/uploadRouter.js"
 import eventRouter from "./routers/eventRouter.js"
+import categoryRouter from "./routers/categoryRouter.js"
 import userRouter from "./routers/userRouter.js"
 
 dotenv.config()
@@ -25,8 +27,10 @@ mongoose
     console.log(err.message)
   })
 
+app.use("/api/uploads", uploadRouter)
 app.use("/api/users", userRouter)
 app.use("/api/events", eventRouter)
+app.use("/api/categories", categoryRouter)
 
 const __dirname = path.resolve()
 app.use(express.static(path.join(__dirname, "/client/build")))

@@ -12,7 +12,11 @@ import {
   Tooltip,
   ListItemIcon,
 } from "@mui/material"
+
 // Icons
+import Dashboard from "@mui/icons-material/Dashboard"
+import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined"
+import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined"
 import PersonAdd from "@mui/icons-material/PersonAdd"
 import Settings from "@mui/icons-material/Settings"
 import Logout from "@mui/icons-material/Logout"
@@ -140,21 +144,25 @@ function Navbar() {
                   <MenuItem onClick={handleAvatarClose}>
                     <Avatar /> Profile
                   </MenuItem>
-                  <MenuItem onClick={handleAvatarClose}>
-                    <Avatar /> My account
-                  </MenuItem>
                   <Divider />
                   <MenuItem onClick={handleAvatarClose}>
                     <ListItemIcon>
-                      <PersonAdd fontSize='small' />
+                      <Dashboard fontSize='small' />
                     </ListItemIcon>
-                    Add another account
+                    Dashboard
                   </MenuItem>
                   <MenuItem onClick={handleAvatarClose}>
                     <ListItemIcon>
-                      <Settings fontSize='small' />
+                      <CalendarTodayOutlinedIcon fontSize='small' />
                     </ListItemIcon>
-                    Settings
+                    Events
+                  </MenuItem>
+
+                  <MenuItem onClick={handleAvatarClose}>
+                    <ListItemIcon>
+                      <ReceiptOutlinedIcon fontSize='small' />
+                    </ListItemIcon>
+                    Orders
                   </MenuItem>
                   <MenuItem onClick={signoutHandler}>
                     <ListItemIcon>

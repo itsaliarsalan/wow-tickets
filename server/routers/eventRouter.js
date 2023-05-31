@@ -1,7 +1,7 @@
 import express from "express"
 import expressAsyncHandler from "express-async-handler"
 import data from "../data.js"
-import Event from "../models/eventModel.js"
+import Event from "../models/eventModal.js"
 
 const eventRouter = express.Router()
 
