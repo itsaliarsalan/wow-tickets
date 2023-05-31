@@ -13,6 +13,8 @@ import ExploreEvents from "./pages/ExploreEvents"
 import SingleEvent from "./pages/SingleEvent"
 import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"
+import AdminRoute from "./components/AdminRoute"
+import PrivateRoute from "./components/PrivateRoute"
 
 // Dashboard
 import Dashboard from "./pages/dashboard/Dashboard"

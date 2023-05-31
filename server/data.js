@@ -5,12 +5,14 @@ const data = {
     {
       name: "Arsalan Ali",
       email: "admin@wow-tickets.com",
+      image: "/images/avatar/ali.png",
       password: bcrypt.hashSync("1234", 8),
       isAdmin: true,
     },
     {
       name: "Adam",
       email: "user@wow-tickets.com",
+      image: "/images/avatar/adam.png",
       password: bcrypt.hashSync("1234", 8),
       isAdmin: false,
     },

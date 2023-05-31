@@ -11,9 +11,14 @@ const eventSchema = new mongoose.Schema(
     startDate: { type: String, required: true },
     endDate: { type: String, required: true },
     website: { type: String, required: true },
-    socialLinks: [],
+    restrictions: { type: Array, default: [] },
+    socialLinks: { type: Array, default: [] },
     price: { type: Number, required: true },
     status: { type: Number, required: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

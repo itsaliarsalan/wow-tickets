@@ -6,9 +6,23 @@ import {
 } from "redux"
 import thunk from "redux-thunk"
 import { eventDetailsReducer, eventListReducer } from "./reducers/eventReducers"
+import {
+  userDetailsReducer,
+  userRegisterReducer,
+  userSigninReducer,
+  userUpdateProfileReducer,
+} from "./reducers/userReducers"
 
-const initialState = {}
+const initialState = {
+  userSignin: {
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : null,
+  },
+}
+
 const reducer = combineReducers({
+  userSignin: userSigninReducer,
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
 })
