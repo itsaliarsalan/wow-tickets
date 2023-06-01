@@ -13,10 +13,8 @@ import ExploreEvents from "./pages/ExploreEvents"
 import SingleEvent from "./pages/SingleEvent"
 import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"
-import AdminRoute from "./components/AdminRoute"
-import PrivateRoute from "./components/PrivateRoute"
-
 // Dashboard
+import PrivateRoute from "./components/PrivateRoute"
 import Dashboard from "./pages/dashboard/Dashboard"
 import Overview from "./sections/dashboard/Overview"
 import NewEvent from "./pages/dashboard/NewEvent"
@@ -32,8 +30,12 @@ import Venues from "./pages/dashboard/Venues"
 import Organizers from "./pages/dashboard/Organizers"
 import Orders from "./pages/dashboard/Orders"
 import Payments from "./pages/dashboard/Payments"
+import { useSelector } from "react-redux"
 
 function App() {
+  const userSignin = useSelector((state) => state.userSignin)
+  const { userInfo } = userSignin
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <BrowserRouter>
@@ -41,31 +43,32 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path='/events' element={<ExploreEvents />} />
-            <Route path='/signin' element={<Signin />} />
-            <Route path='/signup' element={<Signup />} />
-
             {/* Dashboard */}
-            <Route path='/dashboard' element={<Dashboard />}>
-              <Route index element={<Overview />} />
-              <Route path='new-event' element={<NewEvent />}>
-                <Route index element={<BasicInfo />} />
-                <Route path='step-2' element={<EventImages />} />
-                <Route path='step-3' element={<AddTicket />} />
-                <Route path='step-4' element={<ConfirmEvent />} />
+            {userInfo && (
+              <Route path='/dashboard' element={<Dashboard />}>
+                <Route index element={<Overview />} />
+                <Route path='new-event' element={<NewEvent />}>
+                  <Route index element={<BasicInfo />} />
+                  <Route path='step-2' element={<EventImages />} />
+                  <Route path='step-3' element={<AddTicket />} />
+                  <Route path='step-4' element={<ConfirmEvent />} />
+                </Route>
+                <Route path='manage-events' element={<ManageEvents />} />
+                <Route path='manage-categories' element={<EventCategories />} />
+                <Route path='audience' element={<Audience />} />
+                <Route path='venues' element={<Venues />} />
+                <Route path='organizers' element={<Organizers />} />
+                <Route path='orders' element={<Orders />} />
+                <Route path='payments' element={<Payments />} />
               </Route>
-              <Route path='manage-events' element={<ManageEvents />} />
-              <Route path='manage-categories' element={<EventCategories />} />
-              <Route path='audience' element={<Audience />} />
-              <Route path='venues' element={<Venues />} />
-              <Route path='organizers' element={<Organizers />} />
-              <Route path='orders' element={<Orders />} />
-              <Route path='payments' element={<Payments />} />
-            </Route>
+            )}
             {/* End */}
 
             {/* Home Page Route */}
-            <Route path='/event/:id' element={<SingleEvent />}></Route>
+            <Route path='/events' element={<ExploreEvents />} />
+            <Route path='/events/:id' element={<SingleEvent />}></Route>
+            <Route path='/signin' element={<Signin />} />
+            <Route path='/signup' element={<Signup />} />
             <Route index element={<Home />} />
             {/* End */}
           </Routes>
