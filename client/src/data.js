@@ -320,26 +320,27 @@ export const eventDetails = {
 
 export const eventCategories = {
   columns: [
-    { field: "id", headerName: "ID", width: 10 },
+    { field: "_id", headerName: "ID", width: 150 },
     {
-      field: "categoryName",
+      field: "image",
+      headerName: "Image",
+      width: 150,
+      renderCell: (params) => <img src={params.value} />,
+    },
+    {
+      field: "name",
       headerName: "Category Name",
-      width: 150,
+      width: 300,
       editable: true,
     },
     {
-      field: "status",
-      headerName: "Status",
-      width: 150,
-      editable: true,
-    },
-    {
-      field: "categoryDescription",
+      field: "description",
       headerName: "Category Description",
       width: 500,
       editable: true,
     },
   ],
+
   rows: [
     {
       id: 1,
