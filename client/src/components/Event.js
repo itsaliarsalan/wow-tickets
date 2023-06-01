@@ -4,7 +4,7 @@ import "./Style.css"
 function Event(props) {
   const { event } = props
   return (
-    <Link className='event-link' to={`/event/${event._id}`}>
+    <Link className='event-link' to={`/events/${event._id}`}>
       <div className='event-card'>
         <img className='thumbnail' src={event.thumbnail} alt='' />
         <div className='card-body'>

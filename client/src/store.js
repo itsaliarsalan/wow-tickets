@@ -8,8 +8,10 @@ import thunk from "redux-thunk"
 import { eventDetailsReducer, eventListReducer } from "./reducers/eventReducers"
 import { userSigninReducer } from "./reducers/userReducers"
 import {
-  categoryDetailsReducer,
+  categoryCreateReducer,
+  categoryDeleteReducer,
   categoryListReducer,
+  categoryUpdateReducer,
 } from "./reducers/categoryReducers"
 
 const initialState = {
@@ -25,7 +27,9 @@ const reducer = combineReducers({
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
   categoryList: categoryListReducer,
-  categoryDetails: categoryDetailsReducer,
+  categoryDelete: categoryDeleteReducer,
+  categoryUpdate: categoryUpdateReducer,
+  categoryCreate: categoryCreateReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

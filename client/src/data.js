@@ -331,13 +331,11 @@ export const eventCategories = {
       field: "name",
       headerName: "Category Name",
       width: 300,
-      editable: true,
     },
     {
       field: "description",
       headerName: "Category Description",
       width: 500,
-      editable: true,
     },
   ],
 

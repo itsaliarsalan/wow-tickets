@@ -27,9 +27,9 @@ categoryRouter.post(
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const category = new Category({
-      name: "Category Name " + Date.now(),
-      description: "lorem ipsum is a dummy text use as a placeholder.",
-      image: "http://via.placeholder.com/150x150",
+      name: req.body.name,
+      description: req.body.description,
+      image: req.body.image,
     })
     const createdCategory = await category.save()
     res.send({ message: "Category Added", category: createdCategory })
@@ -72,7 +72,7 @@ categoryRouter.delete(
   expressAsyncHandler(async (req, res) => {
     const category = await Category.findById(req.params.id)
     if (category) {
-      const deletedCategory = await category.remove()
+      const deletedCategory = await category.deleteOne()
       res.send({ message: "Category Deleted", category: deletedCategory })
     } else {
       res.status(404).send({ message: "Category Not Found" })
