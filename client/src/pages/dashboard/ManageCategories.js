@@ -31,6 +31,9 @@ function ManageCategories() {
   const userSignin = useSelector((state) => state.userSignin)
   const { userInfo } = userSignin
 
+  const categoryList = useSelector((state) => state.categoryList)
+  const { loading, error, categories } = categoryList
+
   const categoryCreate = useSelector((state) => state.categoryCreate)
   const {
     loading: loadingCreate,
@@ -39,8 +42,6 @@ function ManageCategories() {
     category: createdCategory,
   } = categoryCreate
 
-  const categoryList = useSelector((state) => state.categoryList)
-  const { loading, error, categories } = categoryList
 
   const categoryDelete = useSelector((state) => state.categoryDelete)
   const {
