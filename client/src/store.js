@@ -14,6 +14,13 @@ import {
   categoryUpdateReducer,
 } from "./reducers/categoryReducers"
 
+import {
+  venueListReducer,
+  venueDeleteReducer,
+  venueUpdateReducer,
+  venueCreateReducer,
+} from "./reducers/venueReducers"
+
 const initialState = {
   userSignin: {
     userInfo: localStorage.getItem("userInfo")
@@ -30,6 +37,10 @@ const reducer = combineReducers({
   categoryDelete: categoryDeleteReducer,
   categoryUpdate: categoryUpdateReducer,
   categoryCreate: categoryCreateReducer,
+  venueList: venueListReducer,
+  venueDelete: venueDeleteReducer,
+  venueUpdate: venueUpdateReducer,
+  venueCreate: venueCreateReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

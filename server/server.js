@@ -7,6 +7,7 @@ import uploadRouter from "./routers/uploadRouter.js"
 import eventRouter from "./routers/eventRouter.js"
 import categoryRouter from "./routers/categoryRouter.js"
 import userRouter from "./routers/userRouter.js"
+import venueRouter from "./routers/venueRouter.js"
 
 dotenv.config()
 
@@ -31,6 +32,7 @@ app.use("/api/uploads", uploadRouter)
 app.use("/api/users", userRouter)
 app.use("/api/events", eventRouter)
 app.use("/api/categories", categoryRouter)
+app.use("/api/venues", venueRouter)
 
 const __dirname = path.resolve()
 app.use(express.static(path.join(__dirname, "/client/build")))

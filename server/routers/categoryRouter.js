@@ -8,8 +8,8 @@ const categoryRouter = express.Router()
 categoryRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const events = await Category.find({})
-    res.send(events)
+    const categories = await Category.find({})
+    res.send(categories)
   })
 )
 

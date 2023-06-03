@@ -116,6 +116,30 @@ const data = {
       image: "http://via.placeholder.com/150x150",
     },
   ],
+  venues: [
+    {
+      name: "ABC 1",
+      image: "http://via.placeholder.com/150x150",
+      streetAddress: "196 Poolstock Ln",
+      city: "Wigan",
+      state: "Greater Manchester",
+      postalCode: "WN3 5HW",
+      country: "United Kingdom",
+      lang: "",
+      long: "",
+    },
+    {
+      name: "ABC 2",
+      image: "http://via.placeholder.com/150x150",
+      streetAddress: "Cowley Rd",
+      city: "Uxbridge",
+      state: "Greater London",
+      postalCode: "UB8 2AQ",
+      country: "United Kingdom",
+      lang: "",
+      long: "",
+    },
+  ],
 }
 
 export default data

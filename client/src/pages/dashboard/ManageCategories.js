@@ -1,26 +1,25 @@
-import Axios from "axios"
 import "chart.js/auto"
-import { useEffect, useState } from "react"
+import Axios from "axios"
 import { Box } from "@mui/material"
-import Button from "@mui/material/Button"
-import Modal from "../../components/Modal"
-import DropFiles from "../../components/DropFiles"
-import LoadingBox from "../../components/LoadingBox"
-import MessageBox from "../../components/MessageBox"
-import { useSelector, useDispatch } from "react-redux"
-import { DataGrid, GridToolbar } from "@mui/x-data-grid"
 import {
   deleteCategory,
   listCategories,
   updateCategory,
   createCategory,
 } from "../../actions/categoryActions"
-import DashboardHeader from "../../components/DashboardHeader"
 import {
   CATEGORY_ADD_RESET,
   CATEGORY_DELETE_RESET,
   CATEGORY_UPDATE_RESET,
 } from "../../constants/categoryConstants"
+import Button from "@mui/material/Button"
+import Modal from "../../components/Modal"
+import { useEffect, useState } from "react"
+import LoadingBox from "../../components/LoadingBox"
+import MessageBox from "../../components/MessageBox"
+import { useSelector, useDispatch } from "react-redux"
+import { DataGrid, GridToolbar } from "@mui/x-data-grid"
+import DashboardHeader from "../../components/DashboardHeader"
 
 function ManageCategories() {
   const dispatch = useDispatch()
@@ -250,7 +249,7 @@ function ManageCategories() {
             <input className='modal-state' id='modal-1' type='checkbox' />
             <Modal id='modal-1' title='New Category'>
               <form
-              name="createCategoryForm"
+                name='createCategoryForm'
                 action=''
                 onSubmit={(e) => {
                   handleSubmit(e)

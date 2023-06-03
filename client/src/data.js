@@ -318,66 +318,6 @@ export const eventDetails = {
   ],
 }
 
-export const eventCategories = {
-  columns: [
-    { field: "_id", headerName: "ID", width: 150 },
-    {
-      field: "image",
-      headerName: "Image",
-      width: 150,
-      renderCell: (params) => <img src={params.value} />,
-    },
-    {
-      field: "name",
-      headerName: "Category Name",
-      width: 300,
-    },
-    {
-      field: "description",
-      headerName: "Category Description",
-      width: 500,
-    },
-  ],
-
-  rows: [
-    {
-      id: 1,
-      categoryName: "Music",
-      status: "active",
-      categoryDescription:
-        "All kinds of music festivals and events that include music.",
-    },
-    {
-      id: 2,
-      categoryName: "Food",
-      status: "inactive",
-      categoryDescription:
-        "Events related to food, such as cooking competitions, food festivals, etc.",
-    },
-    {
-      id: 3,
-      categoryName: "Sports",
-      status: "active",
-      categoryDescription:
-        "Events related to sports, such as football, basketball, cricket, etc.",
-    },
-    {
-      id: 4,
-      categoryName: "Arts",
-      status: "active",
-      categoryDescription:
-        "Events related to art, such as painting exhibitions, art fairs, etc.",
-    },
-    {
-      id: 5,
-      categoryName: "Fashion",
-      status: "inactive",
-      categoryDescription:
-        "Events related to fashion, such as fashion shows, beauty pageants, etc.",
-    },
-  ],
-}
-
 export const audience = {
   columns: [
     { field: "id", headerName: "ID", width: 10 },
