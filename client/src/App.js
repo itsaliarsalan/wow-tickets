@@ -47,12 +47,7 @@ function App() {
             {userInfo && (
               <Route path='/dashboard' element={<Dashboard />}>
                 <Route index element={<Overview />} />
-                <Route path='new-event' element={<NewEvent />}>
-                  <Route index element={<BasicInfo />} />
-                  <Route path='step-2' element={<EventImages />} />
-                  <Route path='step-3' element={<AddTicket />} />
-                  <Route path='step-4' element={<ConfirmEvent />} />
-                </Route>
+                <Route path='new-event' element={<NewEvent />} />
                 <Route path='manage-events' element={<ManageEvents />} />
                 <Route path='manage-categories' element={<EventCategories />} />
                 <Route path='audience' element={<Audience />} />

@@ -1,4 +1,8 @@
 import {
+  EVENT_ADD_FAIL,
+  EVENT_ADD_REQUEST,
+  EVENT_ADD_RESET,
+  EVENT_ADD_SUCCESS,
   EVENT_DETAILS_FAIL,
   EVENT_DETAILS_REQUEST,
   EVENT_DETAILS_SUCCESS,
@@ -34,6 +38,21 @@ export const eventDetailsReducer = (
       return { loading: false, event: action.payload }
     case EVENT_DETAILS_FAIL:
       return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const eventCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case EVENT_ADD_REQUEST:
+      return { loading: true }
+    case EVENT_ADD_SUCCESS:
+      return { loading: false, success: true, event: action.payload }
+    case EVENT_ADD_FAIL:
+      return { loading: false, error: action.payload }
+    case EVENT_ADD_RESET:
+      return {}
     default:
       return state
   }

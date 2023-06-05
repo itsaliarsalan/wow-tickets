@@ -3,9 +3,7 @@ import mongoose from "mongoose"
 const eventSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    category: { type: String, required: true },
     description: { type: String, required: true },
-    location: { type: String, required: true },
     thumbnail: { type: String, required: true },
     cover: { type: String, required: true },
     startDate: { type: String, required: true },
@@ -14,7 +12,6 @@ const eventSchema = new mongoose.Schema(
     restrictions: { type: Array, default: [] },
     socialLinks: { type: Array, default: [] },
     price: { type: Number, required: true },
-    status: { type: Number, required: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -25,6 +22,12 @@ const eventSchema = new mongoose.Schema(
       ref: "Category",
       default: null,
     },
+    venue: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Venue",
+      default: null,
+    },
+    eventStatus: { type: Boolean },
   },
   {
     timestamps: true,

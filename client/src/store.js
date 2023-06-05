@@ -5,7 +5,11 @@ import {
   legacy_createStore as createStore,
 } from "redux"
 import thunk from "redux-thunk"
-import { eventDetailsReducer, eventListReducer } from "./reducers/eventReducers"
+import {
+  eventCreateReducer,
+  eventDetailsReducer,
+  eventListReducer,
+} from "./reducers/eventReducers"
 import { userSigninReducer } from "./reducers/userReducers"
 import {
   categoryCreateReducer,
@@ -33,6 +37,7 @@ const reducer = combineReducers({
   userSignin: userSigninReducer,
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
+  eventCreate: eventCreateReducer,
   categoryList: categoryListReducer,
   categoryDelete: categoryDeleteReducer,
   categoryUpdate: categoryUpdateReducer,
