@@ -106,22 +106,58 @@ const data = {
   ],
   categories: [
     {
-      name: "Club Night",
-      description: "lorem ipsum is a dummy text use as a placeholder.",
-      image: "http://via.placeholder.com/150x150",
-    },
-    {
       name: "Comedy",
       description: "lorem ipsum is a dummy text use as a placeholder.",
       image: "http://via.placeholder.com/150x150",
     },
     {
-      name: "Conferences And Talks",
+      name: "Theatre and Drama",
       description: "lorem ipsum is a dummy text use as a placeholder.",
       image: "http://via.placeholder.com/150x150",
     },
     {
-      name: "Dance Performances And Classes",
+      name: "Drive-In Events",
+      description: "lorem ipsum is a dummy text use as a placeholder.",
+      image: "http://via.placeholder.com/150x150",
+    },
+    {
+      name: "Experience and Attractions",
+      description: "lorem ipsum is a dummy text use as a placeholder.",
+      image: "http://via.placeholder.com/150x150",
+    },
+    {
+      name: "Kids and Family",
+      description: "lorem ipsum is a dummy text use as a placeholder.",
+      image: "http://via.placeholder.com/150x150",
+    },
+    {
+      name: "Sporting Event",
+      description: "lorem ipsum is a dummy text use as a placeholder.",
+      image: "http://via.placeholder.com/150x150",
+    },
+    {
+      name: "The Arts and Heritage",
+      description: "lorem ipsum is a dummy text use as a placeholder.",
+      image: "http://via.placeholder.com/150x150",
+    },
+    {
+      name: "Film and Culter",
+      description: "lorem ipsum is a dummy text use as a placeholder.",
+      image: "http://via.placeholder.com/150x150",
+    },
+    {
+      name: "Exhibitions and Fairs",
+      description: "lorem ipsum is a dummy text use as a placeholder.",
+      image: "http://via.placeholder.com/150x150",
+    },
+    {
+      name: "Food and Drink",
+      description: "lorem ipsum is a dummy text use as a placeholder.",
+      image: "http://via.placeholder.com/150x150",
+    },
+
+    {
+      name: "Bar/Pub Event",
       description: "lorem ipsum is a dummy text use as a placeholder.",
       image: "http://via.placeholder.com/150x150",
     },
