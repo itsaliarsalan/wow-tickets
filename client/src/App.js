@@ -1,77 +1,68 @@
-import React from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-
-// Localization for datepicker
-import { LocalizationProvider } from "@mui/x-date-pickers"
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 // Pages
-import Header from "./sections/Header"
-import Footer from "./sections/Footer"
-import Home from "./pages/Home"
-import ExploreEvents from "./pages/ExploreEvents"
-import SingleEvent from "./pages/SingleEvent"
-import Signin from "./pages/Signin"
-import Signup from "./pages/Signup"
+import Header from './sections/Header'
+import Footer from './sections/Footer'
+import Home from './pages/Home'
+import ExploreEvents from './pages/ExploreEvents'
+import SingleEvent from './pages/SingleEvent'
+import Signin from './pages/Signin'
+import Signup from './pages/Signup'
 // Dashboard
-import PrivateRoute from "./components/PrivateRoute"
-import Dashboard from "./pages/dashboard/Dashboard"
-import Overview from "./sections/dashboard/Overview"
-import NewEvent from "./pages/dashboard/NewEvent"
-import BasicInfo from "./sections/dashboard/add_event/BasicInfo"
-import EventImages from "./sections/dashboard/add_event/EventImages"
-import AddTicket from "./sections/dashboard/add_event/AddTicket"
-import ConfirmEvent from "./sections/dashboard/add_event/ConfirmEvent"
-import ManageEvents from "./pages/dashboard/ManageEvents"
-import ScrollToTop from "./utilities/ScrollToTop"
-import EventCategories from "./pages/dashboard/ManageCategories"
-import Audience from "./pages/dashboard/Audience"
-import Venues from "./pages/dashboard/Venues"
-import Organizers from "./pages/dashboard/Organizers"
-import Orders from "./pages/dashboard/Orders"
-import Payments from "./pages/dashboard/Payments"
-import { useSelector } from "react-redux"
+import Dashboard from './pages/dashboard/Dashboard'
+import Overview from './sections/dashboard/Overview'
+import AddEvent from './pages/dashboard/events/AddEvent'
+import ManageEvents from './pages/dashboard/events/ManageEvents'
+import Audience from './pages/dashboard/Audience'
+import Venues from './pages/dashboard/Venues'
+import Organizers from './pages/dashboard/Organizers'
+import Orders from './pages/dashboard/Orders'
+import Payments from './pages/dashboard/Payments'
+import { useSelector } from 'react-redux'
+import AddVenue from './pages/dashboard/venues/AddVenue'
+import ManageVenues from './pages/dashboard/venues/ManageVenues'
+import AppWrapper from './components/layout/AppWrapper'
 
 function App() {
-  const userSignin = useSelector((state) => state.userSignin)
-  const { userInfo } = userSignin
+	const userSignin = useSelector(state => state.userSignin)
+	const { userInfo } = userSignin
 
-  return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Header />
-        <main>
-          <Routes>
-            {/* Dashboard */}
-            {userInfo && (
-              <Route path='/dashboard' element={<Dashboard />}>
-                <Route index element={<Overview />} />
-                <Route path='new-event' element={<NewEvent />} />
-                <Route path='manage-events' element={<ManageEvents />} />
-                <Route path='manage-categories' element={<EventCategories />} />
-                <Route path='audience' element={<Audience />} />
-                <Route path='venues' element={<Venues />} />
-                <Route path='organizers' element={<Organizers />} />
-                <Route path='orders' element={<Orders />} />
-                <Route path='payments' element={<Payments />} />
-              </Route>
-            )}
-            {/* End */}
+	return (
+		// Using component as a wrapper to provide contextAPI's for reducing complexity of the code
+		<AppWrapper>
+			<Header />
+			<main>
+				<Routes>
+					{/* Dashboard */}
+					{userInfo && (
+						<Route path='/dashboard' element={<Dashboard />}>
+							<Route index element={<Overview />} />
+							<Route path='events/add' element={<AddEvent />} />
+							<Route path='events/manage' element={<ManageEvents />} />
+							<Route path='audience' element={<Audience />} />
+							<Route path='venues' element={<Venues />} />
+							<Route path='organizers' element={<Organizers />} />
+							<Route path='orders' element={<Orders />} />
+							<Route path='payments' element={<Payments />} />
+							<Route path='venues/add' element={<AddVenue />} />
+							<Route path='venues/manage' element={<ManageVenues />} />
+						</Route>
+					)}
+					{/* End */}
 
-            {/* Home Page Route */}
-            <Route path='/events' element={<ExploreEvents />} />
-            <Route path='/events/:id' element={<SingleEvent />}></Route>
-            <Route path='/signin' element={<Signin />} />
-            <Route path='/signup' element={<Signup />} />
-            <Route index element={<Home />} />
-            {/* End */}
-          </Routes>
-        </main>
-        <Footer />
-      </BrowserRouter>
-    </LocalizationProvider>
-  )
+					{/* Home Page Route */}
+					<Route path='/events' element={<ExploreEvents />} />
+					<Route path='/events/:id' element={<SingleEvent />}></Route>
+					<Route path='/signin' element={<Signin />} />
+					<Route path='/signup' element={<Signup />} />
+					<Route index element={<Home />} />
+					{/* End */}
+				</Routes>
+			</main>
+			<Footer />
+		</AppWrapper>
+	)
 }
 
 export default App

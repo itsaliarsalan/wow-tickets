@@ -1,5 +1,5 @@
 import 'chart.js/auto'
-import DashboardHeader from '../../components/DashboardHeader'
+import DashboardHeader from '../../components/layout/DashboardHeader'
 import { Box } from '@mui/material'
 import { audience } from '../../data'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'

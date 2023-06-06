@@ -1,4 +1,4 @@
-import DashboardHeader from '../../components/DashboardHeader'
+import DashboardHeader from '../../components/layout/DashboardHeader'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import { Box } from '@mui/material'
 

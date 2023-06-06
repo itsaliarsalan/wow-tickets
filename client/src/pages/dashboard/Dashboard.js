@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import Sidebar from '../../components/Sidebar'
+import Sidebar from '../../components/dashboard/sidebar/Sidebar'
 import Grid from '@mui/material/Unstable_Grid2' // Grid version 2
 import { Container } from '@mui/material'
 
