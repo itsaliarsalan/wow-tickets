@@ -23,6 +23,11 @@ import { useSelector } from 'react-redux'
 import AddVenue from './pages/dashboard/venues/AddVenue'
 import ManageVenues from './pages/dashboard/venues/ManageVenues'
 import AppWrapper from './components/layout/AppWrapper'
+import AddTicket from './pages/dashboard/events/AddTicket'
+import ManageTickets from './pages/dashboard/events/ManageTickets'
+import SellOrders from './pages/dashboard/orders/SellOrders'
+import PurchaseOrders from './pages/dashboard/orders/PurchaseOrders'
+import ManageUsers from './pages/dashboard/users/ManageUsers'
 
 function App() {
 	const userSignin = useSelector(state => state.userSignin)
@@ -40,6 +45,11 @@ function App() {
 							<Route index element={<Overview />} />
 							<Route path='events/add' element={<AddEvent />} />
 							<Route path='events/manage' element={<ManageEvents />} />
+							<Route path='tickets/add' element={<AddTicket />} />
+							<Route path='tickets/manage' element={<ManageTickets />} />
+							<Route path='orders/sell' element={<SellOrders />} />
+							<Route path='orders/purchase' element={<PurchaseOrders />} />
+							<Route path='users' element={<ManageUsers />} />
 							<Route path='audience' element={<Audience />} />
 							<Route path='venues' element={<Venues />} />
 							<Route path='organizers' element={<Organizers />} />
@@ -53,7 +63,8 @@ function App() {
 
 					{/* Home Page Route */}
 					<Route path='/events' element={<ExploreEvents />} />
-					<Route path='/events/:id' element={<SingleEvent />}></Route>
+					<Route path='/event' element={<SingleEvent />} />
+					<Route path='/events/:id' exact element={<SingleEvent />}></Route>
 					<Route path='/signin' element={<Signin />} />
 					<Route path='/signup' element={<Signup />} />
 					<Route index element={<Home />} />

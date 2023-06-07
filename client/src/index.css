@@ -405,3 +405,13 @@ input[type='checkbox']:checked {
 .MuiTablePagination-displayedRows {
 	margin: 0 !important;
 }
+
+/* Animation */
+@keyframes textLeftToRight {
+	0% {
+		transform: translateX(-60%);
+	}
+	100% {
+		transform: translateX(10%);
+	}
+}
