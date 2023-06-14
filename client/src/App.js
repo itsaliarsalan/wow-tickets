@@ -9,6 +9,7 @@ import ExploreEvents from './pages/ExploreEvents'
 import SingleEvent from './pages/SingleEvent'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
+
 // Dashboard
 import Dashboard from './pages/dashboard/Dashboard'
 import Overview from './sections/dashboard/Overview'
