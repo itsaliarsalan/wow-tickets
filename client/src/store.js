@@ -10,7 +10,7 @@ import {
 	eventDetailsReducer,
 	eventListReducer,
 } from './reducers/eventReducers'
-import { userSigninReducer } from './reducers/userReducers'
+import { userRegisterReducer, userSigninReducer } from "./reducers/userReducers"
 
 import {
 	venueListReducer,
@@ -28,14 +28,15 @@ const initialState = {
 }
 
 const reducer = combineReducers({
-	userSignin: userSigninReducer,
-	eventList: eventListReducer,
-	eventDetails: eventDetailsReducer,
-	eventCreate: eventCreateReducer,
-	venueList: venueListReducer,
-	venueDelete: venueDeleteReducer,
-	venueUpdate: venueUpdateReducer,
-	venueCreate: venueCreateReducer,
+  userSignin: userSigninReducer,
+  userRegister: userRegisterReducer,
+  eventList: eventListReducer,
+  eventDetails: eventDetailsReducer,
+  eventCreate: eventCreateReducer,
+  venueList: venueListReducer,
+  venueDelete: venueDeleteReducer,
+  venueUpdate: venueUpdateReducer,
+  venueCreate: venueCreateReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

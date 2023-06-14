@@ -4,22 +4,18 @@ const eventSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     description: { type: String, required: true },
+    category: { type: String },
     thumbnail: { type: String, required: true },
     cover: { type: String, required: true },
     startDate: { type: String, required: true },
     endDate: { type: String, required: true },
-    website: { type: String, required: true },
-    restrictions: { type: Array, default: [] },
-    socialLinks: { type: Array, default: [] },
-    price: { type: Number, required: true },
+    startTime: { type: String },
+    lastEntry: { type: String },
+    endTime: { type: String },
+    restrictions: { type: Boolean, default: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      default: null,
-    },
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
       default: null,
     },
     venue: {

@@ -28,14 +28,13 @@ venueRouter.post(
   expressAsyncHandler(async (req, res) => {
     const venue = new Venue({
       name: req.body.name,
-      image: req.body.image,
-      streetAddress: req.body.streetAddress,
+      capacity: req.body.capacity,
+      contact: req.body.contact,
+      address: req.body.address,
       city: req.body.city,
       state: req.body.state,
-      postalCode: req.body.postalCode,
+      postal: req.body.postal,
       country: req.body.country,
-      long: req.body.long,
-      lang: req.body.lang,
     })
     const createdVenue = await venue.save()
     res.send({ message: "Venue Added", venue: createdVenue })
@@ -62,14 +61,13 @@ venueRouter.put(
     const venue = await Venue.findById(venueId)
     if (venue) {
       venue.name = req.body.name
-      venue.image = req.body.image
-      venue.streetAddress = req.body.streetAddress
+      venue.capacity = req.body.capacity
+      venue.contact = req.body.contact
+      venue.address = req.body.address
       venue.city = req.body.city
       venue.state = req.body.state
-      venue.postalCode = req.body.postalCode
+      venue.postal = req.body.postal
       venue.country = req.body.country
-      venue.long = req.body.long
-      venue.lang = req.body.lang
       const updatedVenue = await venue.save()
       res.send({ message: "Venue Updated", venue: updatedVenue })
     } else {

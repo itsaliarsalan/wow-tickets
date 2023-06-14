@@ -33,17 +33,7 @@ export const listVenues = () => async (dispatch) => {
 }
 
 export const createVenue =
-  ({
-    name,
-    image,
-    streetAddress,
-    city,
-    state,
-    postalCode,
-    country,
-    long,
-    lang,
-  }) =>
+  ({ name, capacity, contact, address, city, state, postal, country }) =>
   async (dispatch, getState) => {
     dispatch({ type: VENUE_ADD_REQUEST })
     const {
@@ -54,14 +44,13 @@ export const createVenue =
         "/api/venues",
         {
           name,
-          image,
-          streetAddress,
+          capacity,
+          contact,
+          address,
           city,
           state,
-          postalCode,
+          postal,
           country,
-          long,
-          lang,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
