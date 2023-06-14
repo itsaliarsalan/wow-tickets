@@ -12,6 +12,9 @@ import {
   TICKET_DELETE_REQUEST,
   TICKET_DELETE_SUCCESS,
   TICKET_DELETE_FAIL,
+  TICKET_LIST_BY_EVENT_REQUEST,
+  TICKET_LIST_BY_EVENT_SUCCESS,
+  TICKET_LIST_BY_EVENT_FAIL,
 } from "../constants/ticketConstants"
 
 export const listTickets = () => async (dispatch) => {
@@ -31,6 +34,27 @@ export const listTickets = () => async (dispatch) => {
     })
   }
 }
+
+export const listTicketsByEvent = (eventId) => async (dispatch) => {
+  dispatch({
+    type: TICKET_LIST_BY_EVENT_REQUEST,
+    payload: eventId,
+  })
+  try {
+    const { data } = await Axios.get(`/api/tickets/event/${eventId}`)
+    dispatch({
+      type: TICKET_LIST_BY_EVENT_SUCCESS,
+      payload: data,
+    })
+    console.log("TICKETS BY EVENT :: ", data)
+  } catch (error) {
+    dispatch({
+      type: TICKET_LIST_BY_EVENT_FAIL,
+      payload: error.message,
+    })
+  }
+}
+
 
 export const detailsTicket = (ticketId) => async (dispatch) => {
   dispatch({ type: TICKET_DETAILS_REQUEST, payload: ticketId })

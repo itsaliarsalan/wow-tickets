@@ -26,9 +26,12 @@ eventRouter.get(
 eventRouter.get(
   "/:id",
   expressAsyncHandler(async (req, res) => {
-    const event = await Event.findById(req.params.id)
+    const event = await Event.findById(req.params.id).populate({
+      path: "venue",
+      select: ["name", "address", "city", "state", "country"],
+    })
     if (event) {
-      res.send(event)
+      await res.send(event)
     } else {
       res.status(404).send({ message: "Event Not Found" })
     }

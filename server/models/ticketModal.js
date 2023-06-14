@@ -16,6 +16,7 @@ const ticketSchema = new mongoose.Schema(
       ref: "Event",
       default: null,
     },
+
     ticketStatus: { type: Boolean },
   },
   {

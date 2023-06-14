@@ -13,6 +13,9 @@ import {
   TICKET_DELETE_SUCCESS,
   TICKET_DELETE_FAIL,
   TICKET_DELETE_RESET,
+  TICKET_LIST_BY_EVENT_REQUEST,
+  TICKET_LIST_BY_EVENT_SUCCESS,
+  TICKET_LIST_BY_EVENT_FAIL,
 } from "../constants/ticketConstants"
 
 export const ticketListReducer = (
@@ -46,6 +49,23 @@ export const ticketDetailsReducer = (
       return state
   }
 }
+
+export const ticketListByEventReducer = (
+  state = { loading: true, tickets: [] },
+  action
+) => {
+  switch (action.type) {
+    case TICKET_LIST_BY_EVENT_REQUEST:
+      return { loading: true }
+    case TICKET_LIST_BY_EVENT_SUCCESS:
+      return { loading: false, tickets: action.payload }
+    case TICKET_LIST_BY_EVENT_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
 
 export const ticketCreateReducer = (state = {}, action) => {
   switch (action.type) {

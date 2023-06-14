@@ -12,6 +12,9 @@ import {
   VENUE_DELETE_REQUEST,
   VENUE_DELETE_SUCCESS,
   VENUE_DELETE_FAIL,
+  VENUE_DETAILS_REQUEST,
+  VENUE_DETAILS_SUCCESS,
+  VENUE_DETAILS_FAIL,
 } from "../constants/venueConstants"
 
 export const listVenues = () => async (dispatch) => {
@@ -108,5 +111,21 @@ export const deleteVenue = (venueId) => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message
     dispatch({ type: VENUE_DELETE_FAIL, payload: message })
+  }
+}
+
+export const detailsVenue = (venueId) => async (dispatch) => {
+  dispatch({ type: VENUE_DETAILS_REQUEST, payload: venueId })
+  try {
+    const { data } = await Axios.get(`/api/venues/${venueId}`)
+    dispatch({ type: VENUE_DETAILS_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: VENUE_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
   }
 }

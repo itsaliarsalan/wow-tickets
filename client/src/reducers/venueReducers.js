@@ -14,6 +14,9 @@ import {
   VENUE_DELETE_FAIL,
   VENUE_DELETE_RESET,
   VENUE_ADD_RESET,
+  VENUE_DETAILS_REQUEST,
+  VENUE_DETAILS_SUCCESS,
+  VENUE_DETAILS_FAIL,
 } from "../constants/venueConstants"
 
 export const venueListReducer = (
@@ -75,3 +78,18 @@ export const venueDeleteReducer = (state = {}, action) => {
   }
 }
 
+export const venueDetailsReducer = (
+  state = { venue: {}, loading: true },
+  action
+) => {
+  switch (action.type) {
+    case VENUE_DETAILS_REQUEST:
+      return { loading: true }
+    case VENUE_DETAILS_SUCCESS:
+      return { loading: false, venue: action.payload }
+    case VENUE_DETAILS_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}

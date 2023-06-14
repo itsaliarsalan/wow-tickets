@@ -15,6 +15,7 @@ import {
   ticketCreateReducer,
   ticketDeleteReducer,
   ticketDetailsReducer,
+  ticketListByEventReducer,
   ticketListReducer,
 } from "./reducers/ticketReducers"
 import {
@@ -22,6 +23,7 @@ import {
   venueDeleteReducer,
   venueUpdateReducer,
   venueCreateReducer,
+  venueDetailsReducer,
 } from "./reducers/venueReducers"
 import { userRegisterReducer, userSigninReducer } from "./reducers/userReducers"
 
@@ -41,10 +43,12 @@ const reducer = combineReducers({
   eventCreate: eventCreateReducer,
   eventDelete: eventDeleteReducer,
   ticketList: ticketListReducer,
+  ticketListByEvent: ticketListByEventReducer,
   ticketDetails: ticketDetailsReducer,
   ticketCreate: ticketCreateReducer,
   ticketDelete: ticketDeleteReducer,
   venueList: venueListReducer,
+  venueDetails: venueDetailsReducer,
   venueDelete: venueDeleteReducer,
   venueUpdate: venueUpdateReducer,
   venueCreate: venueCreateReducer,

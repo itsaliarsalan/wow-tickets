@@ -1,8 +1,8 @@
 import './Style.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { detailsEvent } from '../actions/eventActions'
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import {
   Box,
   Button,
@@ -14,20 +14,29 @@ import {
   CardContent,
   Stack,
 } from "@mui/material"
-
-import DateRangeIcon from '@mui/icons-material/DateRange'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
+import { detailsVenue } from "../actions/venueActions"
+import DateRangeIcon from "@mui/icons-material/DateRange"
+import LocationOnIcon from "@mui/icons-material/LocationOn"
+import { listTicketsByEvent } from "../actions/ticketActions"
 
 function SingleEvent(props) {
-	const dispatch = useDispatch()
-	const params = useParams()
-	const eventId = params.id
+  const dispatch = useDispatch()
+  const params = useParams()
+  const eventId = params.id
 
-	const eventDetails = useSelector((state) => state.eventDetails)
+  const eventDetails = useSelector((state) => state.eventDetails)
   const { loading, error, event } = eventDetails
+
+  const ticketListByEvent = useSelector((state) => state.ticketListByEvent)
+  const {
+    loading: loadingTicketList,
+    error: errorTicketList,
+    tickets,
+  } = ticketListByEvent
 
   useEffect(() => {
     dispatch(detailsEvent(eventId))
+    dispatch(listTicketsByEvent(eventId))
   }, [dispatch, eventId])
 
   return (
@@ -120,7 +129,13 @@ function SingleEvent(props) {
                   }}
                 >
                   <LocationOnIcon color='secondary' sx={{ marginTop: "3px" }} />
-                  {event.venue || "London Uk"}
+                  {event.venue.address}
+                  <br></br>
+                  {event.venue.city}
+                  <br></br>
+                  {event.venue.state}
+                  <br></br>
+                  {event.venue.country}
                 </Box>
               </Box>
 
@@ -178,81 +193,33 @@ function SingleEvent(props) {
             Available Tickets
           </Typography>
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-            <Card sx={{ width: { xs: "100%", sm: 250 } }}>
-              <CardContent>
-                <Stack justifyContent='space-between' direction='row'>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    VIP
+            {tickets.map((ticket) => (
+              <Card sx={{ width: { xs: "100%", sm: 250 } }}>
+                <CardContent>
+                  <Stack justifyContent='space-between' direction='row'>
+                    <Typography gutterBottom variant='h5' component='div'>
+                      {ticket.name}
+                    </Typography>
+                    <Typography gutterBottom variant='h5' component='div'>
+                      {ticket.price}$
+                    </Typography>
+                  </Stack>
+                  <Typography variant='body2' color='text.secondary'>
+                    {ticket.description}
                   </Typography>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    10$
+                  <Button variant='contained' fullWidth sx={{ marginTop: 2 }}>
+                    Buy Now
+                  </Button>
+                  <Typography
+                    variant='subtitle2'
+                    sx={{ marginTop: 1 }}
+                    color='text.secondary'
+                  >
+                    {/* 400 sold out already out of 500. */}
                   </Typography>
-                </Stack>
-                <Typography variant='body2' color='text.secondary'>
-                  Lizards are a widespread group of squamate reptiles.
-                </Typography>
-                <Button variant='contained' fullWidth sx={{ marginTop: 2 }}>
-                  Buy Now
-                </Button>
-                <Typography
-                  variant='subtitle2'
-                  sx={{ marginTop: 1 }}
-                  color='text.secondary'
-                >
-                  400 sold out already out of 500.
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{ width: { xs: "100%", sm: 250 } }}>
-              <CardContent>
-                <Stack justifyContent='space-between' direction='row'>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    VIP
-                  </Typography>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    10$
-                  </Typography>
-                </Stack>
-                <Typography variant='body2' color='text.secondary'>
-                  Lizards are a widespread group of squamate reptiles.
-                </Typography>
-                <Button variant='contained' fullWidth sx={{ marginTop: 2 }}>
-                  Buy Now
-                </Button>
-                <Typography
-                  variant='subtitle2'
-                  sx={{ marginTop: 1 }}
-                  color='text.secondary'
-                >
-                  400 sold out already out of 500.
-                </Typography>
-              </CardContent>
-            </Card>
-            <Card sx={{ width: { xs: "100%", sm: 250 } }}>
-              <CardContent>
-                <Stack justifyContent='space-between' direction='row'>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    VIP
-                  </Typography>
-                  <Typography gutterBottom variant='h5' component='div'>
-                    10$
-                  </Typography>
-                </Stack>
-                <Typography variant='body2' color='text.secondary'>
-                  Lizards are a widespread group of squamate reptiles.
-                </Typography>
-                <Button variant='contained' fullWidth sx={{ marginTop: 2 }}>
-                  Buy Now
-                </Button>
-                <Typography
-                  variant='subtitle2'
-                  sx={{ marginTop: 1 }}
-                  color='text.secondary'
-                >
-                  400 sold out already out of 500.
-                </Typography>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
           </Stack>
         </Container>
       )}

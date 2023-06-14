@@ -26,6 +26,19 @@ ticketRouter.get(
   })
 )
 
+ticketRouter.get(
+  "/event/:eventId",
+  expressAsyncHandler(async (req, res) => {
+    const ticket = await Ticket.find({ event: req.params.eventId })
+    if (ticket) {
+      res.send(ticket)
+    } else {
+      res.status(404).send({ message: "Ticket Not Found" })
+    }
+  })
+)
+
+
 // Ticket Create Route
 ticketRouter.post(
   "/",
