@@ -10,21 +10,26 @@ import {
 	eventDetailsReducer,
 	eventListReducer,
 } from './reducers/eventReducers'
+import {
+  ticketCreateReducer,
+  ticketDetailsReducer,
+  ticketListReducer,
+} from "./reducers/ticketReducers"
+import {
+  venueListReducer,
+  venueDeleteReducer,
+  venueUpdateReducer,
+  venueCreateReducer,
+} from "./reducers/venueReducers"
 import { userRegisterReducer, userSigninReducer } from "./reducers/userReducers"
 
-import {
-	venueListReducer,
-	venueDeleteReducer,
-	venueUpdateReducer,
-	venueCreateReducer,
-} from './reducers/venueReducers'
 
 const initialState = {
-	userSignin: {
-		userInfo: localStorage.getItem('userInfo')
-			? JSON.parse(localStorage.getItem('userInfo'))
-			: null,
-	},
+  userSignin: {
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : null,
+  },
 }
 
 const reducer = combineReducers({
@@ -33,6 +38,9 @@ const reducer = combineReducers({
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
   eventCreate: eventCreateReducer,
+  ticketList: ticketListReducer,
+  ticketDetails: ticketDetailsReducer,
+  ticketCreate: ticketCreateReducer,
   venueList: venueListReducer,
   venueDelete: venueDeleteReducer,
   venueUpdate: venueUpdateReducer,
