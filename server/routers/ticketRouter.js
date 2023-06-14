@@ -45,4 +45,18 @@ ticketRouter.post(
   })
 )
 
+ticketRouter.delete(
+  "/:id",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const ticket = await Ticket.findById(req.params.id)
+    if (ticket) {
+      const deletedTicket = await ticket.deleteOne()
+      res.send({ message: "Ticket Deleted", ticket: deletedTicket })
+    } else {
+      res.status(404).send({ message: "Ticket Not Found" })
+    }
+  })
+)
+
 export default ticketRouter

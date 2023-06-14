@@ -61,4 +61,18 @@ eventRouter.post(
   })
 )
 
+eventRouter.delete(
+  "/:id",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const event = await Event.findById(req.params.id)
+    if (event) {
+      const deletedEvent = await event.deleteOne()
+      res.send({ message: "Event Deleted", event: deletedEvent })
+    } else {
+      res.status(404).send({ message: "Venue Not Found" })
+    }
+  })
+)
+
 export default eventRouter

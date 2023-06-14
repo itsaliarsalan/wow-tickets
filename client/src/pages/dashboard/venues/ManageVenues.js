@@ -22,6 +22,8 @@ import MessageBox from "../../../components/MessageBox"
 import { DataGrid, GridToolbar } from "@mui/x-data-grid"
 import DashboardHeader from "../../../components/layout/DashboardHeader"
 import StaticsCardVariant1 from "../../../components/cards/StaticsCardVariant1"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function ManageVenues() {
   const dispatch = useDispatch()
@@ -155,6 +157,7 @@ function ManageVenues() {
   useEffect(() => {
     if (successDelete) {
       dispatch({ type: VENUE_DELETE_RESET })
+      toast.success("Venue Deleted Successfully.")
     }
     if (successUpdate) {
       dispatch({ type: VENUE_UPDATE_RESET })
@@ -216,28 +219,18 @@ function ManageVenues() {
                 />
               )}
             </div>
-            {loadingUpdate ? (
-              <LoadingBox>Updating Venue Record...</LoadingBox>
-            ) : errorUpdate ? (
-              <MessageBox variant='danger'>{errorUpdate}</MessageBox>
-            ) : successUpdate ? (
-              <MessageBox variant='success'>
-                Updated Venue Successfully.
-              </MessageBox>
-            ) : (
-              <span></span>
-            )}
-            {loadingDelete ? (
-              <LoadingBox>Deleting Venue Record...</LoadingBox>
-            ) : errorDelete ? (
-              <MessageBox variant='danger'>{errorDelete}</MessageBox>
-            ) : successDelete ? (
-              <MessageBox variant='success'>
-                Deleted Venue Successfully.
-              </MessageBox>
-            ) : (
-              <span></span>
-            )}
+            <ToastContainer
+              position='bottom-center'
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme='dark'
+            />
           </div>
         </div>
       </section>

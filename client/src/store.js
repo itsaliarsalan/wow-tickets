@@ -6,12 +6,14 @@ import {
 } from 'redux'
 import thunk from 'redux-thunk'
 import {
-	eventCreateReducer,
-	eventDetailsReducer,
-	eventListReducer,
-} from './reducers/eventReducers'
+  eventCreateReducer,
+  eventDeleteReducer,
+  eventDetailsReducer,
+  eventListReducer,
+} from "./reducers/eventReducers"
 import {
   ticketCreateReducer,
+  ticketDeleteReducer,
   ticketDetailsReducer,
   ticketListReducer,
 } from "./reducers/ticketReducers"
@@ -22,7 +24,6 @@ import {
   venueCreateReducer,
 } from "./reducers/venueReducers"
 import { userRegisterReducer, userSigninReducer } from "./reducers/userReducers"
-
 
 const initialState = {
   userSignin: {
@@ -38,9 +39,11 @@ const reducer = combineReducers({
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
   eventCreate: eventCreateReducer,
+  eventDelete: eventDeleteReducer,
   ticketList: ticketListReducer,
   ticketDetails: ticketDetailsReducer,
   ticketCreate: ticketCreateReducer,
+  ticketDelete: ticketDeleteReducer,
   venueList: venueListReducer,
   venueDelete: venueDeleteReducer,
   venueUpdate: venueUpdateReducer,

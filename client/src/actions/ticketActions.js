@@ -9,9 +9,12 @@ import {
   TICKET_ADD_REQUEST,
   TICKET_ADD_SUCCESS,
   TICKET_ADD_FAIL,
+  TICKET_DELETE_REQUEST,
+  TICKET_DELETE_SUCCESS,
+  TICKET_DELETE_FAIL,
 } from "../constants/ticketConstants"
 
-export const listEvents = () => async (dispatch) => {
+export const listTickets = () => async (dispatch) => {
   dispatch({
     type: TICKET_LIST_REQUEST,
   })
@@ -29,7 +32,7 @@ export const listEvents = () => async (dispatch) => {
   }
 }
 
-export const detailsEvent = (ticketId) => async (dispatch) => {
+export const detailsTicket = (ticketId) => async (dispatch) => {
   dispatch({ type: TICKET_DETAILS_REQUEST, payload: ticketId })
   try {
     const { data } = await Axios.get(`/api/tickets/${ticketId}`)
@@ -80,3 +83,25 @@ export const createTicket =
       dispatch({ type: TICKET_ADD_FAIL, payload: message })
     }
   }
+
+export const deleteTicket = (ticketId) => async (dispatch, getState) => {
+  dispatch({ type: TICKET_DELETE_REQUEST, payload: ticketId })
+
+  const {
+    userSignin: { userInfo },
+  } = getState()
+
+  try {
+    const { data } = Axios.delete(`/api/tickets/${ticketId}`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    })
+    dispatch({ type: TICKET_DELETE_SUCCESS })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    dispatch({ type: TICKET_DELETE_FAIL, payload: message })
+  }
+}
+  
