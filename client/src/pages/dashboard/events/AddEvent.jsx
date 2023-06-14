@@ -125,9 +125,9 @@ function AddEvent() {
     if (successCreate) {
       toast.success("Event Added Successfully!")
       dispatch({ type: EVENT_ADD_RESET })
-      setName('')
-      setDescription('')
-      setCategory('')
+      setName("")
+      setDescription("")
+      setCategory("")
       setThumbnail(null)
       setCover(null)
       setStartDate(null)
@@ -138,7 +138,7 @@ function AddEvent() {
       setVenueId(null)
     }
     dispatch(listVenues())
-  }, [dispatch, successCreate])
+  }, [dispatch, successCreate, userInfo])
 
   // Active venue for display preview
   const activeVenue = venues?.find((venue) => venue._id === venueId)
