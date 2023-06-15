@@ -7,14 +7,8 @@ const data = {
       email: "admin@wow-tickets.com",
       image: "/images/avatar/ali.png",
       password: bcrypt.hashSync("1234", 8),
+      stripe_acc_id: "",
       isAdmin: true,
-    },
-    {
-      name: "Adam",
-      email: "user@wow-tickets.com",
-      image: "/images/avatar/adam.png",
-      password: bcrypt.hashSync("1234", 8),
-      isAdmin: false,
     },
   ],
   events: [

@@ -5,8 +5,12 @@ import LoadingBox from "../components/LoadingBox"
 import MessageBox from "../components/MessageBox"
 import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { createStripeConnectedAccount } from "../actions/stripeActions"
 
 function RegisterForm() {
+  const stripeCreate = useSelector((state) => state.stripeCreate)
+  const { stripe_acc_id } = stripeCreate
+
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -23,7 +27,9 @@ function RegisterForm() {
     if (password !== confirmPassword) {
       alert("Password and confirm password are not match")
     } else {
-      dispatch(register(name, email, password))
+      dispatch(createStripeConnectedAccount(email))
+      if (stripe_acc_id)
+        dispatch(register(name, email, password, stripe_acc_id))
     }
   }
   useEffect(() => {

@@ -26,7 +26,7 @@ userRouter.post(
           _id: user._id,
           name: user.name,
           email: user.email,
-          image: user.image,
+          stripe_acc_id: user.stripe_acc_id,
           isAdmin: user.isAdmin,
           token: generateToken(user),
         })
@@ -44,12 +44,14 @@ userRouter.post(
       name: req.body.name,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
+      stripe_acc_id: req.body.stripe_acc_id,
     })
     const createdUser = await user.save()
     res.send({
       _id: createdUser._id,
       name: createdUser.name,
       email: createdUser.email,
+      stripe_acc_id: createdUser.stripe_acc_id,
       isAdmin: createdUser.isAdmin,
       token: generateToken(createdUser),
     })

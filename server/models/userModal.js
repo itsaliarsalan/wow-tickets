@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     image: { type: String },
     password: { type: String, required: true },
+    stripe_acc_id: { type: String },
     isAdmin: { type: Boolean, default: false, required: true },
   },
   {
