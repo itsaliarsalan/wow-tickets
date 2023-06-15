@@ -26,7 +26,7 @@ import {
   venueDetailsReducer,
 } from "./reducers/venueReducers"
 
-import { stripeCreateReducer } from "./reducers/stripeReducers"
+import { stripeConnectOnboardingReducer } from "./reducers/stripeReducers"
 import { userRegisterReducer, userSigninReducer } from "./reducers/userReducers"
 
 const initialState = {
@@ -54,7 +54,7 @@ const reducer = combineReducers({
   venueDelete: venueDeleteReducer,
   venueUpdate: venueUpdateReducer,
   venueCreate: venueCreateReducer,
-  stripeCreate: stripeCreateReducer,
+  stripeConnectOnboarding: stripeConnectOnboardingReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
