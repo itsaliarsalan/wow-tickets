@@ -10,7 +10,7 @@ export const createStripeConnectedAccount =
   async (dispatch) => {
     dispatch({ type: STRIPECONNECT_CREATE_REQUEST })
     try {
-      const stripe_acc_id = await Axios.post("/api/stripe/create", {
+      const { stripe_acc_id } = await Axios.post("/api/stripe/create", {
         email,
       })
       dispatch({

@@ -1,22 +1,12 @@
 import express from "express"
-import { link } from "fs"
+import dotenv from "dotenv"
 import Stripe from "stripe"
 
+dotenv.config()
 const stripeRouter = express.Router()
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 
-// Create Stripe Connect Account
-stripeRouter.post("/create", async (req, res) => {
-  try {
-    const account = await stripe.accounts.create({
-      type: "standard",
-      email: req.body.email,
-    })
-    res.send(account.id)
-  } catch (error) {
-    console.log(error)
-  }
-})
+
 
 stripeRouter.post("/onboard", async (req, res) => {
   const accountLink = await stripe.accountLinks.create({

@@ -1,11 +1,15 @@
 import express from "express"
+import dotenv from "dotenv"
 import expressAsyncHandler from "express-async-handler"
 import bcrypt from "bcryptjs"
 import data from "../data.js"
 import User from "../models/userModal.js"
+import Stripe from "stripe"
 import { generateToken, isAuth } from "../utils.js"
 
+dotenv.config()
 const userRouter = express.Router()
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 
 userRouter.get(
   "/seed",
@@ -40,12 +44,18 @@ userRouter.post(
 userRouter.post(
   "/register",
   expressAsyncHandler(async (req, res) => {
+    const account = await stripe.accounts.create({
+      type: "standard",
+      email: req.body.email,
+    })
+
     const user = new User({
       name: req.body.name,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
-      stripe_acc_id: req.body.stripe_acc_id,
+      stripe_acc_id: account.id,
     })
+
     const createdUser = await user.save()
     res.send({
       _id: createdUser._id,
