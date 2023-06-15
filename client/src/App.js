@@ -69,6 +69,7 @@ function App() {
 					{/* End */}
 
 					{/* Home Page Route */}
+					<Route path="/checkout" element={<Checkout />} />
 					<Route path="/events" element={<ExploreEvents />} />
 					<Route path="/events/:id" exact element={<SingleEvent />}></Route>
 					<Route path="/signin" element={<Signin />} />
