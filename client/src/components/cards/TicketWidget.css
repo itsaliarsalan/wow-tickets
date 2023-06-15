@@ -1,0 +1,71 @@
+widget {
+	filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+}
+@media (min-width: 768px) {
+	widget[type="ticket"] {
+		max-width: 255px;
+	}
+}
+widget[type="ticket"] .top,
+widget[type="ticket"] .bottom,
+widget[type="ticket"] .rip {
+	background-color: #fff;
+}
+widget[type="ticket"] .top {
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+widget[type="ticket"] .bottom {
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 18px;
+	height: 30px;
+	padding-top: 10px;
+}
+widget[type="ticket"] .bottom .buy {
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #aa1894;
+	padding: 0 18px;
+	line-height: 30px;
+	border-radius: 15px;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	transition: all 200ms;
+}
+widget[type="ticket"] .bottom .buy:hover {
+	background-color: #761067;
+}
+widget[type="ticket"] .rip {
+	height: 32px;
+	margin: 0 18px;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAACCAYAAAB7Xa1eAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAaSURBVBhXY5g7f97/2XPn/AcCBmSMQ+I/AwB2eyNBlrqzUQAAAABJRU5ErkJggg==);
+	background-size: 4px 2px;
+	background-repeat: repeat-x;
+	background-position: center;
+	position: relative;
+	box-shadow: 0 1px 0 0 #fff, 0 -1px 0 0 #fff;
+}
+widget[type="ticket"] .rip:before,
+widget[type="ticket"] .rip:after {
+	content: "";
+	position: absolute;
+	width: 53px;
+	height: 53px;
+	top: 50%;
+	transform: translate(-50%, -50%) rotate(45deg);
+	border: 10px solid transparent;
+	border-top-color: #ffffff;
+	border-right-color: #ffffff;
+	border-radius: 100%;
+	pointer-events: none;
+}
+widget[type="ticket"] .rip:before {
+	left: -17px;
+}
+widget[type="ticket"] .rip:after {
+	transform: translate(-50%, -50%) rotate(225deg);
+	right: -71px;
+}

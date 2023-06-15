@@ -5,7 +5,7 @@
 	font-weight: 400;
 }
 .hero {
-	background-image: url('../assets/cover.jpg');
+	background-image: url("../assets/cover.jpg");
 	padding: 50px 0;
 	background-size: cover;
 	background-position: center;
@@ -103,7 +103,7 @@
 	}
 }
 .event-card::before {
-	content: '';
+	content: "";
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -192,7 +192,7 @@
 .cta .content {
 	text-align: center;
 	padding: 4rem 2rem;
-	background-image: url('../assets/cover.jpg');
+	background-image: url("../assets/cover.jpg");
 	background-size: cover;
 	position: relative;
 }
@@ -258,7 +258,7 @@ footer .nav-item {
 /* Page banner component */
 .page-banner {
 	min-height: 18rem;
-	background-image: url('../assets/cover.jpg');
+	background-image: url("../assets/cover.jpg");
 	background-size: cover;
 	background-position: 50% 60%;
 }
@@ -351,7 +351,7 @@ section.explore-events {
 
 /* events page */
 .event-banner {
-	background-image: url('../assets/event-banner.jpg');
+	background-image: url("../assets/event-banner.jpg");
 	background-size: cover;
 	/* background-position: 50% 70%; */
 	min-height: 60vh;
@@ -363,7 +363,7 @@ section.explore-events {
 	color: #fff;
 }
 .event-banner::before {
-	content: '';
+	content: "";
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -513,7 +513,7 @@ form.login input {
 form.login input:focus {
 	outline: none;
 }
-form.login button[type='submit'] {
+form.login button[type="submit"] {
 	margin-top: 5px;
 }
 form.login a {
