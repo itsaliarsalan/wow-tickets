@@ -1,6 +1,14 @@
-import React from "react"
 import "./TicketWidget.css"
-import { Box, Typography } from "@mui/material"
+import {
+	Box,
+	Button,
+	FormControl,
+	MenuItem,
+	Select,
+	Typography,
+} from "@mui/material"
+import LockScroll from "../layout/LockScroll"
+import { useState } from "react"
 
 const TicketWidget = props => {
 	function returnEventName(name) {
@@ -29,8 +37,13 @@ const TicketWidget = props => {
 			return ""
 		}
 	}
+
+	// State to track when menu is open and lock scroll
+	const [disableScroll, setDisableScroll] = useState(false)
+	// State to store active value
+	const [activeValue, setActiveValue] = useState(0)
 	return (
-		<widget type="ticket">
+		<Box className="widget" type="ticket" sx={{ width: "100%" }}>
 			<Box
 				className="content"
 				sx={{
@@ -71,12 +84,42 @@ const TicketWidget = props => {
 			</Box>
 			<div className="rip"></div>
 			<Box sx={{ backgroundColor: "#fff", paddingY: 1, paddingX: 2 }}></Box>
-			<div className="bottom">
-				<a className="buy" href="#">
+			<Box className="bottom" sx={{ display: "flex", gap: 1 }}>
+				<Button variant="contained" size="small" sx={{ minWidth: 150 }}>
 					BUY TICKET
-				</a>
-			</div>
-		</widget>
+				</Button>
+				<FormControl fullWidth size="small">
+					<Select
+						labelId="demo-simple-select-label"
+						id="demo-simple-select"
+						value={activeValue}
+						onChange={e => setActiveValue(e.target.value)}
+						onOpen={() => setDisableScroll(true)}
+						onClose={() => setDisableScroll(false)}
+						MenuProps={{
+							PaperProps: {
+								style: {
+									maxHeight: 200,
+								},
+							},
+						}}
+					>
+						<MenuItem value={0}>0</MenuItem>
+						<MenuItem value={1}>1</MenuItem>
+						<MenuItem value={2}>2</MenuItem>
+						<MenuItem value={3}>3</MenuItem>
+						<MenuItem value={4}>4</MenuItem>
+						<MenuItem value={5}>5</MenuItem>
+						<MenuItem value={6}>6</MenuItem>
+						<MenuItem value={7}>7</MenuItem>
+						<MenuItem value={8}>8</MenuItem>
+						<MenuItem value={9}>9</MenuItem>
+					</Select>
+				</FormControl>
+			</Box>
+
+			{disableScroll && <LockScroll />}
+		</Box>
 	)
 }
 

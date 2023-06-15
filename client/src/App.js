@@ -28,6 +28,7 @@ import ManageTickets from "./pages/dashboard/events/ManageTickets"
 import SellOrders from "./pages/dashboard/orders/SellOrders"
 import PurchaseOrders from "./pages/dashboard/orders/PurchaseOrders"
 import ManageUsers from "./pages/dashboard/users/ManageUsers"
+import Checkout from "./pages/Checkout"
 
 function App() {
 	const userSignin = useSelector(state => state.userSignin)
@@ -61,6 +62,7 @@ function App() {
 					{/* End */}
 
 					{/* Home Page Route */}
+					<Route path="/checkout" element={<Checkout />} />
 					<Route path="/events" element={<ExploreEvents />} />
 					<Route path="/events/:id" exact element={<SingleEvent />}></Route>
 					<Route path="/signin" element={<Signin />} />

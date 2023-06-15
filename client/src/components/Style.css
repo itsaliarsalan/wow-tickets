@@ -1,73 +1,3 @@
-/* Top navigation styles */
-body {
-	padding-top: 65px;
-}
-.top-nav {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 20;
-	background-color: #ffffff;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-.top-nav .container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	/* padding: 10px 20px; */
-}
-
-.top-nav .menu {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.top-nav .logo {
-	height: 4.2rem !important;
-	margin-right: 0;
-}
-.top-nav .logo img {
-	height: 100%;
-}
-
-.top-nav .menu li:not(:last-child) {
-	margin-right: 20px;
-}
-.top-nav .menu a {
-	color: #333333;
-	text-decoration: none;
-}
-.top-nav .nav-cta {
-	display: inline-block;
-	background-color: var(--primary-color);
-	color: #fff !important;
-	padding: 12px 24px;
-	border-radius: 20px;
-	background: linear-gradient(
-		100deg,
-		hsla(301, 79%, 35%, 1) 0%,
-		hsla(1, 98%, 67%, 1) 100%
-	);
-	transition: 500ms;
-}
-.top-nav .mobile-cta {
-	display: none;
-}
-.top-nav .nav-cta:hover {
-	background-color: var(--primary-color-hover);
-}
-.top-nav .mobile-cta {
-	display: none;
-}
-.overlay {
-	display: none;
-}
-
 /* Alert */
 .loading {
 	display: block !important;
@@ -157,12 +87,12 @@ body {
 	}
 
 	.top-nav .menu-icon::before {
-		content: '';
+		content: "";
 		top: -8px;
 	}
 
 	.top-nav .menu-icon::after {
-		content: '';
+		content: "";
 		bottom: -8px;
 	}
 
@@ -255,7 +185,7 @@ body {
 }
 
 .event-card::before {
-	content: '';
+	content: "";
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -295,7 +225,7 @@ body {
 /* Page banner component */
 .page-banner {
 	min-height: 18rem;
-	background-image: url('../assets/cover.jpg');
+	background-image: url("../assets/cover.jpg");
 	background-size: cover;
 	background-position: 50% 60%;
 }
@@ -351,7 +281,7 @@ form.login input {
 form.login input:focus {
 	outline: none;
 }
-form.login button[type='submit'] {
+form.login button[type="submit"] {
 	margin-top: 5px;
 }
 form.login a {

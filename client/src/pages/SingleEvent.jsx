@@ -13,6 +13,8 @@ import {
 	Typography,
 	CardContent,
 	Stack,
+	Avatar,
+	Grid,
 } from "@mui/material"
 import { detailsVenue } from "../actions/venueActions"
 import DateRangeIcon from "@mui/icons-material/DateRange"
@@ -61,179 +63,154 @@ function SingleEvent(props) {
 					error occured while fetching event's details
 				</div>
 			) : (
-				<Container sx={{ marginY: 4 }} maxWidth="md">
-					{/* Banner */}
-					<Box sx={{ position: "relative", marginBottom: -8 }}>
-						{/* Cover Image */}
-						<Paper
-							sx={{
-								height: "20rem",
-								width: "100%",
-								overflow: "hidden",
-								borderRadius: 4,
-								position: "relative",
-								"& img": { width: "100%", height: "100%", objectFit: "cover" },
-							}}
-						>
-							<img src={event.cover} alt="event banner" />
-						</Paper>
-						{/* Chips */}
-						<Box
-							sx={{
-								position: "absolute",
-								top: { xs: 20, md: "inherit" },
-								bottom: { xs: 0, md: 170 },
-								right: 50,
-							}}
-						>
-							<Chip color="primary" label="Film and Festival" />{" "}
-							<Chip color="primary" label="18+ Only" />
-						</Box>
-						{/* Event Image */}
-						<Paper
-							sx={{
-								width: 150,
-								height: 150,
-								overflow: "hidden",
-								borderRadius: 3,
-								position: "relative",
-								bottom: 80,
-								left: { xs: 0, md: 50 },
-								right: { xs: 0, md: "inherit" },
-								marginX: { xs: "auto", md: "inherit" },
-								"& img": {
+				event && (
+					<Container sx={{ marginY: 4 }} maxWidth="md">
+						{/* Banner */}
+						<Box sx={{ position: "relative", marginBottom: -8 }}>
+							{/* Cover Image */}
+							<Paper
+								sx={{
+									height: "20rem",
 									width: "100%",
-									height: "100%",
-									objectFit: "cover",
-								},
-							}}
-						>
-							<img src={event.thumbnail} alt="event image" />
-						</Paper>
-					</Box>
-					<Box
-						sx={
-							{
-								// display: "flex",
-								// alignItems: "center",
-								// justifyContent: "space-between",
-								// flexDirection: { xs: "column", md: "row" },
-								// overflow: "hidden",
-							}
-						}
-					>
-						<h2 style={{ marginBottom: "12px", lineHeight: "1.6rem" }}>
-							{event.name}
-						</h2>
-						{/* Meta data */}
-						<Box
-							sx={{
-								display: "flex",
-								gap: 2,
-								justifyContent: "space-between",
-								overflow: "hidden",
-							}}
-						>
+									overflow: "hidden",
+									borderRadius: 4,
+									position: "relative",
+									"& img": {
+										width: "100%",
+										height: "100%",
+										objectFit: "cover",
+									},
+								}}
+							>
+								<img src={event.cover} alt="event banner" />
+							</Paper>
+							{/* Chips */}
+							<Box
+								sx={{
+									position: "absolute",
+									top: { xs: 20, md: "inherit" },
+									bottom: { xs: 0, md: 170 },
+									right: 50,
+								}}
+							>
+								<Chip color="primary" label="Film and Festival" />{" "}
+								<Chip color="primary" label="18+ Only" />
+							</Box>
+							{/* Event Image */}
+							<Paper
+								sx={{
+									width: 150,
+									height: 150,
+									overflow: "hidden",
+									borderRadius: 3,
+									position: "relative",
+									bottom: 80,
+									left: { xs: 0, md: 50 },
+									right: { xs: 0, md: "inherit" },
+									marginX: { xs: "auto", md: "inherit" },
+									"& img": {
+										width: "100%",
+										height: "100%",
+										objectFit: "cover",
+									},
+								}}
+							>
+								<img src={event.thumbnail} alt="event image" />
+							</Paper>
+						</Box>
+						<Box sx={{ textAlign: { xs: "center", sm: "start" } }}>
+							<Typography
+								variant="subtitle1"
+								sx={{
+									textTransform: "uppercase",
+									fontWeight: 600,
+								}}
+								color="primary"
+							>
+								{formatDate(event.startDate)} - {formatDate(event.endDate)}
+							</Typography>
+							<Typography variant="h2" sx={{ fontWeight: 500 }}>
+								{event.name}
+							</Typography>
+
+							{/* Address details */}
 							<Box
 								sx={{
 									display: "flex",
-									alignItems: { xs: "start", md: "center" },
-									marginTop: { xs: "2px", md: 0 },
-									// animation: {
-									// 	xs: "textLeftToRight 3s linear infinite alternate",
-									// 	sm: "inherit",
-									// },
-								}}
-							>
-								<LocationOnIcon color="secondary" />
-								<Box
-									sx={{ display: { md: "flex" }, alignItems: "center", gap: 1 }}
-								>
-									<p>{event.venue.address}</p>
-									<p>{event.venue.city}</p>
-									<p>{event.venue.state}</p>
-									<p>{event.venue.country}</p>
-								</Box>
-							</Box>
-
-							<Box
-								sx={{
-									display: { md: "flex" },
 									alignItems: "center",
-									gap: 2,
-									marginRight: 2,
+									gap: 1,
+									justifyContent: { xs: "center", sm: "start" },
+									"& p": {
+										fontSize: { xs: "16px", md: "18px" },
+										color: "#626A73",
+									},
 								}}
 							>
-								<Box
-									sx={{
-										overflow: "hidden",
-										whiteSpace: "nowrap",
-										// maxWidth: { xs: 120, md: "inherit" },
-									}}
-								>
-									<Box
-										sx={{
-											display: "flex",
-											alignItems: "start",
-											gap: "2px",
-											// animation: {
-											// 	xs: "textLeftToRight 3s linear infinite alternate",
-											// 	md: "inherit",
-											// },
-										}}
-									>
-										<DateRangeIcon
-											color="secondary"
-											sx={{ marginTop: "3px" }}
-										/>
-										{formatDate(event.startDate) || "20 June, 2023"}
-									</Box>
-								</Box>
-								<Box
-									sx={{
-										overflow: "hidden",
-										whiteSpace: "nowrap",
-										// maxWidth: { xs: 120, md: "inherit" },
-									}}
-								>
-									<Box
-										sx={{
-											display: "flex",
-											alignItems: "start",
-											gap: "2px",
-											// animation: {
-											// 	xs: "textLeftToRight 3s linear infinite alternate",
-											// 	md: "inherit",
-											// },
-										}}
-									>
-										<DateRangeIcon
-											color="secondary"
-											sx={{ marginTop: "3px" }}
-										/>
-										{formatDate(event.endDate) || "23 June, 2023"}
-									</Box>
-								</Box>
+								<p>{event.venue.address}</p>
+								<p>{event.venue.city}</p>
+								<p>{event.venue.state}</p>
+								<p>{event.venue.country}</p>
 							</Box>
 						</Box>
-					</Box>
-					<p style={{ color: "var(--secondary-typo-color)", marginTop: 14 }}>
-						{event.description}
-					</p>
+						<hr style={{ marginTop: "1rem" }} />
 
-					<Typography variant="h4" style={{ marginTop: 32, marginBottom: 24 }}>
-						Available Tickets
-					</Typography>
-					<Stack direction={{ xs: "column", sm: "row" }} spacing={4}>
-						{tickets.map(ticket => (
-							<TicketWidget
-								name={ticket.name}
-								description={ticket.description}
-								price={ticket.price}
-							/>
-						))}
-					</Stack>
-				</Container>
+						<Stack direction={{ xs: "column", md: "row" }} spacing={2}>
+							<Paper
+								sx={{
+									background: "#fff",
+									padding: 3,
+									textAlign: { xs: "center", md: "start" },
+								}}
+							>
+								<Typography variant="h5" gutterBottom>
+									Details
+								</Typography>
+								<Typography variant="body" color="text.secondary">
+									{event.description}
+								</Typography>
+							</Paper>
+							<Paper
+								sx={{
+									background: "#fff",
+									padding: 3,
+									minWidth: 280,
+									textAlign: "center",
+								}}
+							>
+								<Typography variant="h5" gutterBottom>
+									About Host
+								</Typography>
+								<Box>
+									<Avatar sx={{ marginX: "auto", width: 56, height: 56 }}>
+										N
+									</Avatar>
+									<Box>
+										<Typography>Name</Typography>
+										<Typography>4 Past Events</Typography>
+									</Box>
+								</Box>
+							</Paper>
+						</Stack>
+
+						<Typography
+							variant="h4"
+							style={{ marginTop: 32, marginBottom: 24 }}
+						>
+							Available Tickets
+						</Typography>
+						<Grid spacing={2} container sx={{ marginBottom: 8 }}>
+							{tickets.map(ticket => (
+								<Grid item xs={12} sm={4} key={ticket.id}>
+									<TicketWidget
+										name={ticket.name}
+										description={ticket.description}
+										price={ticket.price}
+									/>
+								</Grid>
+							))}
+						</Grid>
+					</Container>
+				)
 			)}
 		</>
 	)

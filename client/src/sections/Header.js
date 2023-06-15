@@ -1,13 +1,13 @@
-import React from "react";
-import "./Style.css";
-import Navbar from "../components/Navbar";
+import React from "react"
+import "./Style.css"
+import Navbar from "../components/navbar/Navbar"
 
 function Header() {
-  return (
-    <header>
-      <Navbar />
-    </header>
-  );
+	return (
+		<header>
+			<Navbar />
+		</header>
+	)
 }
 
-export default Header;
+export default Header
