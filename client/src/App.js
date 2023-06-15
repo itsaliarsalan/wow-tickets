@@ -29,6 +29,7 @@ import SellOrders from "./pages/dashboard/orders/SellOrders"
 import PurchaseOrders from "./pages/dashboard/orders/PurchaseOrders"
 import ManageUsers from "./pages/dashboard/users/ManageUsers"
 import Checkout from "./pages/Checkout"
+import Profile from "./pages/user/Profile"
 
 function App() {
 	const userSignin = useSelector(state => state.userSignin)
@@ -57,6 +58,7 @@ function App() {
 							<Route path="payments" element={<Payments />} />
 							<Route path="venues/add" element={<AddVenue />} />
 							<Route path="venues/manage" element={<ManageVenues />} />
+							<Route path="profile" element={<Profile />} />
 						</Route>
 					)}
 					{/* End */}

@@ -159,7 +159,7 @@ function Navbar() {
 									transformOrigin={{ horizontal: "right", vertical: "top" }}
 									anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
 								>
-									<MenuItem onClick={handleAvatarClose}>
+									<MenuItem onClick={() => navigate("/dashboard/profile")}>
 										<Avatar />{" "}
 										<Typography
 											variant="body"

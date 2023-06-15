@@ -82,9 +82,9 @@
 .dashboard-menu .nav-link:hover {
 	color: var(--primary-typo-color-hover);
 }
-.dashboard-menu .nav-item.dropdown {
+.dashboard-menu .dropdown {
 	display: block;
-	line-height: 25px;
+	line-height: 24px;
 }
 .dashboard-menu .dropdown-menu {
 	padding-left: 30px;
