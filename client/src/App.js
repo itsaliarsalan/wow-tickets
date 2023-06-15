@@ -57,8 +57,8 @@ function App() {
               <Route path='organizers' element={<Organizers />} />
               <Route path='orders' element={<Orders />} />
               <Route path='payments' element={<Payments />}>
-                <Route path='/success' element={<PaymentSuccess />} />
-                <Route path='/fail' element={<StripeFailed />} />
+                <Route path='success' element={<PaymentSuccess />} />
+                <Route path='fail' element={<StripeFailed />} />
               </Route>
 
               <Route path='venues/add' element={<AddVenue />} />
@@ -67,18 +67,18 @@ function App() {
           )}
           {/* End */}
 
-					{/* Home Page Route */}
-					<Route path="/events" element={<ExploreEvents />} />
-					<Route path="/events/:id" exact element={<SingleEvent />}></Route>
-					<Route path="/signin" element={<Signin />} />
-					<Route path="/signup" element={<Signup />} />
-					<Route index element={<Home />} />
-					{/* End */}
-				</Routes>
-			</main>
-			<Footer />
-		</AppWrapper>
-	)
+          {/* Home Page Route */}
+          <Route path='/events' element={<ExploreEvents />} />
+          <Route path='/events/:id' exact element={<SingleEvent />}></Route>
+          <Route path='/signin' element={<Signin />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route index element={<Home />} />
+          {/* End */}
+        </Routes>
+      </main>
+      <Footer />
+    </AppWrapper>
+  )
 }
 
 export default App
