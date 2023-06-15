@@ -61,9 +61,9 @@ function App() {
 								<Route path="success" element={<PaymentSuccess />} />
 								<Route path="fail" element={<StripeFailed />} />
 							</Route>
-
 							<Route path="venues/add" element={<AddVenue />} />
 							<Route path="venues/manage" element={<ManageVenues />} />
+							<Route path="profile" element={<Profile />} />
 						</Route>
 					)}
 					{/* End */}
