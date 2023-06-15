@@ -19,6 +19,8 @@ import Audience from "./pages/dashboard/Audience"
 import Organizers from "./pages/dashboard/Organizers"
 import Orders from "./pages/dashboard/Orders"
 import Payments from "./pages/dashboard/Payments"
+import PaymentSuccess from "./pages/dashboard/PaymentSuccess"
+import StripeFailed from "./pages/dashboard/StripeFailed"
 import { useSelector } from "react-redux"
 import AddVenue from "./pages/dashboard/venues/AddVenue"
 import ManageVenues from "./pages/dashboard/venues/ManageVenues"
@@ -55,16 +57,18 @@ function App() {
 							<Route path="audience" element={<Audience />} />
 							<Route path="organizers" element={<Organizers />} />
 							<Route path="orders" element={<Orders />} />
-							<Route path="payments" element={<Payments />} />
+							<Route path="payments" element={<Payments />}>
+								<Route path="success" element={<PaymentSuccess />} />
+								<Route path="fail" element={<StripeFailed />} />
+							</Route>
+
 							<Route path="venues/add" element={<AddVenue />} />
 							<Route path="venues/manage" element={<ManageVenues />} />
-							<Route path="profile" element={<Profile />} />
 						</Route>
 					)}
 					{/* End */}
 
 					{/* Home Page Route */}
-					<Route path="/checkout" element={<Checkout />} />
 					<Route path="/events" element={<ExploreEvents />} />
 					<Route path="/events/:id" exact element={<SingleEvent />}></Route>
 					<Route path="/signin" element={<Signin />} />

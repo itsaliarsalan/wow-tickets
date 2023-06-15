@@ -11,8 +11,10 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 stripeRouter.post("/onboard", async (req, res) => {
   const accountLink = await stripe.accountLinks.create({
     account: req.body.stripe_acc_id,
-    refresh_url: "http://localhost:3000",
-    return_url: "http://localhost:3000",
+    refresh_url:
+      req.protocol + "://" + req.get("host") + "dashboard/payments/success",
+    return_url:
+      req.protocol + "://" + req.get("host") + "dashboard/payments/fail",
     type: "account_onboarding",
   })
   res.send(accountLink.url)
