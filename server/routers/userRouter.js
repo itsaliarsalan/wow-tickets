@@ -31,6 +31,7 @@ userRouter.post(
           name: user.name,
           email: user.email,
           stripe_acc_id: user.stripe_acc_id,
+          stripe_cus_id: user.stripe_cus_id,
           isAdmin: user.isAdmin,
           token: generateToken(user),
         })
@@ -48,12 +49,16 @@ userRouter.post(
       type: "standard",
       email: req.body.email,
     })
+    const customer = await stripe.customers.create({
+      email: req.body.email,
+    })
 
     const user = new User({
       name: req.body.name,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
       stripe_acc_id: account.id,
+      stripe_cus_id: customer.id,
     })
 
     const createdUser = await user.save()
@@ -62,6 +67,7 @@ userRouter.post(
       name: createdUser.name,
       email: createdUser.email,
       stripe_acc_id: createdUser.stripe_acc_id,
+      stripe_cus_id: createdUser.stripe_cus_id,
       isAdmin: createdUser.isAdmin,
       token: generateToken(createdUser),
     })

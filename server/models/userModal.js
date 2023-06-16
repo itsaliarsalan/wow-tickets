@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema(
     image: { type: String },
     password: { type: String, required: true },
     stripe_acc_id: { type: String },
+    stripe_cus_id: { type: String },
     isAdmin: { type: Boolean, default: false, required: true },
   },
   {

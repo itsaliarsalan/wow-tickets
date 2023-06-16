@@ -16,6 +16,12 @@ const ticketSchema = new mongoose.Schema(
       ref: "Event",
       default: null,
     },
+    stripe_pro_id: {
+      type: String,
+    },
+    stripe_pri_id: {
+      type: String,
+    },
 
     ticketStatus: { type: Boolean },
   },

@@ -26,7 +26,10 @@ import {
   venueDetailsReducer,
 } from "./reducers/venueReducers"
 
-import { stripeConnectOnboardingReducer } from "./reducers/stripeReducers"
+import {
+  stripCheckoutSessionReducer,
+  stripeConnectOnboardingReducer,
+} from "./reducers/stripeReducers"
 import { userRegisterReducer, userSigninReducer } from "./reducers/userReducers"
 
 const initialState = {
@@ -55,6 +58,7 @@ const reducer = combineReducers({
   venueUpdate: venueUpdateReducer,
   venueCreate: venueCreateReducer,
   stripeConnectOnboarding: stripeConnectOnboardingReducer,
+  stripeCheckout: stripCheckoutSessionReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

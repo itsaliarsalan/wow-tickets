@@ -30,7 +30,7 @@ export const listEvents = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: EVENT_LIST_FAIL,
-      payload: error.message,
+      payload: error,
     })
   }
 }
