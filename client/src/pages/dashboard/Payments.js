@@ -11,21 +11,15 @@ function Payments() {
   const stripeConnectOnboarding = useSelector(
     (state) => state.stripeConnectOnboarding
   )
-  const { url } = stripeConnectOnboarding
+  const { loading, error, success, url } = stripeConnectOnboarding
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [onboardingURI, setOnboardingURI] = useState("")
-
   useEffect(() => {
-    if (userInfo) {
-      dispatch(stripeOnboarding(userInfo.stripe_acc_id))
-    }
-    if (url) {
-      setOnboardingURI(url)
-    }
-  }, [dispatch, userInfo, url])
+    dispatch(stripeOnboarding(userInfo.stripe_acc_id))
+  }, [dispatch, userInfo.stripe_acc_id])
+
   return (
     <Box sx={{ margin: "30px 0", minHeight: 300 }}>
       <section className='content'>
@@ -39,15 +33,15 @@ function Payments() {
         >
           To view and manage payment details, you need to connect your wallet
         </Typography>
-        {onboardingURI ? (
-          <Button
-            variant='contained'
-            onClick={() => {
-              navigate(onboardingURI)
-            }}
-          >
-            Connect Stripe
-          </Button>
+        {loading ? (
+          <span>Loading....</span>
+        ) : error ? (
+          <span>{error}</span>
+        ) : (
+          <span></span>
+        )}
+        {success ? (
+          <a href={url.data}>Complete Your Stripe Onboarding </a>
         ) : (
           <span></span>
         )}

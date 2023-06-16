@@ -9,20 +9,18 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 stripeRouter.post("/onboard", async (req, res) => {
   const accountLink = await stripe.accountLinks.create({
     account: req.body.stripe_acc_id,
-    refresh_url:
-      req.protocol + "://" + req.get("host") + "dashboard/payments/success",
-    return_url:
-      req.protocol + "://" + req.get("host") + "dashboard/payments/fail",
+    refresh_url: "http://localhost:3000/dashboard/payments/fail",
+    return_url: "http://localhost:3000/dashboard/payments/success",
     type: "account_onboarding",
   })
+  console.log(accountLink.url)
   res.send(accountLink.url)
 })
 
 stripeRouter.post("/charge", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-    success_url:
-      req.protocol + "://" + req.get("host") + "dashboard/payments/success",
+    success_url: "http://localhost:3000/dashboard/payments/success",
     line_items: [
       {
         price: "price_1NJc7pB9Mcrw68O0zarrgO7J",
@@ -40,6 +38,6 @@ stripeRouter.post("/charge", async (req, res) => {
     mode: "payment",
   })
   const url = session.url
-  res.send(url)
+  res.send(url.data)
 })
 export default stripeRouter

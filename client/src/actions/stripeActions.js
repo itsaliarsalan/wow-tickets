@@ -14,8 +14,9 @@ export const stripeOnboarding = (stripe_acc_id) => async (dispatch) => {
     payload: { stripe_acc_id },
   })
   try {
-    const { url } = await Axios.post("/api/stripe/onboard", { stripe_acc_id })
+    const url = await Axios.post("/api/stripe/onboard", { stripe_acc_id })
     dispatch({ type: STRIPECONNECT_ONBOARDING_SUCCESS, payload: url })
+    console.log(url)
   } catch (error) {
     dispatch({
       type: STRIPECONNECT_ONBOARDING_FAIL,
