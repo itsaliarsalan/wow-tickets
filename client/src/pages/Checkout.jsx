@@ -24,6 +24,7 @@ export default function Checkout() {
   const dispatch = useDispatch()
 
   const items = JSON.parse(localStorage.getItem("checkout"))
+
   const [qty, setQty] = useState(items?.qty || 0)
 
   const stripeCheckout = useSelector((state) => state.stripeCheckout)
@@ -35,10 +36,10 @@ export default function Checkout() {
   const handlePay = () => {
     dispatch(
       getCheckoutSessionUrl(
-        items?.stripe_pri_id,
+        items?.ticket?.stripe_pri_id,
         items?.qty,
-        items?.price,
-        items?.stripe_acc_id
+        items?.ticket?.price,
+        items?.ticket?.user?.stripe_acc_id
       )
     )
   }
@@ -85,8 +86,8 @@ export default function Checkout() {
   const rows = [
     {
       id: 1,
-      col1: items?.name,
-      col2: items?.price,
+      col1: items?.ticket?.name,
+      col2: items?.ticket?.price,
       col3: qty,
     },
   ]
@@ -139,7 +140,7 @@ export default function Checkout() {
               >
                 <Typography variant='subtitle1'>Tickets</Typography>
                 <Typography variant='body1' color='text.secondary'>
-                  {items?.price} * {items?.qty} QTY
+                  {items?.ticket?.price} * {items?.qty} QTY
                 </Typography>
               </Box>
               <Box
@@ -163,7 +164,7 @@ export default function Checkout() {
                 Total Amount
               </Typography>
               <Typography variant='h5' gutterBottom>
-                {items.price * items.qty}
+                {items?.ticket?.price * items.qty}
               </Typography>
             </Box>
           </Paper>

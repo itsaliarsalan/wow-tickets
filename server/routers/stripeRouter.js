@@ -25,6 +25,7 @@ stripeRouter.post("/charge", async (req, res) => {
       {
         price: req.body.stripe_pri_id,
         quantity: req.body.qty,
+
       },
     ],
     currency: "eur",

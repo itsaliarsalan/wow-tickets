@@ -1,24 +1,25 @@
 import "./TicketWidget.css"
 import {
-	Box,
-	Button,
-	FormControl,
-	MenuItem,
-	Select,
-	Typography,
+  Box,
+  Button,
+  FormControl,
+  MenuItem,
+  Select,
+  Typography,
 } from "@mui/material"
 import { useState } from "react"
 import LockScroll from "../layout/LockScroll"
 import { useNavigate } from "react-router-dom"
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory"
 
 const TicketWidget = (props) => {
-  let ticketAddress = props._id
   const navigate = useNavigate()
-
   function returnEventName(name) {
-    const openingBracketIndex = name.indexOf("(")
+    const openingBracketIndex = name ? name.indexOf("(") : ""
     if (openingBracketIndex !== -1) {
-      const eventName = name.substring(0, openingBracketIndex).trim()
+      const eventName = name
+        ? name.substring(0, openingBracketIndex).trim()
+        : ""
       return eventName
     } else {
       return name.trim()
@@ -68,13 +69,13 @@ const TicketWidget = (props) => {
           }}
         >
           <div className='event-name'>
-            <h3>{returnEventName(props.name)}</h3>
+            <h3>{returnEventName(props.props.name)}</h3>
             <h5 style={{ fontWeight: 400 }}>
-              {returnTextWithBracket(props.name)}
+              {returnTextWithBracket(props.props.name)}
             </h5>
           </div>
           <div classNameName='ticket-price'>
-            <h2 style={{ color: "#036204" }}>${props.price}</h2>
+            <h2 style={{ color: "#036204" }}>€{props.props.price}</h2>
           </div>
         </Box>
         {/* Description */}
@@ -84,7 +85,7 @@ const TicketWidget = (props) => {
           gutterBottom
           sx={{ marginTop: 1 }}
         >
-          {props.description}
+          {props.props.description}
         </Typography>
       </Box>
       <div className='rip'></div>
@@ -98,13 +99,8 @@ const TicketWidget = (props) => {
             localStorage.setItem(
               "checkout",
               JSON.stringify({
-                ticketId: ticketAddress,
-                name: props.name,
-                desc: props.description,
-                price: props.price,
                 qty: activeValue,
-                stripe_pri_id: props.priceId,
-                stripe_acc_id: props.stripe_acc_id,
+                ticket: props.props,
               })
             )
             navigate("/checkout")

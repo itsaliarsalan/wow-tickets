@@ -36,7 +36,6 @@ export default function SingleEvent(props) {
     dispatch(listTicketsByEvent(eventId))
   }, [dispatch, eventId])
 
-
   return (
     <Container sx={{ marginY: 4 }} maxWidth='md'>
       {loading ? (
@@ -180,14 +179,8 @@ export default function SingleEvent(props) {
               <span>{errorTicketList}</span>
             ) : (
               tickets?.map((ticket) => (
-                <Grid item xs={12} sm={4} key={ticket?.id}>
-                  <TicketWidget
-                    props={ticket}
-                    name={ticket?.name}
-                    description={ticket?.description}
-                    price={ticket?.price}
-                    priceId={ticket?.user?.stripe_pri_id}
-                  />
+                <Grid item xs={12} sm={4} key={ticket?._id}>
+                  <TicketWidget props={ticket} />
                 </Grid>
               ))
             )}

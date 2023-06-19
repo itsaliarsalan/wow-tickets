@@ -50,7 +50,7 @@ function AddTicket() {
       dispatch({ type: TICKET_ADD_RESET })
       setTicketName("")
       setDescription("")
-      setTicketCost(0.0)
+      setTicketCost(0.01)
       setTicketAllocations("")
     }
     dispatch(listEvents())
@@ -148,17 +148,22 @@ function AddTicket() {
 
                       <OutlinedInput
                         type='number'
-                        min='0'
-                        step='0.01'
                         id='outlined-adornment-amount'
                         startAdornment={
                           <InputAdornment position='start'>€</InputAdornment>
                         }
-                        value={Number(price).toFixed(2)}
-                        onChange={(e) => setTicketCost(e.target.value)}
+                        value={price}
+                        inputProps={{
+                          maxLength: 1000,
+                          step: "0.01",
+                        }}
+                        onChange={(e) =>
+                          setTicketCost(parseFloat(e.target.value).toFixed(2))
+                        }
                         label='Amount'
                       />
                     </FormControl>
+
                     <TextField
                       label='Allocations'
                       variant='outlined'

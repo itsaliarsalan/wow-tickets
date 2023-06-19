@@ -12,7 +12,10 @@ const ticketRouter = express.Router()
 ticketRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const tickets = await Ticket.find({})
+    const tickets = await Ticket.find({}).populate({
+      path: "user",
+      select: ["name", "email", "stripe_acc_id"],
+    })
     res.send(tickets)
   })
 )
@@ -57,7 +60,7 @@ ticketRouter.post(
       })
 
       const price = await stripe.prices.create({
-        unit_amount: Math.floor(req.body.price),
+        unit_amount: Math.floor(req.body.price) * 100,
         currency: "eur",
         product: product.id,
       })
