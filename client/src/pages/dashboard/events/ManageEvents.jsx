@@ -3,8 +3,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid"
 import DashboardHeader from "../../../components/layout/DashboardHeader"
 import StaticsCardVariant1 from "../../../components/cards/StaticsCardVariant1"
 import { useSelector, useDispatch } from "react-redux"
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import { toast } from "react-toastify"
 
 // Icons
 import EventIcon from "@mui/icons-material/Event"
@@ -180,18 +179,6 @@ function ManageEvents() {
                 checkboxSelection={true}
               />
             )}
-            <ToastContainer
-              position='bottom-center'
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick={false}
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme='dark'
-            />
           </div>
         </div>
       </section>

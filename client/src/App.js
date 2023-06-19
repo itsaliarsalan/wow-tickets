@@ -86,15 +86,15 @@ function App() {
       <Footer />
       <ToastContainer
         position='top-center'
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
-        closeOnClick
+        closeOnClick={false}
         rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme='colored'
+        theme='dark'
       />
     </AppWrapper>
   )
