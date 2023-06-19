@@ -8,7 +8,7 @@ function Event({ event }) {
         <img className='thumbnail' src={event?.thumbnail} alt='' />
         <div className='card-body'>
           <small className='event-info'>
-            {event?.startDate} - {event?.country}
+            {event?.startDate} - {event?.venue?.name}
           </small>
           <h3 className='event-name'>{event?.name}</h3>
         </div>

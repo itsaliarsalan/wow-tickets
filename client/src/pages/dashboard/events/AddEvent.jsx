@@ -319,8 +319,7 @@ function AddEvent() {
                           views={["year", "month", "day"]}
                           sx={{ width: "100%" }}
                           onChange={(date) => {
-                            let d = new Date(date).toLocaleDateString()
-                            setStartDate(d)
+                            setStartDate(date)
                           }}
                         />
 
@@ -329,8 +328,7 @@ function AddEvent() {
                           views={["year", "month", "day"]}
                           sx={{ width: "100%" }}
                           onChange={(date) => {
-                            let d = new Date(date).toLocaleDateString()
-                            setEndDate(d)
+                            setEndDate(date)
                           }}
                         />
                       </Box>

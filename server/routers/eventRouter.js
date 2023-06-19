@@ -3,13 +3,17 @@ import expressAsyncHandler from "express-async-handler"
 import data from "../data.js"
 import Event from "../models/eventModal.js"
 import { isAuth } from "../utils.js"
+import dayjs from "dayjs"
 
 const eventRouter = express.Router()
 
 eventRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const events = await Event.find({})
+    const events = await Event.find({}).populate({
+      path: "venue",
+      select: ["name", "address", "city", "state", "country"],
+    })
     res.send(events)
   })
 )
@@ -49,8 +53,8 @@ eventRouter.post(
       category: req.body.category,
       cover: req.body.cover,
       thumbnail: req.body.thumbnail,
-      startDate: req.body.startDate,
-      endDate: req.body.endDate,
+      startDate: dayjs(req.body.startDate).format("DD-MM-YYYY"),
+      endDate: dayjs(req.body.endDate).format("DD-MM-YYYY"),
       startTime: req.body.startTime,
       lastEntry: req.body.lastEntry,
       endTime: req.body.endTime,
