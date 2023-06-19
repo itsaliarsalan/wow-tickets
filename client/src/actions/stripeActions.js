@@ -29,16 +29,18 @@ export const stripeOnboarding = (stripe_acc_id) => async (dispatch) => {
 }
 
 export const getCheckoutSessionUrl =
-  (stripe_pri_id, qty) => async (dispatch) => {
+  (stripe_pri_id, qty, price, stripe_acc_id) => async (dispatch) => {
     dispatch({
       type: STRIPE_CLIENT_SECRET_REQUEST,
-      payload: { stripe_pri_id, qty },
+      payload: { stripe_pri_id, qty, price, stripe_acc_id },
     })
 
     try {
       const session = await Axios.post("/api/stripe/charge", {
         stripe_pri_id,
         qty,
+        price,
+        stripe_acc_id,
       })
       dispatch({ type: STRIPE_CLIENT_SECRET_SUCCESS, payload: session })
     } catch (error) {

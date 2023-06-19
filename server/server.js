@@ -1,8 +1,8 @@
-import express from "express"
+import path from "path"
 import dotenv from "dotenv"
+import express from "express"
 import mongoose from "mongoose"
 
-import path from "path"
 import uploadRouter from "./routers/uploadRouter.js"
 import eventRouter from "./routers/eventRouter.js"
 import ticketRouter from "./routers/ticketRouter.js"
@@ -19,6 +19,9 @@ app.use(express.urlencoded({ extended: true }))
 
 mongoose
   .connect(process.env.MONGODB_URI, {
+    dbName: "wowdb",
+    retryWrites: true,
+    w: "majority",
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

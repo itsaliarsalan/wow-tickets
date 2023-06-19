@@ -4,7 +4,7 @@ const ticketSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     description: { type: String, required: true },
-    price: { type: String },
+    price: { type: Number },
     allocation: { type: Number },
     user: {
       type: mongoose.Schema.Types.ObjectId,

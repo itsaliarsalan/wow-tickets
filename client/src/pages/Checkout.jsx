@@ -33,7 +33,14 @@ export default function Checkout() {
   let isScrollDisabled = false
 
   const handlePay = () => {
-    dispatch(getCheckoutSessionUrl(items?.stripe_pri_id, items?.qty))
+    dispatch(
+      getCheckoutSessionUrl(
+        items?.stripe_pri_id,
+        items?.qty,
+        items?.price,
+        items?.stripe_acc_id
+      )
+    )
   }
 
   useEffect(() => {

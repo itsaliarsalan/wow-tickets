@@ -25,6 +25,7 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 function Navbar() {
   const userSignin = useSelector((state) => state.userSignin)
   const { userInfo } = userSignin
+
   const [isOpen, setOpen] = useState(false)
 
   const dispatch = useDispatch()
@@ -47,6 +48,7 @@ function Navbar() {
 
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
+
   const handleAvatarClick = (event) => {
     setAnchorEl(event.currentTarget)
   }
@@ -106,9 +108,9 @@ function Navbar() {
                     aria-expanded={open ? "true" : undefined}
                   >
                     <Avatar
-                      alt={userInfo.name}
-                      src={userInfo.image}
-                      sx={{ width: 32, height: 32 }}
+                      alt={userInfo?.name}
+                      src={userInfo?.image}
+                      sx={{ width: 40, height: 40 }}
                     />
                   </IconButton>
                 </Tooltip>
@@ -151,7 +153,11 @@ function Navbar() {
                   anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                 >
                   <MenuItem onClick={() => navigate("/dashboard/profile")}>
-                    <Avatar />{" "}
+                    <Avatar
+                      alt={userInfo?.name}
+                      src={userInfo?.image}
+                      sx={{ width: 40, height: 40 }}
+                    />
                     <Typography
                       variant='body'
                       color='text.secondary'
@@ -161,39 +167,44 @@ function Navbar() {
                     </Typography>
                   </MenuItem>
                   <Divider />
-                  <MenuItem
-                    onClick={() => {
-                      navigate("/dashboard")
-                    }}
-                  >
-                    <ListItemIcon>
-                      <Dashboard fontSize='small' />
-                    </ListItemIcon>
-                    <Typography
-                      variant='body'
-                      color='text.secondary'
-                      sx={{ fontFamily: "Poppins" }}
-                    >
-                      Dashboard
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      navigate("/events/manage")
-                    }}
-                  >
-                    <ListItemIcon>
-                      <CalendarTodayOutlinedIcon fontSize='small' />
-                    </ListItemIcon>
-                    <Typography
-                      variant='body'
-                      color='text.secondary'
-                      sx={{ fontFamily: "Poppins" }}
-                    >
-                      Events
-                    </Typography>
-                  </MenuItem>
-
+                  {userInfo.isSeller || userInfo.isAdmin ? (
+                    <>
+                      <MenuItem
+                        onClick={() => {
+                          navigate("/dashboard")
+                        }}
+                      >
+                        <ListItemIcon>
+                          <Dashboard fontSize='small' />
+                        </ListItemIcon>
+                        <Typography
+                          variant='body'
+                          color='text.secondary'
+                          sx={{ fontFamily: "Poppins" }}
+                        >
+                          Dashboard
+                        </Typography>
+                      </MenuItem>
+                      <MenuItem
+                        onClick={() => {
+                          navigate("/events/manage")
+                        }}
+                      >
+                        <ListItemIcon>
+                          <CalendarTodayOutlinedIcon fontSize='small' />
+                        </ListItemIcon>
+                        <Typography
+                          variant='body'
+                          color='text.secondary'
+                          sx={{ fontFamily: "Poppins" }}
+                        >
+                          Events
+                        </Typography>
+                      </MenuItem>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                   <MenuItem
                     onClick={() => {
                       navigate("/orders/purchase")

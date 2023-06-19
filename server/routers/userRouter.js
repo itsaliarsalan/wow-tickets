@@ -30,6 +30,7 @@ userRouter.post(
           _id: user._id,
           name: user.name,
           email: user.email,
+          image: user.image,
           stripe_acc_id: user.stripe_acc_id,
           stripe_cus_id: user.stripe_cus_id,
           isAdmin: user.isAdmin,

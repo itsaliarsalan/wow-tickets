@@ -37,7 +37,7 @@ function AddTicket() {
 
   const [name, setTicketName] = useState("")
   const [description, setDescription] = useState("")
-  const [price, setTicketCost] = useState(0.0)
+  const [price, setTicketCost] = useState(0.01)
   const [allocation, setTicketAllocations] = useState("")
   const ticketStatus = true
   const [userId, setUserId] = useState(null)
@@ -143,12 +143,16 @@ function AddTicket() {
                       <InputLabel htmlFor='outlined-adornment-amount'>
                         Cost
                       </InputLabel>
+
                       <OutlinedInput
+                        type='number'
+                        min='0'
+                        step='0.01'
                         id='outlined-adornment-amount'
                         startAdornment={
-                          <InputAdornment position='start'>$</InputAdornment>
+                          <InputAdornment position='start'>€</InputAdornment>
                         }
-                        value={price}
+                        value={Number(price).toFixed(2)}
                         onChange={(e) => setTicketCost(e.target.value)}
                         label='Amount'
                       />

@@ -197,6 +197,7 @@ export default function SingleEvent(props) {
                     name={ticket?.name}
                     description={ticket?.description}
                     price={ticket?.price}
+                    priceId={ticket?.user?.stripe_pri_id}
                   />
                 </Grid>
               ))

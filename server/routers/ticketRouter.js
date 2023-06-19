@@ -32,7 +32,11 @@ ticketRouter.get(
 ticketRouter.get(
   "/event/:eventId",
   expressAsyncHandler(async (req, res) => {
-    const ticket = await Ticket.find({ event: req.params.eventId })
+    const ticket = await Ticket.find({ event: req.params.eventId }).populate({
+      path: "user",
+      select: ["stripe_acc_id"],
+    })
+
     if (ticket) {
       res.send(ticket)
     } else {
@@ -82,6 +86,7 @@ ticketRouter.delete(
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const ticket = await Ticket.findById(req.params.id)
+
     if (ticket) {
       const deletedTicket = await ticket.deleteOne()
       res.send({ message: "Ticket Deleted", ticket: deletedTicket })

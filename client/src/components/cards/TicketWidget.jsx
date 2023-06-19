@@ -7,8 +7,8 @@ import {
 	Select,
 	Typography,
 } from "@mui/material"
-import LockScroll from "../layout/LockScroll"
 import { useState } from "react"
+import LockScroll from "../layout/LockScroll"
 import { useNavigate } from "react-router-dom"
 
 const TicketWidget = (props) => {
@@ -103,7 +103,8 @@ const TicketWidget = (props) => {
                 desc: props.description,
                 price: props.price,
                 qty: activeValue,
-                stripe_pri_id: props.stripe_pri_id,
+                stripe_pri_id: props.priceId,
+                stripe_acc_id: props.stripe_acc_id,
               })
             )
             navigate("/checkout")

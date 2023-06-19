@@ -23,15 +23,15 @@ stripeRouter.post("/charge", async (req, res) => {
     success_url: process.env.SITE_URL + "/order/success",
     line_items: [
       {
-        price: "price_1NJc7pB9Mcrw68O0zarrgO7J",
+        price: req.body.stripe_pri_id,
         quantity: req.body.qty,
       },
     ],
     currency: "eur",
     payment_intent_data: {
-      application_fee_amount: 50,
+      application_fee_amount: Math.floor(req.body.price * 0.05),
       transfer_data: {
-        destination: "acct_1NJ9ZiB31HS35hY4",
+        destination: req.body.stripe_acc_id,
       },
     },
 
