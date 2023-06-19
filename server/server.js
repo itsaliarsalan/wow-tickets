@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }))
 
 mongoose
   .connect(process.env.MONGODB_URI, {
-    dbName: "wowdb",
+    dbName: "wowdatabase",
     retryWrites: true,
     w: "majority",
     useNewUrlParser: true,
