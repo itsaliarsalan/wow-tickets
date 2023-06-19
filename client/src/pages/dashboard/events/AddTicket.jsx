@@ -19,6 +19,7 @@ import MessageBox from "../../../components/MessageBox"
 
 import DashboardHeader from "../../../components/layout/DashboardHeader"
 import { toast } from "react-toastify"
+import { TICKET_ADD_RESET } from "../../../constants/ticketConstants"
 function AddTicket() {
   const dispatch = useDispatch()
 
@@ -46,6 +47,7 @@ function AddTicket() {
   useEffect(() => {
     if (successCreate) {
       toast.success("Ticket Created Successfully!")
+      dispatch({ type: TICKET_ADD_RESET })
       setTicketName("")
       setDescription("")
       setTicketCost(0.0)

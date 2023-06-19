@@ -57,7 +57,7 @@ ticketRouter.post(
       })
 
       const price = await stripe.prices.create({
-        unit_amount: req.body.price,
+        unit_amount: Math.floor(req.body.price),
         currency: "eur",
         product: product.id,
       })
@@ -76,7 +76,12 @@ ticketRouter.post(
       const createdTicket = await ticket.save()
       res.send({ message: "Ticket Created", ticket: createdTicket })
     } catch (error) {
-      console.log(error)
+      if (error.response) {
+        console.log("Ticket error status: ", error.response.status)
+        console.log("Ticket error data: ", error.response.data)
+      } else {
+        console.log("Ticket error message: ", error)
+      }
     }
   })
 )

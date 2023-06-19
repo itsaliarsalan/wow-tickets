@@ -13,10 +13,11 @@ import EventBusyIcon from "@mui/icons-material/EventBusy"
 import { useEffect } from "react"
 import { listEvents, deleteEvent } from "../../../actions/eventActions"
 import { EVENT_DELETE_RESET } from "../../../constants/eventConstants"
+import { useNavigate } from "react-router-dom"
 
 function ManageEvents() {
   const dispatch = useDispatch()
-
+  const navigate = useNavigate()
   const eventList = useSelector((state) => state.eventList)
   const { loading, error, events } = eventList
 
@@ -112,7 +113,7 @@ function ManageEvents() {
 
   useEffect(() => {
     if (successDelete) {
-      dispatch({type: EVENT_DELETE_RESET})
+      dispatch({ type: EVENT_DELETE_RESET })
       toast.success("Event Deleted Successfully.")
     }
 
@@ -124,7 +125,13 @@ function ManageEvents() {
         title='Your Events'
         description='All your events are listed below. You can update or delete them.'
       >
-        <Button variant='contained' sx={{ whiteSpace: "nowrap" }}>
+        <Button
+          variant='contained'
+          sx={{ whiteSpace: "nowrap" }}
+          onClick={() => {
+            navigate("/dashboard/events/add")
+          }}
+        >
           Create Event
         </Button>
       </DashboardHeader>
