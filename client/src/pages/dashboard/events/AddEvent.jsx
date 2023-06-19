@@ -210,13 +210,6 @@ function AddEvent() {
                             </div>
                           </Box>
                         </div>
-                        {loadingUpload ? (
-                          ""
-                        ) : errorUpload ? (
-                          console.log(errorUpload)
-                        ) : (
-                          <></>
-                        )}
                       </Box>
                       <Box
                         className='drop-files'
@@ -417,6 +410,14 @@ function AddEvent() {
           <Box className='event-preview'>
             {/* Banner and Image */}
             <Box sx={{ marginBottom: -12 }}>
+              {loadingUpload ? (
+                ""
+              ) : errorUpload ? (
+                console.log(errorUpload)
+              ) : (
+                <></>
+              )}
+
               <Box
                 className='cover-image'
                 sx={{
@@ -428,8 +429,9 @@ function AddEvent() {
               >
                 <img
                   src={
-                    cover ||
-                    "https://agendabrussels.imgix.net/004a2b71108438b08b4c2d39af2e4173770c6408.jpg"
+                    cover
+                      ? cover
+                      : "https://agendabrussels.imgix.net/004a2b71108438b08b4c2d39af2e4173770c6408.jpg"
                   }
                   alt=''
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -449,8 +451,9 @@ function AddEvent() {
                 <img
                   className='event-image'
                   src={
-                    thumbnail ||
-                    "https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png"
+                    thumbnail
+                      ? thumbnail
+                      : "https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png"
                   }
                   alt=''
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
