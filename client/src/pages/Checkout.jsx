@@ -24,7 +24,7 @@ export default function Checkout() {
   const dispatch = useDispatch()
 
   const items = JSON.parse(localStorage.getItem("checkout"))
-  const [qty, setQty] = useState(items.qty)
+  const [qty, setQty] = useState(items?.qty || 0)
 
   const stripeCheckout = useSelector((state) => state.stripeCheckout)
   const { loading, error, success, session } = stripeCheckout
@@ -33,12 +33,12 @@ export default function Checkout() {
   let isScrollDisabled = false
 
   const handlePay = () => {
-    dispatch(getCheckoutSessionUrl(items.stripe_pri_id, items.qty))
+    dispatch(getCheckoutSessionUrl(items?.stripe_pri_id, items?.qty))
   }
 
   useEffect(() => {
     if (success) {
-      console.log(session.data)
+      window.location.replace(session.data)
     }
   }, [success, session])
 
@@ -78,8 +78,8 @@ export default function Checkout() {
   const rows = [
     {
       id: 1,
-      col1: items.name,
-      col2: items.price,
+      col1: items?.name,
+      col2: items?.price,
       col3: qty,
     },
   ]
@@ -132,7 +132,7 @@ export default function Checkout() {
               >
                 <Typography variant='subtitle1'>Tickets</Typography>
                 <Typography variant='body1' color='text.secondary'>
-                  {items.price} * {items.qty} QTY
+                  {items?.price} * {items?.qty} QTY
                 </Typography>
               </Box>
               <Box

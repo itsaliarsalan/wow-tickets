@@ -21,7 +21,7 @@ import Audience from "./pages/dashboard/Audience"
 import Organizers from "./pages/dashboard/Organizers"
 import Orders from "./pages/dashboard/Orders"
 import Payments from "./pages/dashboard/Payments"
-import PaymentSuccess from "./pages/dashboard/PaymentSuccess"
+import OrderComplete from "./pages/dashboard/OrderComplete"
 import StripeFailed from "./pages/dashboard/StripeFailed"
 import { useSelector } from "react-redux"
 import AddVenue from "./pages/dashboard/venues/AddVenue"
@@ -61,10 +61,7 @@ function App() {
               <Route path='audience' element={<Audience />} />
               <Route path='organizers' element={<Organizers />} />
               <Route path='orders' element={<Orders />} />
-              <Route path='payments' element={<Payments />}>
-                <Route path='success' element={<PaymentSuccess />} />
-                <Route path='fail' element={<StripeFailed />} />
-              </Route>
+              <Route path='payments' element={<Payments />} />
               <Route path='venues/add' element={<AddVenue />} />
               <Route path='venues/manage' element={<ManageVenues />} />
               <Route path='profile' element={<Profile />} />
@@ -80,6 +77,8 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/terms' element={<Terms />} />
           <Route path='/privacy' element={<PrivacyPolicy />} />
+          <Route path='/order/success' element={<OrderComplete />} />
+          <Route path='/stripe-onboarding/fail' element={<StripeFailed />} />
           <Route index element={<Home />} />
           {/* End */}
         </Routes>

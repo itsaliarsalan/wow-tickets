@@ -9,8 +9,8 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 stripeRouter.post("/onboard", async (req, res) => {
   const accountLink = await stripe.accountLinks.create({
     account: req.body.stripe_acc_id,
-    refresh_url: "http://localhost:3000/dashboard/payments/fail",
-    return_url: "http://localhost:3000/dashboard/payments/success",
+    refresh_url: process.env.SITE_URL + "/onboarding/fail",
+    return_url: process.env.SITE_URL + "/dashboard/payments",
     type: "account_onboarding",
   })
   console.log(accountLink.url)
@@ -20,7 +20,7 @@ stripeRouter.post("/onboard", async (req, res) => {
 stripeRouter.post("/charge", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-    success_url: "http://localhost:3000/dashboard/payments/success",
+    success_url: process.env.SITE_URL + "/order/success",
     line_items: [
       {
         price: "price_1NJc7pB9Mcrw68O0zarrgO7J",
