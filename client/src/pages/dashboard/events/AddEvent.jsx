@@ -1,5 +1,4 @@
 import {
-  Alert,
   Box,
   Chip,
   FormControl,
@@ -13,28 +12,26 @@ import {
   TextField,
 } from "@mui/material"
 import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker"
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import { toast } from "react-toastify"
 
-import dayjs from "dayjs"
 import Axios from "axios"
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { listVenues } from "../../../actions/venueActions"
 import { createEvent } from "../../../actions/eventActions"
 import DashboardHeader from "../../../components/layout/DashboardHeader"
 import { DatePicker } from "@mui/x-date-pickers/DatePicker"
 import { EVENT_ADD_RESET } from "../../../constants/eventConstants"
-import { eventStaticValues } from "../../../data"
+import LoadingBox from "../../../components/LoadingBox"
+import MessageBox from "../../../components/MessageBox"
+
 // Icons
-import CropOriginalRoundedIcon from "@mui/icons-material/CropOriginalRounded"
-import LocationOnIcon from "@mui/icons-material/LocationOn"
 import DateRangeIcon from "@mui/icons-material/DateRange"
+import LocationOnIcon from "@mui/icons-material/LocationOn"
+import CropOriginalRoundedIcon from "@mui/icons-material/CropOriginalRounded"
 
 function AddEvent() {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const userSignin = useSelector((state) => state.userSignin)
   const { userInfo } = userSignin
@@ -44,7 +41,6 @@ function AddEvent() {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    event: createdEvent,
   } = eventCreate
 
   const [name, setName] = useState("")
@@ -62,7 +58,7 @@ function AddEvent() {
 
   const [userId, setUserId] = useState(userInfo._id)
   const [venueId, setVenueId] = useState(null)
-  const [eventStatus, setEventStatus] = useState(false)
+  const eventStatus = true
 
   const venueList = useSelector((state) => state.venueList)
   const { loading: loadingVenues, error: errorVenues, venues } = venueList
@@ -214,6 +210,7 @@ function AddEvent() {
                             </div>
                           </Box>
                         </div>
+                        {loadingUpload ? <></> : errorUpload ? <></> : <></>}
                       </Box>
                       <Box
                         className='drop-files'
@@ -291,7 +288,6 @@ function AddEvent() {
                     </Box>
                     <FormControl fullWidth sx={{ marginY: 2 }}>
                       <InputLabel id='venues'>Select Venue</InputLabel>
-
                       <Select labelId='venues' id='venues' label='Select Venue'>
                         {venues?.map((venue) => (
                           <MenuItem
@@ -305,6 +301,13 @@ function AddEvent() {
                           </MenuItem>
                         ))}
                       </Select>
+                      {loadingVenues ? (
+                        <span>loading venues...</span>
+                      ) : errorVenues ? (
+                        <span>errorVenues</span>
+                      ) : (
+                        <></>
+                      )}
                     </FormControl>
 
                     <Stack
@@ -384,39 +387,18 @@ function AddEvent() {
                         }}
                       />
                     </Box>
-                    {/* <Box sx={{ display: "flex", gap: 1 }}>
-                      <TextField
-                        id='minAge'
-                        label='Min Age'
-                        variant='outlined'
-                        type='number'
-                        fullWidth
-                        value={restrictions.min}
-                        onChange={(e) => {
-                          setRestrictions({ min: e.target.value })
-                        }}
-                        disabled={!restrictionsInput}
-                        sx={{ marginY: 1 }}
-                      />
-                      <TextField
-                        id='maxAge'
-                        label='Max Age'
-                        variant='outlined'
-                        type='number'
-                        fullWidth
-                        value={restrictions.max}
-                        onChange={(e) => {
-                          setRestrictions({ max: e.target.value })
-                        }}
-                        sx={{ marginY: 1 }}
-                        disabled={!restrictionsInput}
-                      />
-                    </Box> */}
                   </Box>
                   <Box sx={{ textAlign: "end", marginTop: 5 }}>
                     <button type='submit' className='btn btn-main'>
                       Add Event
                     </button>
+                    {loadingCreate ? (
+                      <LoadingBox>Adding event...</LoadingBox>
+                    ) : errorCreate ? (
+                      <MessageBox variant='danger'>{errorCreate}</MessageBox>
+                    ) : (
+                      <></>
+                    )}
                   </Box>
                 </form>
               </Box>
@@ -536,19 +518,6 @@ function AddEvent() {
             </Box>
           </Box>
         </Grid>
-
-        <ToastContainer
-          position='bottom-center'
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme='dark'
-        />
       </Grid>
     </Box>
   )

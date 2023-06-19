@@ -11,7 +11,9 @@ import {
   VENUE_UPDATE_RESET,
 } from "../../../constants/venueConstants"
 import Box from "@mui/material/Box"
+import { toast } from "react-toastify"
 import { Button, Stack } from "@mui/material"
+
 // Icons
 import MapIcon from "@mui/icons-material/Map"
 import { useNavigate } from "react-router-dom"
@@ -22,8 +24,6 @@ import MessageBox from "../../../components/MessageBox"
 import { DataGrid, GridToolbar } from "@mui/x-data-grid"
 import DashboardHeader from "../../../components/layout/DashboardHeader"
 import StaticsCardVariant1 from "../../../components/cards/StaticsCardVariant1"
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
 
 function ManageVenues() {
   const dispatch = useDispatch()
@@ -161,7 +161,9 @@ function ManageVenues() {
     }
     if (successUpdate) {
       dispatch({ type: VENUE_UPDATE_RESET })
+      toast.success("Venue Updated Successfully.")
     }
+
     dispatch(listVenues())
   }, [dispatch, successDelete, successUpdate])
 
@@ -201,9 +203,17 @@ function ManageVenues() {
           <div className='main'>
             <div className='card-primary'>
               {loading ? (
-                <LoadingBox>Fetching Venue Records...</LoadingBox>
-              ) : errorUpdate ? (
+                <LoadingBox>Fetching venue records...</LoadingBox>
+              ) : loadingUpdate ? (
+                <LoadingBox>Fetching updated records...</LoadingBox>
+              ) : loadingDelete ? (
+                <LoadingBox>Fetching venue records...</LoadingBox>
+              ) : error ? (
                 <MessageBox variant='danger'>{error}</MessageBox>
+              ) : errorUpdate ? (
+                <MessageBox variant='danger'>{errorUpdate}</MessageBox>
+              ) : errorDelete ? (
+                <MessageBox variant='danger'>{errorDelete}</MessageBox>
               ) : (
                 <DataGrid
                   getRowId={(row) => row._id}
@@ -219,18 +229,6 @@ function ManageVenues() {
                 />
               )}
             </div>
-            <ToastContainer
-              position='bottom-center'
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick={false}
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme='dark'
-            />
           </div>
         </div>
       </section>

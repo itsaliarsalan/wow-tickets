@@ -12,8 +12,9 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const TicketWidget = (props) => {
-  const [ticketAddress, setTicketAddress] = useState(props._id)
+  let ticketAddress = props._id
   const navigate = useNavigate()
+
   function returnEventName(name) {
     const openingBracketIndex = name.indexOf("(")
     if (openingBracketIndex !== -1) {
@@ -45,6 +46,7 @@ const TicketWidget = (props) => {
   const [disableScroll, setDisableScroll] = useState(false)
   // State to store active value
   const [activeValue, setActiveValue] = useState(0)
+
   return (
     <Box className='widget' type='ticket' sx={{ width: "100%" }}>
       <Box
@@ -97,6 +99,8 @@ const TicketWidget = (props) => {
               "checkout",
               JSON.stringify({
                 ticketId: ticketAddress,
+                name: props.name,
+                desc: props.description,
                 price: props.price,
                 qty: activeValue,
                 stripe_pri_id: props.stripe_pri_id,
@@ -133,6 +137,7 @@ const TicketWidget = (props) => {
             <MenuItem value={7}>7</MenuItem>
             <MenuItem value={8}>8</MenuItem>
             <MenuItem value={9}>9</MenuItem>
+            <MenuItem value={9}>10</MenuItem>
           </Select>
         </FormControl>
       </Box>

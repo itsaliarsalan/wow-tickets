@@ -28,7 +28,7 @@ function LoginForm(props) {
     if (userInfo) {
       navigate(redirect)
     }
-  }, [redirect, userInfo])
+  }, [redirect, userInfo, navigate])
 
   return (
     <section className='component sign-in'>
@@ -59,7 +59,6 @@ function LoginForm(props) {
             Login
           </button>
           <Link to='/'>Forgot Password?</Link>
-          <hr />
           <Link to={`/signup?redirect=${redirect}`} className='text-center'>
             Don't have an account? Create here
           </Link>

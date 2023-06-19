@@ -29,7 +29,7 @@ stripeRouter.post("/charge", async (req, res) => {
     ],
     currency: "eur",
     payment_intent_data: {
-      application_fee_amount: 500,
+      application_fee_amount: 50,
       transfer_data: {
         destination: "acct_1NJ9ZiB31HS35hY4",
       },
@@ -37,7 +37,6 @@ stripeRouter.post("/charge", async (req, res) => {
 
     mode: "payment",
   })
-  const url = session.url
-  res.send(url.data)
+  res.send(session.url)
 })
 export default stripeRouter

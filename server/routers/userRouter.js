@@ -33,6 +33,7 @@ userRouter.post(
           stripe_acc_id: user.stripe_acc_id,
           stripe_cus_id: user.stripe_cus_id,
           isAdmin: user.isAdmin,
+          isSeller: user.isSeller,
           token: generateToken(user),
         })
         return
@@ -59,6 +60,7 @@ userRouter.post(
       password: bcrypt.hashSync(req.body.password, 8),
       stripe_acc_id: account.id,
       stripe_cus_id: customer.id,
+      isSeller: req.body.isSeller,
     })
 
     const createdUser = await user.save()
@@ -69,6 +71,7 @@ userRouter.post(
       stripe_acc_id: createdUser.stripe_acc_id,
       stripe_cus_id: createdUser.stripe_cus_id,
       isAdmin: createdUser.isAdmin,
+      isSeller: createdUser.isSeller,
       token: generateToken(createdUser),
     })
   })

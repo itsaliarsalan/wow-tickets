@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import React, { useState, useEffect } from "react"
 import { Box, Grid, TextField } from "@mui/material"
 import { useSelector, useDispatch } from "react-redux"
@@ -27,7 +27,6 @@ export default function AddVenue() {
   } = eventCreate
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const submitHandler = () => {
     dispatch(
@@ -46,9 +45,17 @@ export default function AddVenue() {
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: VENUE_ADD_RESET })
-      navigate("/venues/manage")
+      toast.success("Venue added successfully.")
+      setName("")
+      setCapacity()
+      setAddress("")
+      setCity("")
+      setState("")
+      setPostal("")
+      setCountry("")
+      setContact("")
     }
-  }, [dispatch, navigate, successCreate])
+  }, [dispatch, successCreate])
 
   return (
     <>
