@@ -101,9 +101,10 @@ export const deleteVenue = (venueId) => async (dispatch, getState) => {
   } = getState()
 
   try {
-    const { data } = Axios.delete(`/api/venues/${venueId}`, {
+    const { data } = await Axios.delete(`/api/venues/${venueId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     })
+    console.log("Venue Removed ::: ", data)
     dispatch({ type: VENUE_DELETE_SUCCESS })
   } catch (error) {
     const message =

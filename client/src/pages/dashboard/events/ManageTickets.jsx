@@ -1,13 +1,11 @@
 import { useEffect } from "react"
+import { toast } from "react-toastify"
 import { Box, Button, Stack } from "@mui/material"
-import { eventDetails } from "../../../data"
+import { useSelector, useDispatch } from "react-redux"
 import { DataGrid, GridToolbar } from "@mui/x-data-grid"
 import DashboardHeader from "../../../components/layout/DashboardHeader"
-import StaticsCardVariant1 from "../../../components/cards/StaticsCardVariant1"
-import { useSelector, useDispatch } from "react-redux"
 import { listTickets, deleteTicket } from "../../../actions/ticketActions"
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import StaticsCardVariant1 from "../../../components/cards/StaticsCardVariant1"
 
 // Icons
 import ReceiptIcon from "@mui/icons-material/Receipt"
@@ -116,6 +114,7 @@ function ManageTickets() {
     }
     dispatch(listTickets())
   }, [dispatch, successDelete])
+
   return (
     <Box sx={{ margin: "30px 0" }}>
       <DashboardHeader
@@ -175,18 +174,6 @@ function ManageTickets() {
                 checkboxSelection={true}
               />
             )}
-            <ToastContainer
-              position='bottom-center'
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick={false}
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme='dark'
-            />
           </div>
         </div>
       </section>

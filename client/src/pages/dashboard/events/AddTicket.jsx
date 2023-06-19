@@ -14,10 +14,11 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { listEvents } from "../../../actions/eventActions"
 import { createTicket } from "../../../actions/ticketActions"
-import DashboardHeader from "../../../components/layout/DashboardHeader"
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import LoadingBox from "../../../components/LoadingBox"
+import MessageBox from "../../../components/MessageBox"
 
+import DashboardHeader from "../../../components/layout/DashboardHeader"
+import { toast } from "react-toastify"
 function AddTicket() {
   const dispatch = useDispatch()
 
@@ -32,24 +33,27 @@ function AddTicket() {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    ticket: createdTicket,
   } = ticketCreate
 
   const [name, setTicketName] = useState("")
   const [description, setDescription] = useState("")
-  const [price, setTicketCost] = useState("")
+  const [price, setTicketCost] = useState(0.0)
   const [allocation, setTicketAllocations] = useState("")
-  const [ticketStatus, setTicketStatus] = useState(false)
+  const ticketStatus = true
   const [userId, setUserId] = useState(null)
   const [eventId, setEventId] = useState(null)
 
   useEffect(() => {
     if (successCreate) {
       toast.success("Ticket Created Successfully!")
+      setTicketName("")
+      setDescription("")
+      setTicketCost(0.0)
+      setTicketAllocations("")
     }
     dispatch(listEvents())
     setUserId(userInfo._id)
-  }, [dispatch, userInfo._id])
+  }, [dispatch, userInfo._id, successCreate])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -101,6 +105,13 @@ function AddTicket() {
                         ))}
                       </Select>
                     </FormControl>
+                    {loadingEvents ? (
+                      <LoadingBox>loading events...</LoadingBox>
+                    ) : errorEvents ? (
+                      <MessageBox variant='danger'>{errorEvents}</MessageBox>
+                    ) : (
+                      <></>
+                    )}
                     <TextField
                       id='name'
                       label='Ticket Name'
@@ -162,25 +173,19 @@ function AddTicket() {
                     >
                       Add Ticket
                     </Button>
+                    {loadingCreate ? (
+                      <LoadingBox>Adding new ticket...</LoadingBox>
+                    ) : errorCreate ? (
+                      <MessageBox variant='danger'>{errorCreate}</MessageBox>
+                    ) : (
+                      <></>
+                    )}
                   </Box>
                 </form>
               </Box>
             </Box>
           </Box>
         </Grid>
-        <ToastContainer
-          position='bottom-center'
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme='dark'
-        />
-
         <Grid item xs={12} lg={6}></Grid>
       </Grid>
     </Box>

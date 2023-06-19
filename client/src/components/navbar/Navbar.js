@@ -1,59 +1,60 @@
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import "./Style.css"
-import logo from "../../assets/250x150.svg"
-import { Button, Container, Typography } from "@mui/material"
 import {
-	Avatar,
-	Divider,
-	IconButton,
-	Menu,
-	MenuItem,
-	Tooltip,
-	ListItemIcon,
+  Avatar,
+  Divider,
+  IconButton,
+  Menu,
+  MenuItem,
+  Tooltip,
+  ListItemIcon,
 } from "@mui/material"
-import { useSelector, useDispatch } from "react-redux"
+
+import "./Style.css"
+import { useState } from "react"
+import logo from "../../assets/250x150.svg"
 import { signout } from "../../actions/userActions"
+import { Link, useNavigate } from "react-router-dom"
+import { Container, Typography } from "@mui/material"
+import { useSelector, useDispatch } from "react-redux"
 
 // Icons
+import Logout from "@mui/icons-material/Logout"
 import Dashboard from "@mui/icons-material/Dashboard"
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined"
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined"
-import Logout from "@mui/icons-material/Logout"
 
 function Navbar() {
-	const userSignin = useSelector(state => state.userSignin)
-	const { userInfo } = userSignin
-	const [isOpen, setOpen] = useState(false)
+  const userSignin = useSelector((state) => state.userSignin)
+  const { userInfo } = userSignin
+  const [isOpen, setOpen] = useState(false)
 
-	const dispatch = useDispatch()
-	const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-	const signoutHandler = () => {
-		dispatch(signout())
-		navigate("/")
-	}
+  const signoutHandler = () => {
+    dispatch(signout())
+    navigate("/")
+  }
 
-	function handleClick() {
-		if (!isOpen) {
-			document.documentElement.style.overflow = "hidden"
-			setOpen(true)
-		} else {
-			document.documentElement.style.overflow = "auto"
-			setOpen(false)
-		}
-	}
+  function handleClick() {
+    if (!isOpen) {
+      document.documentElement.style.overflow = "hidden"
+      setOpen(true)
+    } else {
+      document.documentElement.style.overflow = "auto"
+      setOpen(false)
+    }
+  }
 
-	const [anchorEl, setAnchorEl] = useState(null)
-	const open = Boolean(anchorEl)
-	const handleAvatarClick = event => {
-		setAnchorEl(event.currentTarget)
-	}
-	const handleAvatarClose = () => {
-		setAnchorEl(null)
-	}
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
+  const handleAvatarClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleAvatarClose = () => {
+    setAnchorEl(null)
+  }
 
-	return (
+  return (
     <>
       <nav className='top-nav'>
         <Container
@@ -94,16 +95,6 @@ function Navbar() {
                 </Link>
               </Tooltip>
             </li>
-            {/* <li>
-							<Tooltip title="Checkout">
-								<Button
-									variant="contained"
-									onClick={() => navigate("/checkout")}
-								>
-									20$ - Checkout
-								</Button>
-							</Tooltip>
-						</li> */}
             {userInfo ? (
               <>
                 <Tooltip title='Account settings'>

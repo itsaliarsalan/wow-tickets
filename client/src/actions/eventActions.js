@@ -9,9 +9,6 @@ import {
   EVENT_ADD_REQUEST,
   EVENT_ADD_SUCCESS,
   EVENT_ADD_FAIL,
-  EVENT_UPDATE_REQUEST,
-  EVENT_UPDATE_SUCCESS,
-  EVENT_UPDATE_FAIL,
   EVENT_DELETE_REQUEST,
   EVENT_DELETE_SUCCESS,
   EVENT_DELETE_FAIL,
@@ -120,6 +117,7 @@ export const deleteEvent = (eventId) => async (dispatch, getState) => {
     const { data } = Axios.delete(`/api/events/${eventId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     })
+    console.log("Event Removed ::: ", data)
     dispatch({ type: EVENT_DELETE_SUCCESS })
   } catch (error) {
     const message =

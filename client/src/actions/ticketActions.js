@@ -119,6 +119,7 @@ export const deleteTicket = (ticketId) => async (dispatch, getState) => {
     const { data } = Axios.delete(`/api/tickets/${ticketId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     })
+    console.log("Ticket Removed ::: ", data)
     dispatch({ type: TICKET_DELETE_SUCCESS })
   } catch (error) {
     const message =

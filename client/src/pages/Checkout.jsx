@@ -10,7 +10,8 @@ import {
 import { useState } from "react"
 import { useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
-import { useNavigate } from "react-router-dom"
+import LoadingBox from "../components/LoadingBox"
+import MessageBox from "../components/MessageBox"
 import { useDispatch, useSelector } from "react-redux"
 import LockScroll from "../components/layout/LockScroll"
 import AddRoundedIcon from "@mui/icons-material/AddRounded"
@@ -21,7 +22,6 @@ import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded"
 export default function Checkout() {
   // Form data
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const items = JSON.parse(localStorage.getItem("checkout"))
   const [qty, setQty] = useState(items.qty)
@@ -170,12 +170,12 @@ export default function Checkout() {
             >
               Proceed
             </Button>
-            {success ? (
-              <div>
-                <a href={session.data}>Pay</a>
-              </div>
+            {loading ? (
+              <LoadingBox>Creating checkout session</LoadingBox>
+            ) : error ? (
+              <MessageBox variant='danger'>{error}</MessageBox>
             ) : (
-              <span></span>
+              <></>
             )}
           </Box>
         </Grid>

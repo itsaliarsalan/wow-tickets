@@ -1,7 +1,6 @@
-import { Box, Button, Typography } from "@mui/material"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { Box, Typography } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { stripeOnboarding } from "../../actions/stripeActions"
 
 function Payments() {
@@ -14,7 +13,6 @@ function Payments() {
   const { loading, error, success, url } = stripeConnectOnboarding
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(stripeOnboarding(userInfo.stripe_acc_id))
