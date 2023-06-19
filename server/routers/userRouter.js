@@ -47,10 +47,14 @@ userRouter.post(
 userRouter.post(
   "/register",
   expressAsyncHandler(async (req, res) => {
-    const account = await stripe.accounts.create({
-      type: "standard",
-      email: req.body.email,
-    })
+    let account = null
+
+    if (req.body.isSeller) {
+      account = await stripe.accounts.create({
+        type: "standard",
+        email: req.body.email,
+      })
+    }
     const customer = await stripe.customers.create({
       email: req.body.email,
     })
@@ -59,7 +63,7 @@ userRouter.post(
       name: req.body.name,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
-      stripe_acc_id: account.id,
+      stripe_acc_id: account.id || "",
       stripe_cus_id: customer.id,
       isSeller: req.body.isSeller,
     })
