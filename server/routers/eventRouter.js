@@ -30,10 +30,16 @@ eventRouter.get(
 eventRouter.get(
   "/:id",
   expressAsyncHandler(async (req, res) => {
-    const event = await Event.findById(req.params.id).populate({
-      path: "venue",
-      select: ["name", "address", "city", "state", "country"],
-    })
+    const event = await Event.findById(req.params.id)
+      .populate({
+        path: "venue",
+        select: ["name", "address", "city", "state", "country"],
+      })
+      .populate({
+        path: "user",
+        select: ["name", "email", "image"],
+      })
+      
     if (event) {
       await res.send(event)
     } else {

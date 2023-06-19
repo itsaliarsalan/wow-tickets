@@ -36,17 +36,6 @@ export default function SingleEvent(props) {
     dispatch(listTicketsByEvent(eventId))
   }, [dispatch, eventId])
 
-  // Format Date
-  function formatDate(date) {
-    const eventDate = new Date(date)
-    const formattedDate = eventDate.toLocaleDateString("en-US", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    })
-
-    return formattedDate
-  }
 
   return (
     <Container sx={{ marginY: 4 }} maxWidth='md'>
@@ -116,7 +105,7 @@ export default function SingleEvent(props) {
               }}
               color='primary'
             >
-              {formatDate(event?.startDate)} - {formatDate(event?.endDate)}
+              Start Date: {event.startDate} | End Date: {event.endDate}
             </Typography>
             <Typography variant='h2' sx={{ fontWeight: 500 }}>
               {event?.name}
@@ -174,8 +163,8 @@ export default function SingleEvent(props) {
                   N
                 </Avatar>
                 <Box>
-                  <Typography>Name</Typography>
-                  <Typography>4 Past Events</Typography>
+                  <Typography>{event?.user?.name}</Typography>
+                  <Typography>{event?.user?.email}</Typography>
                 </Box>
               </Box>
             </Paper>
