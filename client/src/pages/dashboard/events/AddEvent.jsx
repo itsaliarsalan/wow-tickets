@@ -210,7 +210,13 @@ function AddEvent() {
                             </div>
                           </Box>
                         </div>
-                        {loadingUpload ? <></> : errorUpload ? <></> : <></>}
+                        {loadingUpload ? (
+                          ""
+                        ) : errorUpload ? (
+                          console.log(errorUpload)
+                        ) : (
+                          <></>
+                        )}
                       </Box>
                       <Box
                         className='drop-files'
@@ -320,7 +326,8 @@ function AddEvent() {
                           views={["year", "month", "day"]}
                           sx={{ width: "100%" }}
                           onChange={(date) => {
-                            setStartDate(date)
+                            let d = new Date(date).toLocaleDateString()
+                            setStartDate(d)
                           }}
                         />
 
@@ -329,7 +336,8 @@ function AddEvent() {
                           views={["year", "month", "day"]}
                           sx={{ width: "100%" }}
                           onChange={(date) => {
-                            setEndDate(date)
+                            let d = new Date(date).toLocaleDateString()
+                            setEndDate(d)
                           }}
                         />
                       </Box>

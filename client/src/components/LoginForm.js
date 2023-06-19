@@ -32,9 +32,6 @@ function LoginForm(props) {
 
   return (
     <section className='component sign-in'>
-      {loading && <LoadingBox></LoadingBox>}
-      {error && <MessageBox variant='danger'>{error}</MessageBox>}
-
       <div className='container'>
         <h1>Hey, Welcome Back!</h1>
         <h4>Provide required info to login.</h4>
@@ -58,6 +55,9 @@ function LoginForm(props) {
           <button type='submit' className='btn btn-main'>
             Login
           </button>
+          {loading && <LoadingBox></LoadingBox>}
+          {error && <MessageBox variant='danger'>{error}</MessageBox>}
+
           <Link to='/'>Forgot Password?</Link>
           <Link to={`/signup?redirect=${redirect}`} className='text-center'>
             Don't have an account? Create here

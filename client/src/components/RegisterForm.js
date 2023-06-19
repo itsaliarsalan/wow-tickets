@@ -45,8 +45,6 @@ function RegisterForm() {
       <div className='container'>
         <h1>Create New Account</h1>
         <h4>Provide required info to create new account.</h4>
-        {loading && <LoadingBox></LoadingBox>}
-        {error && <MessageBox variant='danger'>{error}</MessageBox>}
 
         <form className='login' action='' onSubmit={submitHandler}>
           <input
@@ -111,6 +109,9 @@ function RegisterForm() {
           <button type='submit' className='btn btn-main'>
             Create Account
           </button>
+          {loading && <LoadingBox></LoadingBox>}
+          {error && <MessageBox variant='danger'>{error}</MessageBox>}
+
           <hr />
           <a href='/signin'>Already have account? Login here</a>
         </form>
