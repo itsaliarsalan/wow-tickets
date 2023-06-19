@@ -63,7 +63,7 @@ userRouter.post(
       name: req.body.name,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
-      stripe_acc_id: account.id || "",
+      stripe_acc_id: account ? account.id : "",
       stripe_cus_id: customer.id,
       isSeller: req.body.isSeller,
     })

@@ -36,7 +36,12 @@ function RegisterForm() {
   }
   useEffect(() => {
     if (userInfo) {
-      navigate("/dashboard")
+
+      if (!userInfo?.isSeller) {
+        navigate("/")
+      } else {
+        navigate("/dashboard")
+      }
     }
   }, [userInfo, navigate])
 
