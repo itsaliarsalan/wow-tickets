@@ -17,7 +17,7 @@ import LockScroll from "../components/layout/LockScroll"
 import AddRoundedIcon from "@mui/icons-material/AddRounded"
 import { getCheckoutSessionUrl } from "../actions/stripeActions"
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded"
-// import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded"
+import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded"
 
 export default function Checkout() {
   // Form data
@@ -37,7 +37,7 @@ export default function Checkout() {
     dispatch(
       getCheckoutSessionUrl(
         items?.ticket?.stripe_pri_id,
-        items?.qty,
+        qty,
         items?.ticket?.price,
         items?.ticket?.user?.stripe_acc_id
       )
@@ -52,8 +52,8 @@ export default function Checkout() {
 
   const columns = [
     { field: "col1", headerName: "Ticket Name", width: 200 },
-    { field: "col2", headerName: "Cost", width: 70 },
-    { field: "col3", headerName: "Quantity", width: 100 },
+    { field: "col2", headerName: "Cost", width: 50 },
+    { field: "col3", headerName: "Qty", width: 50 },
     {
       field: "col4",
       headerName: "Actions",
@@ -62,7 +62,11 @@ export default function Checkout() {
         <ButtonGroup size='small' aria-label='small button group'>
           <Button
             onClick={() => {
-              setQty(qty - 1)
+              if (qty > 0) {
+                setQty(qty - 1)
+              } else {
+                setQty(0)
+              }
             }}
           >
             {" "}
@@ -75,9 +79,9 @@ export default function Checkout() {
           >
             <AddRoundedIcon />
           </Button>
-          {/* <Button>
+          <Button>
             <DeleteOutlineRoundedIcon />
-          </Button> */}
+          </Button>
         </ButtonGroup>
       ),
     },
@@ -140,7 +144,7 @@ export default function Checkout() {
               >
                 <Typography variant='subtitle1'>Tickets</Typography>
                 <Typography variant='body1' color='text.secondary'>
-                  {items?.ticket?.price} * {items?.qty} QTY
+                  {items?.ticket?.price} * {qty} QTY
                 </Typography>
               </Box>
               <Box
@@ -164,7 +168,7 @@ export default function Checkout() {
                 Total Amount
               </Typography>
               <Typography variant='h5' gutterBottom>
-                {items?.ticket?.price * items.qty}
+                {items?.ticket?.price * qty}
               </Typography>
             </Box>
           </Paper>

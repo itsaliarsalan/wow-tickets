@@ -6,16 +6,6 @@ dotenv.config()
 const stripeRouter = express.Router()
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 
-stripeRouter.post("/onboard", async (req, res) => {
-  const accountLink = await stripe.accountLinks.create({
-    account: req.body.stripe_acc_id,
-    refresh_url: process.env.SITE_URL + "/onboarding/fail",
-    return_url: process.env.SITE_URL + "/dashboard/payments",
-    type: "account_onboarding",
-  })
-  console.log(accountLink.url)
-  res.send(accountLink.url)
-})
 
 stripeRouter.post("/charge", async (req, res) => {
   const session = await stripe.checkout.sessions.create({

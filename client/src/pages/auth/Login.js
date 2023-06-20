@@ -1,12 +1,12 @@
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import "../../components/Style.css"
 import { useEffect, useState } from "react"
-import { signin } from "../actions/userActions"
+import { signin } from "../../actions/userActions"
+import LoadingBox from "../../components/LoadingBox"
+import MessageBox from "../../components/MessageBox"
 import { useSelector, useDispatch } from "react-redux"
-import LoadingBox from "./LoadingBox"
-import MessageBox from "./MessageBox"
-import "./Style.css"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
-function LoginForm(props) {
+export default function LoginForm(props) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -58,14 +58,16 @@ function LoginForm(props) {
           {loading && <LoadingBox></LoadingBox>}
           {error && <MessageBox variant='danger'>{error}</MessageBox>}
 
-          <Link to='/'>Forgot Password?</Link>
-          <Link to={`/signup?redirect=${redirect}`} className='text-center'>
-            Don't have an account? Create here
+          <Link to='/'>
+            <span className='btn-link'>Forgot Password?</span>
+          </Link>
+
+          <Link to='/buyer-signup'>
+            Don't have any account?{" "}
+            <span className='btn-link'>Register Now</span>
           </Link>
         </form>
       </div>
     </section>
   )
 }
-
-export default LoginForm

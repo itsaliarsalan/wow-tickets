@@ -48,11 +48,18 @@ userRouter.post(
   "/register",
   expressAsyncHandler(async (req, res) => {
     let account = null
+    let accountLink = null
 
     if (req.body.isSeller) {
       account = await stripe.accounts.create({
         type: "standard",
         email: req.body.email,
+      })
+      accountLink = await stripe.accountLinks.create({
+        account: account.id,
+        refresh_url: process.env.SITE_URL + "/onboarding/fail",
+        return_url: process.env.SITE_URL + "/dashboard",
+        type: "account_onboarding",
       })
     }
     const customer = await stripe.customers.create({
@@ -69,6 +76,7 @@ userRouter.post(
     })
 
     const createdUser = await user.save()
+
     res.send({
       _id: createdUser._id,
       name: createdUser.name,
@@ -77,6 +85,7 @@ userRouter.post(
       stripe_cus_id: createdUser.stripe_cus_id,
       isAdmin: createdUser.isAdmin,
       isSeller: createdUser.isSeller,
+      accountLink: accountLink?.url,
       token: generateToken(createdUser),
     })
   })

@@ -1,9 +1,14 @@
-import React from 'react'
-import './Style.css'
-import logo from '../assets/250x150.svg'
+import "./Style.css"
+import React from "react"
 import { Link } from "react-router-dom"
+import logo from "../assets/250x150.svg"
+import { useSelector } from "react-redux"
 import { Box, Container } from "@mui/material"
-function Footer() {
+
+export default function Footer() {
+  const userSignin = useSelector((state) => state.userSignin)
+  const { userInfo } = userSignin
+
   return (
     <Box component='footer' sx={{ position: "relative", zIndex: 4 }}>
       <Container maxWidth='lg'>
@@ -19,7 +24,10 @@ function Footer() {
             <h4>Customer</h4>
             <ul>
               <li>
-                <Link to='/dashboard/orders' className='nav-item'>
+                <Link
+                  to={userInfo ? "/dashboard/orders" : "/signin"}
+                  className='nav-item'
+                >
                   My Tickets
                 </Link>
               </li>
@@ -29,7 +37,7 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to='/contact' className='nav-item'>
+                <Link to='/' className='nav-item'>
                   Contact Us
                 </Link>
               </li>
@@ -39,17 +47,30 @@ function Footer() {
             <h4>Seller</h4>
             <ul>
               <li>
-                <Link to='/dashboard' className='nav-item'>
+                <Link
+                  to={userInfo ? "/dashboard" : "/signin"}
+                  className='nav-item'
+                >
                   Dashboard
                 </Link>
               </li>
               <li>
-                <Link to='/dashboard/tickets/add' className='nav-item'>
+                <Link
+                  to={
+                    userInfo && userInfo.isSeller
+                      ? "/dashboard/tickets/add"
+                      : "/"
+                  }
+                  className='nav-item'
+                >
                   Add Ticket
                 </Link>
               </li>
               <li>
-                <Link to='/dashboard/orders' className='nav-item'>
+                <Link
+                  to={userInfo && userInfo.isSeller ? "/dashboard/orders" : "/"}
+                  className='nav-item'
+                >
                   Orders
                 </Link>
               </li>
@@ -59,12 +80,18 @@ function Footer() {
             <h4>Join Us</h4>
             <ul>
               <li>
-                <Link to='/dashboard/profile' className='nav-item'>
+                <Link
+                  to={userInfo ? "/dashboard/profile" : "/signin"}
+                  className='nav-item'
+                >
                   Customer Account
                 </Link>
               </li>
               <li>
-                <Link to='/dashboard/profile' className='nav-item'>
+                <Link
+                  to={userInfo ? "/dashboard/profile" : "/signin"}
+                  className='nav-item'
+                >
                   Seller Account
                 </Link>
               </li>
@@ -79,5 +106,3 @@ function Footer() {
     </Box>
   )
 }
-
-export default Footer

@@ -9,8 +9,8 @@ import Footer from "./sections/Footer"
 import Home from "./pages/Home"
 import ExploreEvents from "./pages/ExploreEvents"
 import SingleEvent from "./pages/SingleEvent"
-import Signin from "./pages/Signin"
-import Signup from "./pages/Signup"
+import Login from "./pages/auth/Login"
+import Register from "./pages/auth/Register"
 
 // Dashboard
 import Dashboard from "./pages/dashboard/Dashboard"
@@ -73,8 +73,9 @@ function App() {
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/events' element={<ExploreEvents />} />
           <Route path='/events/:id' exact element={<SingleEvent />}></Route>
-          <Route path='/signin' element={<Signin />} />
-          <Route path='/signup' element={<Signup />} />
+          <Route path='/signin' element={<Login />} />
+          <Route path='/seller-signup' element={<Register isSeller={true} />} />
+          <Route path='/buyer-signup' element={<Register isSeller={false} />} />
           <Route path='/terms' element={<Terms />} />
           <Route path='/privacy' element={<PrivacyPolicy />} />
           <Route path='/order/success' element={<OrderComplete />} />

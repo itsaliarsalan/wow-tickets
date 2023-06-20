@@ -93,7 +93,7 @@ function Navbar() {
                   to='/signin'
                   className={userInfo ? "nav-link" : "nav-cta"}
                 >
-                  Your Tickets
+                  My Account
                 </Link>
               </Tooltip>
             </li>
@@ -167,47 +167,46 @@ function Navbar() {
                     </Typography>
                   </MenuItem>
                   <Divider />
-                  {
-                    userInfo.isSeller || userInfo.isAdmin ? (
-                      <>
-                        <MenuItem
-                          onClick={() => {
-                            navigate("/dashboard")
-                          }}
+                  {userInfo.isSeller || userInfo.isAdmin ? (
+                    <>
+                      <MenuItem
+                        onClick={() => {
+                          navigate("/dashboard")
+                        }}
+                      >
+                        <ListItemIcon>
+                          <Dashboard fontSize='small' />
+                        </ListItemIcon>
+                        <Typography
+                          variant='body'
+                          color='text.secondary'
+                          sx={{ fontFamily: "Poppins" }}
                         >
-                          <ListItemIcon>
-                            <Dashboard fontSize='small' />
-                          </ListItemIcon>
-                          <Typography
-                            variant='body'
-                            color='text.secondary'
-                            sx={{ fontFamily: "Poppins" }}
-                          >
-                            Dashboard
-                          </Typography>
-                        </MenuItem>
-                        <MenuItem
-                          onClick={() => {
-                            navigate("/dashboard/events/manage")
-                          }}
+                          Dashboard
+                        </Typography>
+                      </MenuItem>
+                      <MenuItem
+                        onClick={() => {
+                          navigate("/dashboard/events/manage")
+                        }}
+                      >
+                        <ListItemIcon>
+                          <CalendarTodayOutlinedIcon fontSize='small' />
+                        </ListItemIcon>
+                        <Typography
+                          variant='body'
+                          color='text.secondary'
+                          sx={{ fontFamily: "Poppins" }}
                         >
-                          <ListItemIcon>
-                            <CalendarTodayOutlinedIcon fontSize='small' />
-                          </ListItemIcon>
-                          <Typography
-                            variant='body'
-                            color='text.secondary'
-                            sx={{ fontFamily: "Poppins" }}
-                          >
-                            Events
-                          </Typography>
-                        </MenuItem>
-                      </>
-                    ) : (
-                      <></>
-                    )
-                  }
-                  ;<MenuItem
+                          Events
+                        </Typography>
+                      </MenuItem>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                  ;
+                  <MenuItem
                     onClick={() => {
                       navigate("/dashboard/orders/purchase")
                     }}

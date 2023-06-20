@@ -1,18 +1,16 @@
-import "./Style.css"
-import { Link, useNavigate } from "react-router-dom"
-import { register } from "../actions/userActions"
-import LoadingBox from "../components/LoadingBox"
-import MessageBox from "../components/MessageBox"
-import React, { useState, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import "../Style.css"
 import { toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import React, { useState, useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { register } from "../../actions/userActions"
+import LoadingBox from "../../components/LoadingBox"
+import MessageBox from "../../components/MessageBox"
+import { useSelector, useDispatch } from "react-redux"
 
-function RegisterForm() {
+export default function Register({ isSeller }) {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [isSeller, setIsSeller] = useState(false)
   const [isSigned, setIsSigned] = useState(false)
   const [confirmPassword, setConfirmPassword] = useState("")
 
@@ -36,11 +34,10 @@ function RegisterForm() {
   }
   useEffect(() => {
     if (userInfo) {
-
       if (!userInfo?.isSeller) {
         navigate("/")
       } else {
-        navigate("/dashboard")
+        window.location.replace(userInfo?.accountLink)
       }
     }
   }, [userInfo, navigate])
@@ -48,7 +45,7 @@ function RegisterForm() {
   return (
     <section className='component sign-up'>
       <div className='container'>
-        <h1>Create New Account</h1>
+        <h1>{isSeller ? "Create A Seller Account" : "Create An Account"}</h1>
         <h4>Provide required info to create new account.</h4>
 
         <form className='login' action='' onSubmit={submitHandler}>
@@ -90,19 +87,9 @@ function RegisterForm() {
           />
           <div className='form-checkbox'>
             <input
-              id='isSeller'
-              type='checkbox'
-              placeholder='Become a seller'
-              value={isSeller}
-              onChange={() => setIsSeller(!isSeller)}
-            />
-            <label htmlFor='isSeller'>Become a seller.</label>
-          </div>
-          <div className='form-checkbox'>
-            <input
               id='isSigned'
               type='checkbox'
-              value={isSeller}
+              value={isSigned}
               onChange={() => setIsSigned(!isSigned)}
             />
             <label htmlFor='isSigned'>
@@ -118,11 +105,16 @@ function RegisterForm() {
           {error && <MessageBox variant='danger'>{error}</MessageBox>}
 
           <hr />
-          <a href='/signin'>Already have account? Login here</a>
+          {!isSeller && (
+            <Link to='/seller-signup'>
+              <span className='btn-link'>Join as a seller</span>
+            </Link>
+          )}
+          <Link to='/signin'>
+            Already have account? <span className='btn-link'>Login</span>
+          </Link>
         </form>
       </div>
     </section>
   )
 }
-
-export default RegisterForm

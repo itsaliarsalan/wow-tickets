@@ -272,7 +272,7 @@ form.login {
   max-width: 25rem;
   justify-content: center;
   margin: 20px auto;
-  gap: 10px !important;
+  gap: 15px !important;
 }
 form.login input {
   padding: 10px 20px;
@@ -295,7 +295,16 @@ form.login a {
 form.login a:hover {
   color: var(--primary-typo-color-hover);
 }
+.btn-link{
+  background-color: transparent;
+  color: #aa1895;
+  font-weight: 500;
+  text-decoration: underline;
+}
+.btn-link:hover{
+  cursor: hand;
 
+}
 /* Sign up */
 .sign-up {
   text-align: center;
