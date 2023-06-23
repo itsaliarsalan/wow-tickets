@@ -6,6 +6,7 @@ import data from "../data.js"
 import User from "../models/userModal.js"
 import Stripe from "stripe"
 import { generateToken, isAuth } from "../utils.js"
+import Seller from "../models/sellerInfoModal.js"
 
 dotenv.config()
 const userRouter = express.Router()
@@ -77,6 +78,16 @@ userRouter.post(
 
     const createdUser = await user.save()
 
+    const seller = new Seller({
+      name: req.body.items.name,
+      address: req.body.items.address,
+      company: req.body.items.company,
+      tax: req.body.items.tax,
+      email: req.body.items.email,
+      user: createdUser.isSeller ? createdUser._id : null,
+    })
+    const createdSellerInfo = await seller.save()
+
     res.send({
       _id: createdUser._id,
       name: createdUser.name,
@@ -86,6 +97,7 @@ userRouter.post(
       isAdmin: createdUser.isAdmin,
       isSeller: createdUser.isSeller,
       accountLink: accountLink?.url,
+      sellerInfo: createdSellerInfo,
       token: generateToken(createdUser),
     })
   })

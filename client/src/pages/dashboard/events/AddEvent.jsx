@@ -71,25 +71,24 @@ function AddEvent() {
     const file = e.target.files[0]
     const bodyFormData = new FormData()
     bodyFormData.append("image", file)
+    bodyFormData.append("upload_preset", "wwpkcxob")
+    bodyFormData.append("cloud_name", "dbuj9xkxs")
     setLoadingUpload(true)
 
-    try {
-      const { data } = await Axios.post("/api/uploads", bodyFormData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      })
-      if (isThumbnail) {
-        setThumbnail(data)
-      } else {
-        setCover(data)
+    const data = await fetch(
+      "https://api.cloudinary.com/v1_1/dbuj9xkxs/image/upload",
+      {
+        method: "post",
+        body: bodyFormData,
       }
-      setLoadingUpload(false)
-    } catch (error) {
-      setErrorUpload(error.message)
-      setLoadingUpload(false)
+    )
+    if (isThumbnail) {
+      setThumbnail(data)
+    } else {
+      setCover(data)
     }
+    setLoadingUpload(false)
+
   }
 
   const createHandler = (e) => {

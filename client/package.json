@@ -19,6 +19,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
+    "cloudinary-react": "^1.8.1",
     "dayjs": "^1.11.7",
     "dompurify": "^3.0.2",
     "dotenv": "^16.1.4",

@@ -35,7 +35,9 @@ import ManageUsers from "./pages/dashboard/users/ManageUsers"
 import Checkout from "./pages/Checkout"
 import Profile from "./pages/user/Profile"
 import PrivacyPolicy from "./pages/extra/PrivacyPolicy"
-import Terms from "./pages/extra/Terms"
+import SellerInfo from "./pages/auth/SellerInfo"
+import Terms from "./pages/auth/Terms"
+import Stripe from "./pages/auth/Stripe"
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin)
@@ -68,15 +70,16 @@ function App() {
             </Route>
           )}
           {/* End */}
-
           {/* Home Page Route */}
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/events' element={<ExploreEvents />} />
           <Route path='/events/:id' exact element={<SingleEvent />}></Route>
           <Route path='/signin' element={<Login />} />
+          <Route path='/seller-info' element={<SellerInfo />} />
+          <Route path='/terms' element={<Terms />} />
+          <Route path='/seller-onboard' element={<Stripe />} />
           <Route path='/seller-signup' element={<Register isSeller={true} />} />
           <Route path='/buyer-signup' element={<Register isSeller={false} />} />
-          <Route path='/terms' element={<Terms />} />
           <Route path='/privacy' element={<PrivacyPolicy />} />
           <Route path='/order/success' element={<OrderComplete />} />
           <Route path='/stripe-onboarding/fail' element={<StripeFailed />} />

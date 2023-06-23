@@ -8,10 +8,11 @@ import MessageBox from "../../components/MessageBox"
 import { useSelector, useDispatch } from "react-redux"
 
 export default function Register({ isSeller }) {
-  const [name, setName] = useState("")
+
+  const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [isSigned, setIsSigned] = useState(false)
+  const [isSigned, setIsSigned] = useState(isSeller)
   const [confirmPassword, setConfirmPassword] = useState("")
 
   const userRegister = useSelector((state) => state.userRegister)
@@ -22,11 +23,23 @@ export default function Register({ isSeller }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
+
     if (isSigned) {
       if (password !== confirmPassword) {
         toast.warn("Password and confirm password don't match")
+      }
+      if (!isSeller) {
+        dispatch(register(username, email, password, isSeller, null))
       } else {
-        dispatch(register(name, email, password, isSeller))
+        localStorage.setItem(
+          "seller-account",
+          JSON.stringify({
+            username,
+            email,
+            password,
+          })
+        )
+        navigate("/terms")
       }
     } else {
       toast.warn("Kindly accepts our terms before signup!")
@@ -36,8 +49,6 @@ export default function Register({ isSeller }) {
     if (userInfo) {
       if (!userInfo?.isSeller) {
         navigate("/")
-      } else {
-        window.location.replace(userInfo?.accountLink)
       }
     }
   }, [userInfo, navigate])
@@ -45,17 +56,17 @@ export default function Register({ isSeller }) {
   return (
     <section className='component sign-up'>
       <div className='container'>
-        <h1>{isSeller ? "Create A Seller Account" : "Create An Account"}</h1>
+        <h1>{isSeller ? "Login Information" : "Create An Account"}</h1>
         <h4>Provide required info to create new account.</h4>
-
+        <hr />
         <form className='login' action='' onSubmit={submitHandler}>
           <input
             type='text'
-            placeholder='Name'
+            placeholder={isSeller ? "Username" : "Full Name"}
             required=''
-            value={name}
+            value={username}
             onChange={(e) => {
-              setName(e.target.value)
+              setUsername(e.target.value)
             }}
           />
           <input
@@ -85,28 +96,32 @@ export default function Register({ isSeller }) {
               setConfirmPassword(e.target.value)
             }}
           />
-          <div className='form-checkbox'>
-            <input
-              id='isSigned'
-              type='checkbox'
-              value={isSigned}
-              onChange={() => setIsSigned(!isSigned)}
-            />
-            <label htmlFor='isSigned'>
-              I agree to all <Link to='/terms'>terms</Link> and{" "}
-              <Link to='/privacy'>privacy policies</Link>
-            </label>
-          </div>
-
+          {!isSeller && (
+            <div className='form-checkbox'>
+              <input
+                id='isSigned'
+                type='checkbox'
+                value={isSigned}
+                onChange={() => setIsSigned(!isSigned)}
+              />
+              <label htmlFor='isSigned'>
+                I agree to all{" "}
+                <a href='https://bit.ly/3pmLPuw' target='_blank'>
+                  terms
+                </a>{" "}
+                and <Link to='/privacy'>privacy policies</Link>
+              </label>
+            </div>
+          )}
           <button type='submit' className='btn btn-main'>
-            Create Account
+            {isSeller ? "Next" : "Create Account"}
           </button>
           {loading && <LoadingBox></LoadingBox>}
           {error && <MessageBox variant='danger'>{error}</MessageBox>}
 
           <hr />
           {!isSeller && (
-            <Link to='/seller-signup'>
+            <Link to='/seller-info'>
               <span className='btn-link'>Join as a seller</span>
             </Link>
           )}
