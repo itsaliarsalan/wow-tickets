@@ -10,7 +10,6 @@ import {
 import { useState } from "react"
 import LockScroll from "../layout/LockScroll"
 import { useNavigate } from "react-router-dom"
-import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory"
 
 const TicketWidget = (props) => {
   const navigate = useNavigate()

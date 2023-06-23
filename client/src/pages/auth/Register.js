@@ -23,7 +23,6 @@ export default function Register({ isSeller }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-
     if (isSigned) {
       if (password !== confirmPassword) {
         toast.warn("Password and confirm password don't match")
@@ -106,7 +105,11 @@ export default function Register({ isSeller }) {
               />
               <label htmlFor='isSigned'>
                 I agree to all{" "}
-                <a href='https://bit.ly/3pmLPuw' target='_blank'>
+                <a
+                  href='https://bit.ly/3pmLPuw'
+                  target='_blank'
+                  rel='noreferrer'
+                >
                   terms
                 </a>{" "}
                 and <Link to='/privacy'>privacy policies</Link>

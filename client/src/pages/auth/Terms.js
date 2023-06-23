@@ -44,6 +44,7 @@ export default function Terms() {
         <h1>Accept Terms of Sales</h1>
         <hr />
         <iframe
+          title='terms'
           src='/images/terms.pdf'
           name='myiFrame'
           height='400px'

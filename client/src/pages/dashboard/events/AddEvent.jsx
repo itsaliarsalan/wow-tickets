@@ -14,7 +14,6 @@ import {
 import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker"
 import { toast } from "react-toastify"
 
-import Axios from "axios"
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { listVenues } from "../../../actions/venueActions"
@@ -87,8 +86,8 @@ function AddEvent() {
     } else {
       setCover(data)
     }
+    setErrorUpload("")
     setLoadingUpload(false)
-
   }
 
   const createHandler = (e) => {

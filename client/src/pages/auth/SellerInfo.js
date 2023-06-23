@@ -1,7 +1,6 @@
 import "../Style.css"
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
 import { toast } from "react-toastify"
 
 export default function SellerInfo() {
@@ -11,7 +10,6 @@ export default function SellerInfo() {
   const [tax, setTax] = useState("")
   const [supportEmail, setSupportEmail] = useState("")
 
-  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const submitHandler = (e) => {
