@@ -90,7 +90,7 @@ function Navbar() {
             <li>
               <Tooltip title='Manage Tickets'>
                 <Link
-                  to='/signin'
+                  to={userInfo ? "/dashboard/profile" : "/signin"}
                   className={userInfo ? "nav-link" : "nav-cta"}
                 >
                   My Account
