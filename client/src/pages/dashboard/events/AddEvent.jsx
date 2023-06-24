@@ -28,6 +28,7 @@ import MessageBox from "../../../components/MessageBox"
 import DateRangeIcon from "@mui/icons-material/DateRange"
 import LocationOnIcon from "@mui/icons-material/LocationOn"
 import CropOriginalRoundedIcon from "@mui/icons-material/CropOriginalRounded"
+import axios from "axios"
 
 function AddEvent() {
   const dispatch = useDispatch()
@@ -69,25 +70,21 @@ function AddEvent() {
   const uploadFileHandler = async (e, isThumbnail) => {
     const file = e.target.files[0]
     const bodyFormData = new FormData()
-    bodyFormData.append("image", file)
-    bodyFormData.append("upload_preset", "wwpkcxob")
-    bodyFormData.append("cloud_name", "dbuj9xkxs")
-    setLoadingUpload(true)
-
-    const data = await fetch(
-      "https://api.cloudinary.com/v1_1/dbuj9xkxs/image/upload",
-      {
-        method: "post",
-        body: bodyFormData,
+    bodyFormData.append("my_file", file)
+    try {
+      setLoadingUpload(true)
+      const res = await axios.post("/api/uploads/upload", bodyFormData)
+      console.log(res)
+      if (isThumbnail) {
+        setThumbnail(res.data.url)
+      } else {
+        setCover(res.data.url)
       }
-    )
-    if (isThumbnail) {
-      setThumbnail(data)
-    } else {
-      setCover(data)
+      setLoadingUpload(false)
+    } catch (error) {
+      setErrorUpload(error)
+      setLoadingUpload(false)
     }
-    setErrorUpload("")
-    setLoadingUpload(false)
   }
 
   const createHandler = (e) => {

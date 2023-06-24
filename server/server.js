@@ -1,4 +1,5 @@
 import path from "path"
+import cors from "cors"
 import dotenv from "dotenv"
 import express from "express"
 import mongoose from "mongoose"
@@ -14,6 +15,7 @@ dotenv.config()
 
 const app = express()
 // Below two lines converts form post data to json format in req body
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 

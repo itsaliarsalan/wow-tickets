@@ -1,22 +1,41 @@
-import multer from "multer"
+import Multer from "multer"
 import express from "express"
-import { isAuth } from "../utils.js"
-
+import dotenv from "dotenv"
+import cloudinary from "cloudinary"
 const uploadRouter = express.Router()
 
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, "uploads/")
-  },
-  filename(req, file, cb) {
-    cb(null, `${Date.now()}.jpg`)
-  },
+dotenv.config()
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
-const upload = multer({ storage })
+async function handleUpload(file) {
+  const res = await cloudinary.uploader.upload(file, {
+    resource_type: "auto",
+  })
+  return res
+}
 
-uploadRouter.post("/", isAuth, upload.single("image"), (req, res) => {
-  res.send(`/${req.file.path}`)
+const storage = new Multer.memoryStorage()
+const upload = Multer({
+  storage,
+})
+
+uploadRouter.post("/upload", upload.single("my_file"), async (req, res) => {
+  try {
+    const b64 = Buffer.from(req.file.buffer).toString("base64")
+    let dataURI = "data:" + req.file.mimetype + ";base64," + b64
+    const cldRes = await handleUpload(dataURI)
+    res.json(cldRes)
+  } catch (error) {
+    console.log(error)
+    res.send({
+      message: error.message,
+    })
+  }
 })
 
 export default uploadRouter
