@@ -15,7 +15,7 @@ function Events() {
   const { loading, error, events } = eventList
 
   useEffect(() => {
-    dispatch(listEvents())
+    dispatch(listEvents({}))
   }, [dispatch])
 
   // Create instance of slider to further use methods

@@ -17,23 +17,25 @@ import {
   VENUE_DETAILS_FAIL,
 } from "../constants/venueConstants"
 
-export const listVenues = () => async (dispatch) => {
-  dispatch({
-    type: VENUE_LIST_REQUEST,
-  })
-  try {
-    const { data } = await Axios.get("/api/venues")
+export const listVenues =
+  ({ seller = "" }) =>
+  async (dispatch) => {
     dispatch({
-      type: VENUE_LIST_SUCCESS,
-      payload: data,
+      type: VENUE_LIST_REQUEST,
     })
-  } catch (error) {
-    dispatch({
-      type: VENUE_LIST_FAIL,
-      payload: error.message,
-    })
+    try {
+      const { data } = await Axios.get(`/api/venues?seller=${seller}`)
+      dispatch({
+        type: VENUE_LIST_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      dispatch({
+        type: VENUE_LIST_FAIL,
+        payload: error.message,
+      })
+    }
   }
-}
 
 export const createVenue =
   ({ name, capacity, contact, address, city, state, postal, country }) =>

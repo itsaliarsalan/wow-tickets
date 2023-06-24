@@ -1,16 +1,18 @@
-import express from "express"
-import expressAsyncHandler from "express-async-handler"
-import data from "../data.js"
-import Event from "../models/eventModal.js"
-import { isAuth } from "../utils.js"
 import dayjs from "dayjs"
+import express from "express"
+import data from "../data.js"
+import mongoose from "mongoose"
+import { isAuth } from "../utils.js"
+import Event from "../models/eventModal.js"
+import expressAsyncHandler from "express-async-handler"
 
 const eventRouter = express.Router()
-
 eventRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const events = await Event.find({}).populate({
+    const seller = req.query.seller || ""
+    const sellerFilter = seller ? { seller } : {}
+    const events = await Event.find({ ...sellerFilter }).populate({
       path: "venue",
       select: ["name", "address", "city", "state", "country"],
     })
@@ -39,7 +41,7 @@ eventRouter.get(
         path: "user",
         select: ["name", "email", "image"],
       })
-      
+
     if (event) {
       await res.send(event)
     } else {

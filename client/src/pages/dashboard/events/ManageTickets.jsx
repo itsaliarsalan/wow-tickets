@@ -14,6 +14,10 @@ import { TICKET_DELETE_RESET } from "../../../constants/ticketConstants"
 
 function ManageTickets() {
   const dispatch = useDispatch()
+
+  const userSignin = useSelector((state) => state.userSignin)
+  const { userInfo } = userSignin
+
   const ticketList = useSelector((state) => state.ticketList)
   const { loading, error, tickets } = ticketList
 
@@ -112,8 +116,8 @@ function ManageTickets() {
       dispatch({ type: TICKET_DELETE_RESET })
       toast.success("Ticket Deleted Successfully.")
     }
-    dispatch(listTickets())
-  }, [dispatch, successDelete])
+    dispatch(listTickets({ seller: userInfo._id }))
+  }, [dispatch, successDelete, userInfo._id])
 
   return (
     <Box sx={{ margin: "30px 0" }}>

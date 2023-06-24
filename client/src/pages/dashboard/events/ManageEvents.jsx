@@ -10,13 +10,17 @@ import EventIcon from "@mui/icons-material/Event"
 import EventAvailableIcon from "@mui/icons-material/EventAvailable"
 import EventBusyIcon from "@mui/icons-material/EventBusy"
 import { useEffect } from "react"
-import { listEvents, deleteEvent } from "../../../actions/eventActions"
+import { deleteEvent, listEvents } from "../../../actions/eventActions"
 import { EVENT_DELETE_RESET } from "../../../constants/eventConstants"
 import { useNavigate } from "react-router-dom"
 
 function ManageEvents() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const userSignin = useSelector((state) => state.userSignin)
+  const userInfo = userSignin
+
   const eventList = useSelector((state) => state.eventList)
   const { loading, error, events } = eventList
 
@@ -116,8 +120,8 @@ function ManageEvents() {
       toast.success("Event Deleted Successfully.")
     }
 
-    dispatch(listEvents())
-  }, [dispatch, successDelete])
+    dispatch(listEvents({ seller: userInfo._id }))
+  }, [dispatch, successDelete, userInfo._id])
   return (
     <Box sx={{ margin: "30px 0" }}>
       <DashboardHeader

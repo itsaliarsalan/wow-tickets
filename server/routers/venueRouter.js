@@ -8,7 +8,10 @@ const venueRouter = express.Router()
 venueRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const venues = await Venue.find({})
+    const seller = req.query.seller || ""
+    const sellerFilter = seller ? { seller } : {}
+
+    const venues = await Venue.find({ ...sellerFilter })
     res.send(venues)
   })
 )

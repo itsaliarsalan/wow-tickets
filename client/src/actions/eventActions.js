@@ -14,23 +14,26 @@ import {
   EVENT_DELETE_FAIL,
 } from "../constants/eventConstants"
 
-export const listEvents = () => async (dispatch) => {
-  dispatch({
-    type: EVENT_LIST_REQUEST,
-  })
-  try {
-    const { data } = await Axios.get("/api/events")
+export const listEvents =
+  ({ seller = "" }) =>
+  async (dispatch) => {
     dispatch({
-      type: EVENT_LIST_SUCCESS,
-      payload: data,
+      type: EVENT_LIST_REQUEST,
     })
-  } catch (error) {
-    dispatch({
-      type: EVENT_LIST_FAIL,
-      payload: error,
-    })
+    try {
+      const { data } = await Axios.get(`/api/events?seller=${seller}`)
+      dispatch({
+        type: EVENT_LIST_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      dispatch({
+        type: EVENT_LIST_FAIL,
+        payload: error,
+      })
+    }
   }
-}
+
 
 export const detailsEvent = (eventId) => async (dispatch) => {
   dispatch({ type: EVENT_DETAILS_REQUEST, payload: eventId })

@@ -12,7 +12,9 @@ const ticketRouter = express.Router()
 ticketRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const tickets = await Ticket.find({}).populate({
+    const seller = req.query.seller || ""
+    const sellerFilter = seller ? { seller } : {}
+    const tickets = await Ticket.find({ ...sellerFilter }).populate({
       path: "user",
       select: ["name", "email", "stripe_acc_id"],
     })

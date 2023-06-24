@@ -17,23 +17,25 @@ import {
   TICKET_LIST_BY_EVENT_FAIL,
 } from "../constants/ticketConstants"
 
-export const listTickets = () => async (dispatch) => {
-  dispatch({
-    type: TICKET_LIST_REQUEST,
-  })
-  try {
-    const { data } = await Axios.get("/api/tickets")
+export const listTickets =
+  ({ seller = "" }) =>
+  async (dispatch) => {
     dispatch({
-      type: TICKET_LIST_SUCCESS,
-      payload: data,
+      type: TICKET_LIST_REQUEST,
     })
-  } catch (error) {
-    dispatch({
-      type: TICKET_LIST_FAIL,
-      payload: error.message,
-    })
+    try {
+      const { data } = await Axios.get(`/api/tickets?seller=${seller}`)
+      dispatch({
+        type: TICKET_LIST_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      dispatch({
+        type: TICKET_LIST_FAIL,
+        payload: error.message,
+      })
+    }
   }
-}
 
 export const listTicketsByEvent = (eventId) => async (dispatch) => {
   dispatch({

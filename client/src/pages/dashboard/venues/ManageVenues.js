@@ -29,6 +29,9 @@ function ManageVenues() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const userSignin = useSelector((state) => state.userSignin)
+  const { userInfo } = userSignin
+
   const venueList = useSelector((state) => state.venueList)
   const { loading, error, venues } = venueList
 
@@ -164,8 +167,8 @@ function ManageVenues() {
       toast.success("Venue Updated Successfully.")
     }
 
-    dispatch(listVenues())
-  }, [dispatch, successDelete, successUpdate])
+    dispatch(listVenues({ seller: userInfo._id }))
+  }, [dispatch, successDelete, successUpdate, userInfo._id])
 
   return (
     <Box sx={{ margin: "30px 0" }}>
