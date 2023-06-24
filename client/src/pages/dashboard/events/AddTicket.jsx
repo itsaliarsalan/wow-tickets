@@ -53,7 +53,7 @@ function AddTicket() {
       setTicketCost(0.01)
       setTicketAllocations("")
     }
-    dispatch(listEvents())
+    dispatch(listEvents({ seller: userInfo._id }))
     setUserId(userInfo._id)
   }, [dispatch, userInfo._id, successCreate])
 

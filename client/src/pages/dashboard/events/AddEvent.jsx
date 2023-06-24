@@ -128,8 +128,8 @@ function AddEvent() {
       setEndTime(null)
       setVenueId(null)
     }
-    dispatch(listVenues())
-  }, [dispatch, successCreate, userInfo])
+    dispatch(listVenues({ seller: userInfo._id }))
+  }, [dispatch, successCreate, userInfo, userInfo._id])
 
   // Active venue for display preview
   const activeVenue = venues?.find((venue) => venue._id === venueId)
