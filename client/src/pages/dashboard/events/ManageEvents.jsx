@@ -119,7 +119,6 @@ function ManageEvents() {
       dispatch({ type: EVENT_DELETE_RESET })
       toast.success("Event Deleted Successfully.")
     }
-
     dispatch(listEvents({ seller: userInfo._id }))
   }, [dispatch, successDelete, userInfo._id])
   return (

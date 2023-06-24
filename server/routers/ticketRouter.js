@@ -12,13 +12,17 @@ const ticketRouter = express.Router()
 ticketRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const seller = req.query.seller || ""
-    const sellerFilter = seller ? { seller } : {}
-    const tickets = await Ticket.find({ ...sellerFilter }).populate({
-      path: "user",
-      select: ["name", "email", "stripe_acc_id"],
-    })
-    res.send(tickets)
+    const user = req.query.seller || ""
+    const sellerFilter = user ? { user } : {}
+    try {
+      const tickets = await Ticket.find({ ...sellerFilter }).populate({
+        path: "user",
+        select: ["name", "email", "stripe_acc_id"],
+      })
+      res.send(tickets)
+    } catch (error) {
+      console.log(error)
+    }
   })
 )
 

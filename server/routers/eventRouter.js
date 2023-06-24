@@ -10,8 +10,9 @@ const eventRouter = express.Router()
 eventRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const seller = req.query.seller || ""
-    const sellerFilter = seller ? { seller } : {}
+    const user = req.query.seller || ""
+    const sellerFilter = user ? { user } : {}
+
     const events = await Event.find({ ...sellerFilter }).populate({
       path: "venue",
       select: ["name", "address", "city", "state", "country"],

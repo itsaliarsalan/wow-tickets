@@ -8,9 +8,8 @@ const venueRouter = express.Router()
 venueRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const seller = req.query.seller || ""
-    const sellerFilter = seller ? { seller } : {}
-
+    const user = req.query.seller || ""
+    const sellerFilter = user ? { user } : {}
     const venues = await Venue.find({ ...sellerFilter })
     res.send(venues)
   })
@@ -38,6 +37,7 @@ venueRouter.post(
       state: req.body.state,
       postal: req.body.postal,
       country: req.body.country,
+      user: req.body.userId,
     })
     const createdVenue = await venue.save()
     res.send({ message: "Venue Added", venue: createdVenue })

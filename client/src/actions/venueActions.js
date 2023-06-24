@@ -38,12 +38,23 @@ export const listVenues =
   }
 
 export const createVenue =
-  ({ name, capacity, contact, address, city, state, postal, country }) =>
+  ({
+    name,
+    capacity,
+    contact,
+    address,
+    city,
+    state,
+    postal,
+    country,
+    userId,
+  }) =>
   async (dispatch, getState) => {
     dispatch({ type: VENUE_ADD_REQUEST })
     const {
       userSignin: { userInfo },
     } = getState()
+
     try {
       const { data } = await Axios.post(
         "/api/venues",
@@ -56,6 +67,7 @@ export const createVenue =
           state,
           postal,
           country,
+          userId,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },

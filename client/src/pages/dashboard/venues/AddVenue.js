@@ -17,45 +17,49 @@ export default function AddVenue() {
   const [state, setState] = useState("")
   const [postal, setPostal] = useState("")
   const [country, setCountry] = useState("")
+ const [userId, setUserId] = useState(null)
+ const userSignin = useSelector((state) => state.userSignin)
+ const { userInfo } = userSignin
+ const eventCreate = useSelector((state) => state.eventCreate)
+ const {
+   loading: loadingCreate,
+   error: errorCreate,
+   success: successCreate,
+   //event: createdEvent,
+ } = eventCreate
 
-  const eventCreate = useSelector((state) => state.eventCreate)
-  const {
-    loading: loadingCreate,
-    error: errorCreate,
-    success: successCreate,
-    //event: createdEvent,
-  } = eventCreate
+ const dispatch = useDispatch()
 
-  const dispatch = useDispatch()
-
-  const submitHandler = () => {
-    dispatch(
-      createVenue({
-        name,
-        capacity,
-        contact,
-        address,
-        city,
-        state,
-        postal,
-        country,
-      })
-    )
-  }
-  useEffect(() => {
-    if (successCreate) {
-      dispatch({ type: VENUE_ADD_RESET })
-      toast.success("Venue added successfully.")
-      setName("")
-      setCapacity()
-      setAddress("")
-      setCity("")
-      setState("")
-      setPostal("")
-      setCountry("")
-      setContact("")
-    }
-  }, [dispatch, successCreate])
+ const submitHandler = () => {
+   dispatch(
+     createVenue({
+       name,
+       capacity,
+       contact,
+       address,
+       city,
+       state,
+       postal,
+       country,
+       userId
+     })
+   )
+ }
+ useEffect(() => {
+   if (successCreate) {
+     dispatch({ type: VENUE_ADD_RESET })
+     toast.success("Venue added successfully.")
+     setName("")
+     setCapacity()
+     setAddress("")
+     setCity("")
+     setState("")
+     setPostal("")
+     setCountry("")
+     setContact("")
+   }
+   setUserId(userInfo._id)
+ }, [dispatch, successCreate, userInfo._id])
 
   return (
     <>
