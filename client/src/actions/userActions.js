@@ -15,19 +15,46 @@ import {
   USER_UPDATE_PROFILE_SUCCESS,
 } from "../constants/userConstants"
 
-export const register =
-  (name, email, password, isSeller, items) => async (dispatch) => {
+export const registerSeller =
+  (username, email, password, isSeller, items) => async (dispatch) => {
     dispatch({
       type: USER_REGISTER_REQUEST,
-      payload: { name, email, password, isSeller, items },
+      payload: { username, email, password, isSeller, items },
     })
     try {
-      const { data } = await Axios.post("/api/users/register", {
-        name,
+      const { data } = await Axios.post("/api/users/register/seller", {
+        username,
         email,
         password,
         isSeller,
         items,
+      })
+      dispatch({ type: USER_REGISTER_SUCCESS, payload: data })
+      dispatch({ type: USER_SIGNIN_SUCCESS, payload: data })
+      localStorage.setItem("userInfo", JSON.stringify(data))
+    } catch (error) {
+      dispatch({
+        type: USER_REGISTER_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+  }
+
+export const registerBuyer =
+  (username, email, password, isSeller) => async (dispatch) => {
+    dispatch({
+      type: USER_REGISTER_REQUEST,
+      payload: { username, email, password, isSeller },
+    })
+    try {
+      const { data } = await Axios.post("/api/users/register/buyer", {
+        username,
+        email,
+        password,
+        isSeller,
       })
       dispatch({ type: USER_REGISTER_SUCCESS, payload: data })
       dispatch({ type: USER_SIGNIN_SUCCESS, payload: data })

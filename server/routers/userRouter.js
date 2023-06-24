@@ -46,62 +46,106 @@ userRouter.post(
 )
 
 userRouter.post(
-  "/register",
+  "/register/seller",
   expressAsyncHandler(async (req, res) => {
-    let account = null
-    let accountLink = null
+    try {
+      let account = null
+      let accountLink = null
 
-    if (req.body.isSeller) {
-      account = await stripe.accounts.create({
-        type: "standard",
+      if (req.body.isSeller) {
+        account = await stripe.accounts.create({
+          type: "standard",
+          email: req.body.email,
+        })
+        accountLink = await stripe.accountLinks.create({
+          account: account.id,
+          refresh_url: process.env.SITE_URL + "/onboarding/fail",
+          return_url: process.env.SITE_URL + "/dashboard",
+          type: "account_onboarding",
+        })
+      }
+      const customer = await stripe.customers.create({
         email: req.body.email,
       })
-      accountLink = await stripe.accountLinks.create({
-        account: account.id,
-        refresh_url: process.env.SITE_URL + "/onboarding/fail",
-        return_url: process.env.SITE_URL + "/dashboard",
-        type: "account_onboarding",
+
+      const user = new User({
+        name: req.body?.username,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 8),
+        stripe_acc_id: account ? account.id : "",
+        stripe_cus_id: customer.id,
+        isSeller: req.body.isSeller,
       })
+      const createdUser = await user.save()
+
+      const seller = new Seller({
+        name: req.body.items.name,
+        address: req.body.items.address,
+        company: req.body.items.company,
+        tax: req.body.items.tax,
+        email: req.body.items.email,
+        user: createdUser.isSeller ? createdUser._id : null,
+      })
+      const createdSellerInfo = await seller.save()
+      res.send({
+        _id: createdUser._id,
+        name: createdUser.username,
+        email: createdUser.email,
+        stripe_acc_id: createdUser.stripe_acc_id,
+        stripe_cus_id: createdUser.stripe_cus_id,
+        isAdmin: createdUser.isAdmin,
+        isSeller: createdUser.isSeller,
+        accountLink: accountLink?.url,
+        sellerInfo: createdSellerInfo,
+        token: generateToken(createdUser),
+      })
+    } catch (error) {
+      if (error.response) {
+        console.log("User error status: ", error.response.status)
+        console.log("User error data: ", error.response.data)
+      } else {
+        console.log("User error message: ", error.message)
+      }
     }
-    const customer = await stripe.customers.create({
-      email: req.body.email,
-    })
-
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 8),
-      stripe_acc_id: account ? account.id : "",
-      stripe_cus_id: customer.id,
-      isSeller: req.body.isSeller,
-    })
-
-    const createdUser = await user.save()
-
-    const seller = new Seller({
-      name: req.body.items.name,
-      address: req.body.items.address,
-      company: req.body.items.company,
-      tax: req.body.items.tax,
-      email: req.body.items.email,
-      user: createdUser.isSeller ? createdUser._id : null,
-    })
-    const createdSellerInfo = await seller.save()
-
-    res.send({
-      _id: createdUser._id,
-      name: createdUser.name,
-      email: createdUser.email,
-      stripe_acc_id: createdUser.stripe_acc_id,
-      stripe_cus_id: createdUser.stripe_cus_id,
-      isAdmin: createdUser.isAdmin,
-      isSeller: createdUser.isSeller,
-      accountLink: accountLink?.url,
-      sellerInfo: createdSellerInfo,
-      token: generateToken(createdUser),
-    })
   })
 )
+
+userRouter.post(
+  "/register/buyer",
+  expressAsyncHandler(async (req, res) => {
+    try {
+      const customer = await stripe.customers.create({
+        email: req.body.email,
+      })
+      const user = new User({
+        name: req.body?.username,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 8),
+        stripe_cus_id: customer.id,
+      })
+      const createdUser = await user.save()
+
+      res.send({
+        _id: createdUser._id,
+        name: createdUser.name,
+        email: createdUser.email,
+        stripe_acc_id: createdUser.stripe_acc_id,
+        stripe_cus_id: createdUser.stripe_cus_id,
+        isAdmin: createdUser.isAdmin,
+        isSeller: createdUser.isSeller,
+        token: generateToken(createdUser),
+      })
+    } catch (error) {
+      if (error.response) {
+        console.log("User error status: ", error.response.status)
+        console.log("User error data: ", error.response.data)
+      } else {
+        console.log("User error message: ", error.message)
+      }
+    }
+  })
+)
+
 
 userRouter.get(
   "/:id",

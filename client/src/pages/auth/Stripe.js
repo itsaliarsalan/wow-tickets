@@ -16,39 +16,34 @@ export default function Stripe() {
 	}
 
 	return (
-		<section className="component sign-up">
-			<div className="container">
-				<h1>Setup Stripe</h1>
-				<h4>Setup your Stripe account to get payouts.</h4>
-				<Stepper activeStep={2} alternativeLabel sx={{ mt: 4, mb: 5 }}>
-					{steps.map(label => (
-						<Step key={label}>
-							<StepLabel>{label}</StepLabel>
-						</Step>
-					))}
-				</Stepper>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id quam
-					et urna euismod consectetur sit amet vitae ligula. Nullam eget magna
-					nunc. Nam dui ante, porta et convallis ut.
-				</p>
-				<hr />
-				<button
-					type="submit"
-					className="btn btn-main"
-					onClick={() => {
-						submitHandler()
-					}}
-				>
-					Start Onboarding
-				</button>
+    <section className='component sign-up'>
+      <div className='container'>
+        <h1>Setup Stripe</h1>
+        <h4>Setup your Stripe account to get payouts.</h4>
+        <Stepper activeStep={2} alternativeLabel sx={{ mt: 4, mb: 5 }}>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <hr />
+        <button
+          type='submit'
+          className='btn btn-main'
+          onClick={() => {
+            submitHandler()
+          }}
+        >
+          Start Onboarding
+        </button>
 
-				<hr />
+        <hr />
 
-				<Link to="/signin">
-					Already have account? <span className="btn-link">Login</span>
-				</Link>
-			</div>
-		</section>
-	)
+        <Link to='/signin'>
+          Already have account? <span className='btn-link'>Login</span>
+        </Link>
+      </div>
+    </section>
+  )
 }
