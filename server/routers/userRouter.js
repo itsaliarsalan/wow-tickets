@@ -59,7 +59,7 @@ userRouter.post(
         })
         accountLink = await stripe.accountLinks.create({
           account: account.id,
-          refresh_url: process.env.SITE_URL + "/onboarding/fail",
+          refresh_url: process.env.SITE_URL + "/stripe-onboarding/fail",
           return_url: process.env.SITE_URL + "/dashboard",
           type: "account_onboarding",
         })
