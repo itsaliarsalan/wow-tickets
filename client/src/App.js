@@ -32,17 +32,19 @@ import ManageTickets from "./pages/dashboard/events/ManageTickets"
 import SellOrders from "./pages/dashboard/orders/SellOrders"
 import PurchaseOrders from "./pages/dashboard/orders/PurchaseOrders"
 import ManageUsers from "./pages/dashboard/users/ManageUsers"
-import Checkout from "./pages/Checkout"
 import Profile from "./pages/user/Profile"
 import PrivacyPolicy from "./pages/extra/PrivacyPolicy"
 import SellerInfo from "./pages/auth/SellerInfo"
 import Terms from "./pages/auth/Terms"
 import Stripe from "./pages/auth/Stripe"
-
+import "@stripe/stripe-js"
+import StripeContainer from "./pages/StripeContainer"
 function App() {
+  // Make sure to call `loadStripe` outside of a component’s render to avoid
+  // recreating the `Stripe` object on every render.
+
   const userSignin = useSelector((state) => state.userSignin)
   const { userInfo } = userSignin
-
   return (
     // Using component as a wrapper to provide contextAPI's for reducing complexity of the code
     <AppWrapper>
@@ -71,7 +73,7 @@ function App() {
           )}
           {/* End */}
           {/* Home Page Route */}
-          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/checkout' element={<StripeContainer />} />
           <Route path='/events' element={<ExploreEvents />} />
           <Route path='/events/:id' exact element={<SingleEvent />}></Route>
           <Route path='/signin' element={<Login />} />

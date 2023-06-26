@@ -28,21 +28,22 @@ export const stripeOnboarding = (stripe_acc_id) => async (dispatch) => {
   }
 }
 
-export const getCheckoutSessionUrl =
-  (stripe_pri_id, qty, price, stripe_acc_id) => async (dispatch) => {
+export const createStripeClientSecret =
+  (price, qty, stripe_acc_id) => async (dispatch) => {
     dispatch({
       type: STRIPE_CLIENT_SECRET_REQUEST,
-      payload: { stripe_pri_id, qty, price, stripe_acc_id },
+      payload: { price, qty, stripe_acc_id },
     })
 
     try {
-      const session = await Axios.post("/api/stripe/charge", {
-        stripe_pri_id,
-        qty,
+      const response = await Axios.post("/api/stripe/secret", {
         price,
+        qty,
         stripe_acc_id,
       })
-      dispatch({ type: STRIPE_CLIENT_SECRET_SUCCESS, payload: session })
+      const { client_secret: clientSecret } = await response.json()
+
+      dispatch({ type: STRIPE_CLIENT_SECRET_SUCCESS, payload: clientSecret })
     } catch (error) {
       dispatch({
         type: STRIPE_CLIENT_SECRET_FAIL,
@@ -53,3 +54,4 @@ export const getCheckoutSessionUrl =
       })
     }
   }
+  

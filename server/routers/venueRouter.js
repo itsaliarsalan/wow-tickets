@@ -10,6 +10,7 @@ venueRouter.get(
   expressAsyncHandler(async (req, res) => {
     const user = req.query.seller || ""
     const sellerFilter = user ? { user } : {}
+
     const venues = await Venue.find({ ...sellerFilter })
     res.send(venues)
   })

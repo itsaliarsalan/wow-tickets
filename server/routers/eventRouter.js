@@ -1,7 +1,6 @@
 import dayjs from "dayjs"
 import express from "express"
 import data from "../data.js"
-import mongoose from "mongoose"
 import { isAuth } from "../utils.js"
 import Event from "../models/eventModal.js"
 import expressAsyncHandler from "express-async-handler"

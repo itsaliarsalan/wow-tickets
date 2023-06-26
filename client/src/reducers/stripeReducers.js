@@ -19,12 +19,12 @@ export const stripeConnectOnboardingReducer = (state = {}, action) => {
       return state
   }
 }
-export const stripCheckoutSessionReducer = (state = {}, action) => {
+export const stripeClientSecretReducer = (state = {}, action) => {
   switch (action.type) {
     case STRIPE_CLIENT_SECRET_REQUEST:
       return { loading: true }
     case STRIPE_CLIENT_SECRET_SUCCESS:
-      return { loading: false, success: true, session: action.payload }
+      return { loading: false, success: true, clientSecret: action.payload }
     case STRIPE_CLIENT_SECRET_FAIL:
       return { loading: false, error: action.payload }
     default:

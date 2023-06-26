@@ -27,7 +27,7 @@ import {
 } from "./reducers/venueReducers"
 
 import {
-  stripCheckoutSessionReducer,
+  stripeClientSecretReducer,
   stripeConnectOnboardingReducer,
 } from "./reducers/stripeReducers"
 import { userRegisterReducer, userSigninReducer } from "./reducers/userReducers"
@@ -58,7 +58,7 @@ const reducer = combineReducers({
   venueUpdate: venueUpdateReducer,
   venueCreate: venueCreateReducer,
   stripeConnectOnboarding: stripeConnectOnboardingReducer,
-  stripeCheckout: stripCheckoutSessionReducer,
+  stripeClientSecret: stripeClientSecretReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
