@@ -1,5 +1,5 @@
 import React from "react"
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Outlet } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
@@ -11,6 +11,7 @@ import ExploreEvents from "./pages/ExploreEvents"
 import SingleEvent from "./pages/SingleEvent"
 import Login from "./pages/auth/Login"
 import Register from "./pages/auth/Register"
+import CustomerSupport from "./pages/auth/CustomerSupport"
 
 // Dashboard
 import Dashboard from "./pages/dashboard/Dashboard"
@@ -40,70 +41,85 @@ import Stripe from "./pages/auth/Stripe"
 import "@stripe/stripe-js"
 import StripeContainer from "./pages/StripeContainer"
 function App() {
-  // Make sure to call `loadStripe` outside of a component’s render to avoid
-  // recreating the `Stripe` object on every render.
+	// Make sure to call `loadStripe` outside of a component’s render to avoid
+	// recreating the `Stripe` object on every render.
 
-  const userSignin = useSelector((state) => state.userSignin)
-  const { userInfo } = userSignin
-  return (
-    // Using component as a wrapper to provide contextAPI's for reducing complexity of the code
-    <AppWrapper>
-      <Header />
-      <main>
-        <Routes>
-          {/* Dashboard */}
-          {userInfo && (
-            <Route path='/dashboard' element={<Dashboard />}>
-              <Route index element={<Overview />} />
-              <Route path='events/add' element={<AddEvent />} />
-              <Route path='events/manage' element={<ManageEvents />} />
-              <Route path='tickets/add' element={<AddTicket />} />
-              <Route path='tickets/manage' element={<ManageTickets />} />
-              <Route path='orders/sell' element={<SellOrders />} />
-              <Route path='orders/purchase' element={<PurchaseOrders />} />
-              <Route path='users' element={<ManageUsers />} />
-              <Route path='audience' element={<Audience />} />
-              <Route path='organizers' element={<Organizers />} />
-              <Route path='orders' element={<Orders />} />
-              <Route path='payments' element={<Payments />} />
-              <Route path='venues/add' element={<AddVenue />} />
-              <Route path='venues/manage' element={<ManageVenues />} />
-              <Route path='profile' element={<Profile />} />
-            </Route>
-          )}
-          {/* End */}
-          {/* Home Page Route */}
-          <Route path='/checkout' element={<StripeContainer />} />
-          <Route path='/events' element={<ExploreEvents />} />
-          <Route path='/events/:id' exact element={<SingleEvent />}></Route>
-          <Route path='/signin' element={<Login />} />
-          <Route path='/seller-info' element={<SellerInfo />} />
-          <Route path='/terms' element={<Terms />} />
-          <Route path='/seller-onboard' element={<Stripe />} />
-          <Route path='/seller-signup' element={<Register isSeller={true} />} />
-          <Route path='/buyer-signup' element={<Register isSeller={false} />} />
-          <Route path='/privacy' element={<PrivacyPolicy />} />
-          <Route path='/order/success' element={<OrderComplete />} />
-          <Route path='/stripe-onboarding/fail' element={<StripeFailed />} />
-          <Route index element={<Home />} />
-          {/* End */}
-        </Routes>
-      </main>
-      <Footer />
-      <ToastContainer
-        position='top-center'
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='dark'
-      />
-    </AppWrapper>
-  )
+	const userSignin = useSelector(state => state.userSignin)
+	const { userInfo } = userSignin
+	return (
+		// Using component as a wrapper to provide contextAPI's for reducing complexity of the code
+		<AppWrapper>
+			<main>
+				<Routes>
+					{/* Routes with header and footer */}
+					<Route
+						path="/"
+						element={
+							<>
+								<Header />
+								<Outlet />
+								<Footer />
+							</>
+						}
+					>
+						{/* Home Page Route */}
+						<Route path="/checkout" element={<StripeContainer />} />
+						<Route path="/events" element={<ExploreEvents />} />
+						<Route path="/events/:id" exact element={<SingleEvent />}></Route>
+						<Route path="/order/success" element={<OrderComplete />} />
+						<Route path="/stripe-onboarding/fail" element={<StripeFailed />} />
+						<Route index element={<Home />} />
+						{/* Home page routes end */}
+
+						{/* Dashboard */}
+						{userInfo && (
+							<Route path="/dashboard" element={<Dashboard />}>
+								<Route index element={<Overview />} />
+								<Route path="events/add" element={<AddEvent />} />
+								<Route path="events/manage" element={<ManageEvents />} />
+								<Route path="tickets/add" element={<AddTicket />} />
+								<Route path="tickets/manage" element={<ManageTickets />} />
+								<Route path="orders/sell" element={<SellOrders />} />
+								<Route path="orders/purchase" element={<PurchaseOrders />} />
+								<Route path="users" element={<ManageUsers />} />
+								<Route path="audience" element={<Audience />} />
+								<Route path="organizers" element={<Organizers />} />
+								<Route path="orders" element={<Orders />} />
+								<Route path="payments" element={<Payments />} />
+								<Route path="venues/add" element={<AddVenue />} />
+								<Route path="venues/manage" element={<ManageVenues />} />
+								<Route path="profile" element={<Profile />} />
+							</Route>
+						)}
+						{/* End */}
+					</Route>
+
+					{/* Routes without header and footer */}
+					<Route path="/signin" element={<Login />} />
+					<Route path="/seller-info" element={<SellerInfo />} />
+					<Route path="/terms" element={<Terms />} />
+					<Route path="/seller-onboard" element={<Stripe />} />
+					<Route path="/seller-signup" element={<Register isSeller={true} />} />
+					<Route path="/customer-support" element={<CustomerSupport />} />
+					<Route path="/buyer-signup" element={<Register isSeller={false} />} />
+					<Route path="/privacy" element={<PrivacyPolicy />} />
+				</Routes>
+			</main>
+
+			<ToastContainer
+				position="top-center"
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick={false}
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="dark"
+			/>
+		</AppWrapper>
+	)
 }
 
 export default App

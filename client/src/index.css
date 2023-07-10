@@ -38,7 +38,7 @@ a {
 }
 
 body {
-	font-family: 'Poppins', sans-serif !important;
+	font-family: "Poppins", sans-serif !important;
 	margin: 0;
 	padding: 0;
 	padding-right: 0 !important;
@@ -49,13 +49,16 @@ body {
 input,
 a,
 button {
-	font-family: 'Poppins' !important;
+	font-family: "Poppins" !important;
 }
 button {
 	font-size: 16px;
 }
 section.component {
 	padding: 50px 0;
+}
+section.auth {
+	padding: 5px 0;
 }
 h1 {
 	font-weight: 600 !important;
@@ -76,7 +79,7 @@ h5,
 h6,
 select,
 textarea {
-	font-family: 'Poppins' !important;
+	font-family: "Poppins" !important;
 	margin: 0;
 }
 hr {
@@ -86,8 +89,8 @@ hr {
 	background-color: #ccc;
 }
 
-input[type='radio']:checked,
-input[type='checkbox']:checked {
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
 	accent-color: var(--primary-color);
 }
 /* Define the default container styles */
@@ -233,7 +236,7 @@ input[type='checkbox']:checked {
 
 .modal-close:after,
 .modal-close:before {
-	content: '';
+	content: "";
 	position: absolute;
 	width: 2px;
 	height: 1em;

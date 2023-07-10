@@ -1,6 +1,7 @@
 export const steps = [
-  "Seller Details",
-  "Login Details",
-  "Terms of Sale",
-  "Stripe Onboarding",
+	"Seller Details",
+	"Customer Support",
+	"Login Details",
+	"Terms of Sale",
+	"Stripe Onboarding",
 ]
