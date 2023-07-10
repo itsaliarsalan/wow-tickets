@@ -8,7 +8,7 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 
 
 stripeRouter.post("/payment", async (req, res) => {
-  let { amount, id, stripe_acc_id } = req.body
+  let { amount, id, stripe_acc_id, fee } = req.body
   try {
     const payment = await stripe.paymentIntents.create(
       {
@@ -16,7 +16,7 @@ stripeRouter.post("/payment", async (req, res) => {
         currency: "eur",
         payment_method: id,
         confirm: true,
-        application_fee_amount: amount * 0.05,
+        application_fee_amount: amount * (fee / 100),
       },
       {
         stripeAccount: stripe_acc_id,

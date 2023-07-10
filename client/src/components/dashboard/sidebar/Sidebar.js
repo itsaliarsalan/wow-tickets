@@ -11,6 +11,7 @@ import PaymentIcon from "@mui/icons-material/Payment"
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined"
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined"
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined"
+import Person2Outlined from "@mui/icons-material/Person2Outlined"
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined"
 import QrCodeScannerOutlinedIcon from "@mui/icons-material/QrCodeScannerOutlined"
 
@@ -50,6 +51,12 @@ function Sidebar() {
           <ul className='menu'>
             {userInfo && (
               <>
+                <li className='nav-item'>
+                  <Link to='/dashboard/profile' className='nav-link'>
+                    <Person2Outlined />
+                    <Typography variant='body1'>Profile</Typography>
+                  </Link>
+                </li>
                 {userInfo?.isAdmin && (
                   <>
                     <li className='nav-item'>
@@ -195,6 +202,7 @@ function Sidebar() {
                     </li>
                   </>
                 )}
+
                 <li className='nav-item'>
                   <Link to='/dashboard/orders' className='nav-link'>
                     <ReceiptOutlinedIcon />

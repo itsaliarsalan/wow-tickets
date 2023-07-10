@@ -43,13 +43,12 @@ export default function Profile() {
                   marginBottom: 4,
                 }}
               >
-                <TextField fullWidth required id='fullname' label='Full Name' />
                 <TextField
                   fullWidth
                   required
-                  id='mobile-number'
-                  label='Mobile Number'
-                  type='phone'
+                  id='fullname'
+                  label='Full Name'
+                  value={userInfo.name}
                 />
                 <TextField
                   fullWidth
@@ -57,6 +56,7 @@ export default function Profile() {
                   type='email'
                   id='email'
                   label='Email'
+                  value={userInfo.email}
                 />
                 <Box sx={{ textAlign: "end" }}>
                   <Button variant='contained' type='submit'>
@@ -111,6 +111,46 @@ export default function Profile() {
           </Paper>
         </Grid>
       </Grid>
+      {userInfo.isAdmin && (
+        <Grid container spacing={2} marginTop={2}>
+          <Grid item xs={12} sm={6}>
+            <Paper sx={{ padding: { xs: 2, md: 3 } }}>
+              <Box sx={{ marginBottom: 2 }}>
+                <Typography variant='h5' gutterBottom>
+                  Marketplace Fee
+                </Typography>
+                <Typography variant='body1' color='text.secondary'>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
+                  facere!
+                </Typography>
+                <hr style={{ marginTop: "1rem" }} />
+                <Box
+                  component='form'
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 1,
+                    marginBottom: 4,
+                  }}
+                >
+                  <TextField
+                    fullWidth
+                    required
+                    id='fee'
+                    value={userInfo.fee}
+                    label='Fee In percentage'
+                  />
+                  <Box sx={{ textAlign: "end" }}>
+                    <Button variant='contained' type='submit'>
+                      Update
+                    </Button>
+                  </Box>
+                </Box>
+              </Box>
+            </Paper>
+          </Grid>
+        </Grid>
+      )}
     </Container>
   )
 }

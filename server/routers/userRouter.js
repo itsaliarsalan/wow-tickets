@@ -36,6 +36,7 @@ userRouter.post(
           stripe_cus_id: user.stripe_cus_id,
           isAdmin: user.isAdmin,
           isSeller: user.isSeller,
+          fee: user.fee,
           token: generateToken(user),
         })
         return

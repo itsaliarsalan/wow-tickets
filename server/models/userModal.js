@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema(
     stripe_cus_id: { type: String },
     isAdmin: { type: Boolean, default: false, required: true },
     isSeller: { type: Boolean, default: false },
+    fee: { type: Number },
   },
   {
     timestamps: true,
