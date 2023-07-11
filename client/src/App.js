@@ -4,8 +4,8 @@ import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
 // Pages
-import Header from "./sections/Header"
-import Footer from "./sections/Footer"
+import Header from "./sections/layout/Header"
+import Footer from "./sections/layout/Footer"
 import Home from "./pages/Home"
 import ExploreEvents from "./pages/ExploreEvents"
 import SingleEvent from "./pages/SingleEvent"
@@ -40,6 +40,7 @@ import Terms from "./pages/auth/Terms"
 import Stripe from "./pages/auth/Stripe"
 import "@stripe/stripe-js"
 import StripeContainer from "./pages/StripeContainer"
+import ResetPassword from "./pages/auth/ResetPassword"
 function App() {
 	// Make sure to call `loadStripe` outside of a component’s render to avoid
 	// recreating the `Stripe` object on every render.
@@ -103,6 +104,7 @@ function App() {
 					<Route path="/customer-support" element={<CustomerSupport />} />
 					<Route path="/buyer-signup" element={<Register isSeller={false} />} />
 					<Route path="/privacy" element={<PrivacyPolicy />} />
+					<Route path="/reset-password" element={<ResetPassword />} />
 				</Routes>
 			</main>
 
